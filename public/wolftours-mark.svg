@@ -1,0 +1,14 @@
+<svg width="280" height="92" viewBox="0 0 280 92" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <g fill="#FFFFFF">
+    <path d="M25 16L48 8L71 16V22H25V16Z"/>
+    <path d="M29 28H35V55H29V28Z"/>
+    <path d="M43 28H49V55H43V28Z"/>
+    <path d="M57 28H63V55H57V28Z"/>
+    <path d="M24 60H72V66H24V60Z"/>
+    <path d="M23 70H73V76H23V70Z"/>
+  </g>
+  <path d="M86 28C93 13 113 12 121 26C129 18 146 19 153 32C158 42 153 58 139 65C128 71 111 70 96 62C84 55 80 42 86 28Z" fill="#C89D47"/>
+  <path d="M102 30C108 22 119 22 123 33C129 28 139 31 141 40C144 51 133 59 120 58C108 57 96 50 95 41C94 37 97 33 102 30Z" fill="#071827"/>
+  <text x="89" y="42" fill="#FFFFFF" font-family="Georgia, 'Times New Roman', serif" font-size="34" font-weight="700" letter-spacing="-1.5">WolfTours</text>
+  <text x="91" y="63" fill="#C89D47" font-family="Arial, Helvetica, sans-serif" font-size="10" font-weight="700" letter-spacing="2.5">EUROPEAN CITY TOURS</text>
+</svg>
