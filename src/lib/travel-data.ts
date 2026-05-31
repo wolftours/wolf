@@ -103,24 +103,6 @@ export const museums: Museum[] = [
     ],
     experiences: [
       {
-        slug: "stripe-test-product",
-        title: "Stripe test booking - 1 EUR",
-        image:
-          "https://images.unsplash.com/photo-1587648415693-4a5362b2ce41?auto=format&fit=crop&w=800&q=80",
-        meta: "Test product · Stripe checkout",
-        price: "From 1 EUR",
-        adultPrice: 1,
-        childPrice: 1,
-        description:
-          "A low-value test booking for checking the WolfTours Stripe checkout flow end to end.",
-        highlights: [
-          "1 EUR test payment",
-          "Stripe checkout flow",
-          "No real museum ticket included",
-        ],
-        duration: "Checkout test",
-      },
-      {
         slug: "louvre-standard-admission",
         title: "Louvre Museum standard admission ticket",
         image:
@@ -139,24 +121,6 @@ export const museums: Museum[] = [
         duration: "Approx. 3 hours",
       },
       {
-        slug: "louvre-seine-cruise",
-        title: "Ticket to the Louvre Museum and Seine River Cruise",
-        image:
-          "https://images.unsplash.com/photo-1499634231146-3393ed854a33?auto=format&fit=crop&w=800&q=80",
-        meta: "Audio guide available",
-        price: "From 60.99 EUR",
-        adultPrice: 60.99,
-        childPrice: 34.99,
-        description:
-          "Timed Louvre entry plus a relaxed Seine cruise the same day. Ideal if you want art indoors and Paris from the water without two separate bookings.",
-        highlights: [
-          "Louvre timed entry",
-          "1-hour Seine cruise",
-          "Mobile audio guide",
-        ],
-        duration: "Louvre 3-4h · Cruise 1h",
-      },
-      {
         slug: "louvre-audio-guide",
         title: "Ticket to the Louvre Museum with Audio Guide App",
         image:
@@ -173,24 +137,6 @@ export const museums: Museum[] = [
           "Room-by-room pacing tips",
         ],
         duration: "Approx. 3 hours",
-      },
-      {
-        slug: "louvre-private-tour",
-        title: "Private Guided Tour of the Louvre Museum",
-        image:
-          "https://images.unsplash.com/photo-1566127444979-b3d2b654e3d7?auto=format&fit=crop&w=800&q=80",
-        meta: "Small private group",
-        price: "From 200 EUR",
-        adultPrice: 200,
-        childPrice: 120,
-        description:
-          "A private guide shapes the visit around your pace and interests — masterpieces, sculpture, or a first-timer's greatest hits.",
-        highlights: [
-          "Private licensed guide",
-          "Custom route inside the Louvre",
-          "Priority pacing through busy rooms",
-        ],
-        duration: "2.5 hours",
       },
     ],
     recommendations: [

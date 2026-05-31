@@ -31,41 +31,6 @@ const PRODUCT_EXTRAS: Record<
     Pick<EnrichedProduct, "gallery" | "included" | "details" | "itinerary" | "testimonial">
   >
 > = {
-  "stripe-test-product": {
-    included: [
-      "1 EUR Stripe checkout test",
-      "Booking form validation",
-      "Payment redirect check",
-      "Success page return check",
-      "No real museum ticket included",
-    ],
-    details: [
-      "This product exists only to test the WolfTours payment flow with a low-value checkout. It lets you choose a date, enter customer details, and confirm that Stripe opens correctly.",
-      "Do not treat this as a real Louvre or museum ticket. It is intentionally priced at 1 EUR so live payment and deployment checks can be run without using a normal attraction price.",
-    ],
-    itinerary: [
-      {
-        label: "Step 01",
-        title: "Choose any available slot",
-        copy: "Pick a date and entry time in the booking widget so the checkout flow has normal booking data.",
-      },
-      {
-        label: "Step 02",
-        title: "Pay 1 EUR in Stripe",
-        copy: "Complete the secure checkout and confirm that Stripe accepts the payment.",
-      },
-      {
-        label: "Step 03",
-        title: "Return to WolfTours",
-        copy: "Use the success page to verify that the customer returns cleanly after payment.",
-      },
-    ],
-    testimonial: {
-      quote:
-        "This is a WolfTours internal checkout test product, not a guest-facing attraction ticket.",
-      author: "WolfTours test mode",
-    },
-  },
   "louvre-standard-admission": {
     gallery: [
       "https://images.unsplash.com/photo-1587648415693-4a5362b2ce41?auto=format&fit=crop&w=900&q=80",
@@ -160,36 +125,6 @@ const PRODUCT_EXTRAS: Record<
       quote:
         "We finally understood what we were looking at. The audio pacing made the Louvre feel manageable, not exhausting.",
       author: "Elena & Marco · visited April",
-    },
-  },
-  "louvre-seine-cruise": {
-    gallery: [
-      "https://images.unsplash.com/photo-1499634231146-3393ed854a33?auto=format&fit=crop&w=900&q=80",
-      "https://images.unsplash.com/photo-1587648415693-4a5362b2ce41?auto=format&fit=crop&w=900&q=80",
-      "https://images.unsplash.com/photo-1566127444979-b3d2b654e3d7?auto=format&fit=crop&w=900&q=80",
-    ],
-    details: [
-      "Pair the world's most visited museum with an hour on the Seine — one booking, two classic Paris experiences.",
-      "Use the morning inside the Louvre and the cruise later for golden light on the bridges, or flip the order depending on your entry slot.",
-    ],
-    testimonial: {
-      quote: "Museum in the morning, cruise at sunset. Felt like a proper Paris day, not a checklist.",
-      author: "James · visited May",
-    },
-  },
-  "louvre-private-tour": {
-    gallery: [
-      "https://images.unsplash.com/photo-1566127444979-b3d2b654e3d7?auto=format&fit=crop&w=900&q=80",
-      "https://images.unsplash.com/photo-1587648415693-4a5362b2ce41?auto=format&fit=crop&w=900&q=80",
-      "https://images.unsplash.com/photo-1610023709598-3881e09811c2?auto=format&fit=crop&w=900&q=80",
-    ],
-    details: [
-      "Your guide adapts the route to your interests — first visit, sculpture-heavy, or a focused masterpiece day.",
-      "Ideal when you want conversation, context, and flexibility in busy rooms without researching every wing yourself.",
-    ],
-    testimonial: {
-      quote: "Worth it for the context alone. We saw more in two hours than our last DIY visit.",
-      author: "Claire · visited March",
     },
   },
   "eiffel-tower-standard-admission": {
