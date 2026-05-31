@@ -84,6 +84,21 @@
   color: var(--navy);
 }
 
+.legalNotice {
+  display: grid;
+  gap: 10px;
+  margin-top: 24px;
+  padding-top: 22px;
+  border-top: 1px solid rgba(26, 53, 87, 0.08);
+  color: rgba(64, 81, 102, 0.86);
+  font-size: 12px;
+  line-height: 1.7;
+}
+
+.legalNotice p {
+  max-width: 1040px;
+}
+
 @media (max-width: 820px) {
   .footerGrid {
     grid-template-columns: 1fr;

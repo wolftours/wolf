@@ -937,7 +937,7 @@
 }
 
 .museumCard:hover .museumImage {
-  transform: scale(1.07);
+  transform: scale(1.025);
 }
 
 .museumInfo {
@@ -1092,7 +1092,7 @@
 }
 
 .cityTile:hover .cityTileImage {
-  transform: scale(1.06);
+  transform: scale(1.025);
 }
 
 .cityTile:hover::after {

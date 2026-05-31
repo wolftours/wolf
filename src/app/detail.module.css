@@ -380,7 +380,7 @@
 }
 
 .experience:hover .experienceImage {
-  transform: scale(1.05);
+  transform: scale(1.025);
 }
 
 .experienceFeatured .experienceImage {
@@ -524,7 +524,7 @@
   border-radius: 20px;
   background-color: #e8e0d4;
   background-position: center;
-  background-size: cover;
+  background-size: contain;
   background-repeat: no-repeat;
   box-shadow: 0 20px 44px rgba(16, 32, 51, 0.14);
   transition: transform 0.55s var(--ease-out);
@@ -825,7 +825,7 @@
 }
 
 .museumTile:hover .museumTileImage {
-  transform: scale(1.06);
+  transform: scale(1.025);
 }
 
 .museumTileBody {
@@ -910,7 +910,7 @@
 }
 
 .cityProductCard:hover .cityProductImage {
-  transform: scale(1.06);
+  transform: scale(1.025);
 }
 
 .cityProductCard::after {

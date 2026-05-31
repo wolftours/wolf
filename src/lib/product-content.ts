@@ -178,9 +178,9 @@ const PRODUCT_EXTRAS: Record<
   "orsay-standard-admission": {
     gallery: [
       "https://images.unsplash.com/photo-1491238824974-e22b282decba?auto=format&fit=crop&w=900&q=80",
-      "https://images.unsplash.com/photo-1714233689324-48483a12c561?auto=format&fit=crop&w=900&q=80",
       "https://images.unsplash.com/photo-1719398026703-0d3f3d162e51?auto=format&fit=crop&w=900&q=80",
       "https://images.unsplash.com/photo-1680189857535-3f41eb861033?auto=format&fit=crop&w=900&q=80",
+      "https://images.unsplash.com/photo-1641330450794-bc9d81cff4df?auto=format&fit=crop&w=900&q=80",
     ],
     included: [
       "Musee d'Orsay standard admission",

@@ -59,6 +59,21 @@ export function SiteFooter() {
             Company registry
           </a>
         </div>
+
+        <div className={styles.legalNotice}>
+          <p>
+            wolftours-global.com is owned by Wolf Tourist s. r. o. (registered
+            office: Komenského 317/135, 943 01 Štúrovo, Slovakia; Company ID /
+            IČO: 57567247; Tax ID / DIČ: 2122823813; VAT ID / IČ DPH:
+            SK2122823813).
+          </p>
+          <p>
+            We are not the official ticket office of the Louvre Museum; we are a
+            travel agency specialized in the sale of tickets, experiences, and
+            tours, as well as the organizer and mediator of the latter. All our
+            prices are bundled or itemized by service.
+          </p>
+        </div>
       </div>
     </footer>
   );

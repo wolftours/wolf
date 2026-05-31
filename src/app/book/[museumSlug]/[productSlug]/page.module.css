@@ -110,8 +110,10 @@
 
 .galleryItem {
   border-radius: 18px;
+  background-color: #e8e0d4;
   background-position: center;
-  background-size: cover;
+  background-size: contain;
+  background-repeat: no-repeat;
   box-shadow: 0 16px 36px rgba(16, 32, 51, 0.12);
 }
 
@@ -198,8 +200,10 @@
 .visitStoryImage {
   min-height: 360px;
   border-radius: 22px;
+  background-color: #e8e0d4;
   background-position: center;
-  background-size: cover;
+  background-size: contain;
+  background-repeat: no-repeat;
   box-shadow: inset 0 -80px 120px rgba(5, 8, 12, 0.18);
 }
 

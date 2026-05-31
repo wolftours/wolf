@@ -297,7 +297,7 @@ export const museums: Museum[] = [
       {
         title: "Impressionist rooms with real breathing space",
         image:
-          "https://images.unsplash.com/photo-1714233689324-48483a12c561?auto=format&fit=crop&w=1200&q=80",
+          "https://images.unsplash.com/photo-1719398026703-0d3f3d162e51?auto=format&fit=crop&w=1200&q=80",
         paragraphs: [
           "Monet, Renoir, Degas, Van Gogh, Cezanne — the names are huge, but the museum can still feel human when you move through it with a clear order.",
           "WolfTours pacing avoids the trap of stopping at every canvas. You focus on the rooms that tell the strongest story and leave space to enjoy them.",

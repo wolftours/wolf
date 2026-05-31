@@ -124,7 +124,7 @@ export default async function Home({ searchParams }: PageProps) {
               <strong>Wolf Pack Route</strong>
             </div>
             <Image
-              src="/wolftours-hero-brand.png"
+              src="/wolftours-global-header.png"
               alt="Explore the world's pack - WolfTours"
               width={1024}
               height={434}
