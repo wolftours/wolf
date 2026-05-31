@@ -717,9 +717,10 @@
   margin-top: 12px;
   color: #102033;
   font-family: var(--font-serif), Georgia, serif;
-  font-size: clamp(32px, 4vw, 48px);
+  font-size: clamp(40px, 5vw, 62px);
   font-weight: 400;
-  line-height: 0.98;
+  line-height: 0.94;
+  letter-spacing: -0.055em;
 }
 
 .cityIntroSticky > p {
@@ -737,10 +738,26 @@
 }
 
 .routeBeats li {
-  padding: 0 0 22px 20px;
+  position: relative;
+  padding: 0 0 26px 22px;
 }
 
-.routeBeats time {
+.routeBeats li:last-child {
+  padding-bottom: 0;
+}
+
+.routeBeats li::before {
+  position: absolute;
+  left: -4px;
+  top: 3px;
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: #b78a2c;
+  content: "";
+}
+
+.routeBeats span:first-child {
   display: block;
   color: #9a721f;
   font-size: 11px;
@@ -748,11 +765,12 @@
   letter-spacing: 0.14em;
 }
 
-.routeBeats span {
+.routeBeats span:last-child {
   display: block;
   margin-top: 6px;
   color: #102033;
-  font-weight: 700;
+  font-size: 17px;
+  font-weight: 900;
 }
 
 .cityIntroSticky .linkAction {

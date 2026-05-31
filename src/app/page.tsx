@@ -11,24 +11,24 @@ import styles from "./page.module.css";
 
 const wolfRoute = [
   {
-    step: "Step 01",
+    step: "01",
     title: "Choose your city",
-    copy: "Start with Paris, Rome, Barcelona, or Bilbao and open the museum day that fits your trip.",
+    copy: "Start with Paris, Rome, or Barcelona and see the attractions we actually sell there.",
   },
   {
-    step: "Step 02",
-    title: "Pick your product",
-    copy: "Compare standard tickets, guided options, audio routes, and bundles before choosing a date.",
+    step: "02",
+    title: "Pick the right product",
+    copy: "Compare standard tickets, guided options, cruises, tower access, and easy add-ons in one place.",
   },
   {
-    step: "Step 03",
-    title: "Pay securely",
-    copy: "Enter your visitor details and complete payment through Stripe's secure checkout.",
+    step: "03",
+    title: "Book your slot",
+    copy: "Choose the visit date, entry time, adults, children, and leave your details for the booking.",
   },
   {
-    step: "Step 04",
-    title: "Arrive with notes",
-    copy: "Use the mobile voucher, entry timing, and WolfTours pacing notes when visit day arrives.",
+    step: "04",
+    title: "Arrive and enjoy it",
+    copy: "Show your confirmation, follow the entry notes, look around properly, and keep the day simple.",
   },
 ];
 
@@ -149,11 +149,10 @@ export default async function Home({ searchParams }: PageProps) {
         >
           <aside className={styles.routeIntro}>
             <p className={styles.eyebrow}>How to use WolfTours</p>
-            <h2>Choose the experience, pay online, arrive prepared.</h2>
+            <h2>Choose the product, book the slot, and arrive without guesswork.</h2>
             <p className={styles.routeIntroCopy}>
-              WolfTours is built for travelers who want the ticket and the day
-              around it to make sense. Pick a destination, choose the product,
-              complete payment, then follow the arrival notes we send.
+              Four simple steps: pick the city, choose the ticket, send the
+              booking, then use your confirmation on the day.
             </p>
           </aside>
 

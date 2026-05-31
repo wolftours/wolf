@@ -13,9 +13,9 @@ type PageProps = {
 };
 
 const routeBeats = [
-  { time: "09:30", label: "Quiet entry window" },
-  { time: "12:00", label: "One room, properly" },
-  { time: "15:30", label: "Neighborhood pause" },
+  { step: "01", label: "Choose an attraction" },
+  { step: "02", label: "Open the product page" },
+  { step: "03", label: "Book your date and time" },
 ];
 
 export function generateStaticParams() {
@@ -105,17 +105,18 @@ export default async function CityPage({ params }: PageProps) {
       <Reveal>
         <section className={`${styles.shell} ${styles.cityLayout}`}>
           <aside className={styles.cityIntroSticky}>
-            <p className={styles.eyebrow}>Your museums</p>
-            <h2>{city.name} museum route</h2>
+            <p className={styles.eyebrow}>How it works</p>
+            <h2>Book {city.name} attractions in a few clicks</h2>
             <p>
-              A focused day built around the museums WolfTours runs here — tickets,
-              pacing, and local rhythm included.
+              Browse the products available in this city, open the one that
+              fits your trip, then choose the visit date, entry time, and ticket
+              count.
             </p>
 
             <ol className={styles.routeBeats}>
               {routeBeats.map((beat) => (
                 <li key={beat.label}>
-                  <time>{beat.time}</time>
+                  <span>{beat.step}</span>
                   <span>{beat.label}</span>
                 </li>
               ))}
