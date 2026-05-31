@@ -82,15 +82,30 @@ export default async function CityPage({ params }: PageProps) {
             <aside className={styles.heroAside}>
               <dl className={styles.heroStats}>
                 <div>
-                  <dt>01</dt>
+                  <dt>
+                    <svg viewBox="0 0 24 24" aria-hidden="true">
+                      <path d="M4 7.5A2.5 2.5 0 0 1 6.5 5h11A2.5 2.5 0 0 1 20 7.5v2a2.5 2.5 0 0 0 0 5v2A2.5 2.5 0 0 1 17.5 19h-11A2.5 2.5 0 0 1 4 16.5v-2a2.5 2.5 0 0 0 0-5v-2Z" />
+                      <path d="M9 8v8M15 9.5h-3M15 14.5h-3" />
+                    </svg>
+                  </dt>
                   <dd>Book your tickets</dd>
                 </div>
                 <div>
-                  <dt>02</dt>
+                  <dt>
+                    <svg viewBox="0 0 24 24" aria-hidden="true">
+                      <path d="M5 9h14v8.5A1.5 1.5 0 0 1 17.5 19h-11A1.5 1.5 0 0 1 5 17.5V9Z" />
+                      <path d="M5 9V6.5A1.5 1.5 0 0 1 6.5 5h11A1.5 1.5 0 0 1 19 6.5V9M8 14h4" />
+                    </svg>
+                  </dt>
                   <dd>Secure payment</dd>
                 </div>
                 <div>
-                  <dt>03</dt>
+                  <dt>
+                    <svg viewBox="0 0 24 24" aria-hidden="true">
+                      <path d="M7 4.5h8.5L19 8v11.5H7V4.5Z" />
+                      <path d="M15 4.5V8h4M10 13l1.6 1.6L15 11.2" />
+                    </svg>
+                  </dt>
                   <dd>Mobile voucher</dd>
                 </div>
               </dl>
