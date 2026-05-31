@@ -31,6 +31,41 @@ const PRODUCT_EXTRAS: Record<
     Pick<EnrichedProduct, "gallery" | "included" | "details" | "itinerary" | "testimonial">
   >
 > = {
+  "stripe-test-product": {
+    included: [
+      "1 EUR Stripe checkout test",
+      "Booking form validation",
+      "Payment redirect check",
+      "Success page return check",
+      "No real museum ticket included",
+    ],
+    details: [
+      "This product exists only to test the WolfTours payment flow with a low-value checkout. It lets you choose a date, enter customer details, and confirm that Stripe opens correctly.",
+      "Do not treat this as a real Louvre or museum ticket. It is intentionally priced at 1 EUR so live payment and deployment checks can be run without using a normal attraction price.",
+    ],
+    itinerary: [
+      {
+        label: "Step 01",
+        title: "Choose any available slot",
+        copy: "Pick a date and entry time in the booking widget so the checkout flow has normal booking data.",
+      },
+      {
+        label: "Step 02",
+        title: "Pay 1 EUR in Stripe",
+        copy: "Complete the secure checkout and confirm that Stripe accepts the payment.",
+      },
+      {
+        label: "Step 03",
+        title: "Return to WolfTours",
+        copy: "Use the success page to verify that the customer returns cleanly after payment.",
+      },
+    ],
+    testimonial: {
+      quote:
+        "This is a WolfTours internal checkout test product, not a guest-facing attraction ticket.",
+      author: "WolfTours test mode",
+    },
+  },
   "louvre-standard-admission": {
     gallery: [
       "https://images.unsplash.com/photo-1565099824688-e93eb20fe622?auto=format&fit=crop&w=900&q=80",

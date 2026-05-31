@@ -103,6 +103,24 @@ export const museums: Museum[] = [
     ],
     experiences: [
       {
+        slug: "stripe-test-product",
+        title: "Stripe test booking - 1 EUR",
+        image:
+          "https://images.unsplash.com/photo-1565099824688-e93eb20fe622?auto=format&fit=crop&w=800&q=80",
+        meta: "Test product · Stripe checkout",
+        price: "From 1 EUR",
+        adultPrice: 1,
+        childPrice: 1,
+        description:
+          "A low-value test booking for checking the WolfTours Stripe checkout flow end to end.",
+        highlights: [
+          "1 EUR test payment",
+          "Stripe checkout flow",
+          "No real museum ticket included",
+        ],
+        duration: "Checkout test",
+      },
+      {
         slug: "louvre-standard-admission",
         title: "Louvre Museum standard admission ticket",
         image:
