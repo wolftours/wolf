@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { DM_Sans, Instrument_Serif } from "next/font/google";
+import Script from "next/script";
 import { company } from "@/lib/company-data";
 import "./globals.css";
 
@@ -30,7 +31,13 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" className={`${sans.variable} ${serif.variable}`}>
-      <body>{children}</body>
+      <body>
+        {children}
+        <Script
+          src="https://code.tidio.co/imszxayuewpygpbi1ecsxd70xaasvbn6.js"
+          strategy="afterInteractive"
+        />
+      </body>
     </html>
   );
 }
