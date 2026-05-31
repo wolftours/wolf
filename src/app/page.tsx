@@ -1,6 +1,7 @@
 import type { CSSProperties } from "react";
 import Image from "next/image";
 import Link from "next/link";
+import Script from "next/script";
 import { Marquee } from "@/components/Marquee";
 import { Reveal } from "@/components/Reveal";
 import { SiteFooter } from "@/components/SiteFooter";
@@ -302,6 +303,47 @@ export default async function Home({ searchParams }: PageProps) {
           </div>
         </section>
       </Reveal>
+
+      <Reveal>
+        <section className={`${styles.shell} ${styles.tiktokSection}`}>
+          <div className={styles.tiktokIntro}>
+            <p className={styles.eyebrow}>Follow the pack</p>
+            <h2>See WolfTours on TikTok</h2>
+            <p>
+              Short attraction guides, ticket tips, and quick ideas for your
+              next museum day.
+            </p>
+            <a
+              className={styles.tiktokLink}
+              href="https://www.tiktok.com/@wolftoursglobal"
+              rel="noopener noreferrer"
+              target="_blank"
+            >
+              Open @wolftoursglobal
+            </a>
+          </div>
+          <div className={styles.tiktokEmbed}>
+            <blockquote
+              className="tiktok-embed"
+              cite="https://www.tiktok.com/@wolftoursglobal"
+              data-unique-id="wolftoursglobal"
+              data-embed-type="creator"
+              style={{ maxWidth: 780, minWidth: 288 } as CSSProperties}
+            >
+              <section>
+                <a
+                  href="https://www.tiktok.com/@wolftoursglobal"
+                  rel="noopener noreferrer"
+                  target="_blank"
+                >
+                  @wolftoursglobal
+                </a>
+              </section>
+            </blockquote>
+          </div>
+        </section>
+      </Reveal>
+      <Script src="https://www.tiktok.com/embed.js" strategy="lazyOnload" />
 
       <SiteFooter />
     </main>
