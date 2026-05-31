@@ -14,7 +14,7 @@ export const company = {
   registry: "Obchodný register Okresného súdu Nitra, oddiel: Sro, vložka č. 69404/N",
   founded: "14 April 2026",
   shareCapital: "€5,000 (paid in full)",
-  email: "hello@wolftours.sk",
+  email: "info@wolftours-global.com",
   website: "www.wolftours.sk",
   tagline: "Explore the world's pack",
   subtitle: "Global ticket sales for all attractions",

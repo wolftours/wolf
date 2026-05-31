@@ -220,7 +220,7 @@ export default async function CityPage({ params }: PageProps) {
           </div>
           <div className={styles.ctaActions}>
             <Link className={styles.ctaButton} href="/#contact">
-              hello@wolftours.example
+              info@wolftours-global.com
             </Link>
             <Link className={styles.ctaGhost} href="/#museums">
               Browse all museums
