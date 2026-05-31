@@ -29,7 +29,7 @@ export async function POST(request: Request) {
       mode: "payment",
       customer_email: order.customer_email,
       client_reference_id: order.reference,
-      success_url: `${origin}/booking/success?session_id={CHECKOUT_SESSION_ID}`,
+      success_url: `${origin}/thank-you?session_id={CHECKOUT_SESSION_ID}`,
       cancel_url: `${origin}/book/${order.museum_slug}/${order.product_slug}?payment=cancelled#booking-calendar`,
       metadata: {
         orderId: order.id,
