@@ -326,6 +326,18 @@
   text-align: center;
 }
 
+.packageDisclosure {
+  margin-top: 12px;
+  padding: 12px 14px;
+  border: 1px solid rgba(200, 157, 71, 0.22);
+  border-radius: 14px;
+  background: rgba(255, 250, 242, 0.9);
+  color: #5d6673;
+  font-size: 11px;
+  line-height: 1.55;
+  text-align: left;
+}
+
 .error {
   margin-bottom: 12px;
   color: #9a2f2f;

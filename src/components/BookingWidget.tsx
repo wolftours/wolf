@@ -505,6 +505,12 @@ export function BookingWidget({ product, closedSlots = [] }: BookingWidgetProps)
         Secure card payment is handled by Stripe. We email your voucher and
         visit notes after payment is completed.
       </p>
+      <p className={styles.packageDisclosure}>
+        As an independent travel agency and ticket concierge, our package prices
+        may be higher than the face value of the standard museum tickets. The
+        final price includes the official entry fee, guaranteed reservation
+        management, and our curated premium digital itinerary services.
+      </p>
     </form>
   );
 }
