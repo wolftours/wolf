@@ -82,20 +82,20 @@ export default async function CityPage({ params }: PageProps) {
             <aside className={styles.heroAside}>
               <dl className={styles.heroStats}>
                 <div>
-                  <dt>{cityMuseums.length}</dt>
-                  <dd>Museum stops</dd>
+                  <dt>01</dt>
+                  <dd>Book your tickets</dd>
                 </div>
                 <div>
-                  <dt>1</dt>
-                  <dd>Day rhythm</dd>
+                  <dt>02</dt>
+                  <dd>Secure payment</dd>
                 </div>
                 <div>
-                  <dt>AM</dt>
-                  <dd>Best entry</dd>
+                  <dt>03</dt>
+                  <dd>Mobile voucher</dd>
                 </div>
               </dl>
-              <Link className={styles.heroCta} href="/#contact">
-                Start planning
+              <Link className={styles.heroCta} href="#city-products">
+                Book tickets
               </Link>
             </aside>
           </div>
@@ -154,7 +154,7 @@ export default async function CityPage({ params }: PageProps) {
       </Reveal>
 
       <Reveal>
-        <section className={`${styles.shell} ${styles.section}`}>
+        <section className={`${styles.shell} ${styles.section}`} id="city-products">
           <header className={styles.sectionHeader}>
             <div>
               <p className={styles.eyebrow}>Check our attractions</p>
