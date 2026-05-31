@@ -11,45 +11,22 @@ import styles from "./page.module.css";
 
 const wolfRoute = [
   {
-    time: "09:10",
-    title: "Enter before the rush",
-    copy: "Start with the rooms that lose their magic once the crowds arrive.",
-  },
-  {
-    time: "11:40",
-    title: "One masterpiece, properly",
-    copy: "Slow down around the work that gives the day its centre of gravity.",
-  },
-  {
-    time: "13:15",
-    title: "Local pause",
-    copy: "A cafe, a street, a courtyard, something that belongs to the city.",
-  },
-  {
-    time: "16:30",
-    title: "Golden-hour finish",
-    copy: "End with a view, not another queue.",
-  },
-];
-
-const howItWorks = [
-  {
-    step: "01",
+    step: "Step 01",
     title: "Choose your city",
     copy: "Start with Paris, Rome, Barcelona, or Bilbao and open the museum day that fits your trip.",
   },
   {
-    step: "02",
+    step: "Step 02",
     title: "Pick your product",
     copy: "Compare standard tickets, guided options, audio routes, and bundles before choosing a date.",
   },
   {
-    step: "03",
+    step: "Step 03",
     title: "Pay securely",
     copy: "Enter your visitor details and complete payment through Stripe's secure checkout.",
   },
   {
-    step: "04",
+    step: "Step 04",
     title: "Arrive with notes",
     copy: "Use the mobile voucher, entry timing, and WolfTours pacing notes when visit day arrives.",
   },
@@ -166,40 +143,17 @@ export default async function Home({ searchParams }: PageProps) {
       <Marquee />
 
       <Reveal>
-        <section className={`${styles.shell} ${styles.howSection}`}>
-          <div className={styles.howIntro}>
+        <section
+          className={`${styles.shell} ${styles.wolfRoute}`}
+          aria-label="How to use WolfTours"
+        >
+          <aside className={styles.routeIntro}>
             <p className={styles.eyebrow}>How to use WolfTours</p>
             <h2>Choose the experience, pay online, arrive prepared.</h2>
-            <p>
+            <p className={styles.routeIntroCopy}>
               WolfTours is built for travelers who want the ticket and the day
               around it to make sense. Pick a destination, choose the product,
               complete payment, then follow the arrival notes we send.
-            </p>
-          </div>
-
-          <ol className={styles.howGrid}>
-            {howItWorks.map((item) => (
-              <li key={item.title}>
-                <span>{item.step}</span>
-                <strong>{item.title}</strong>
-                <p>{item.copy}</p>
-              </li>
-            ))}
-          </ol>
-        </section>
-      </Reveal>
-
-      <Reveal>
-        <section
-          className={`${styles.shell} ${styles.wolfRoute}`}
-          aria-label="WolfTours route style"
-        >
-          <aside className={styles.routeIntro}>
-            <p className={styles.eyebrow}>The Wolf Route</p>
-            <h2>We build the day like a good story, not a checklist.</h2>
-            <p className={styles.routeIntroCopy}>
-              Four beats, one rhythm — entry, focus, pause, and a finish that
-              still feels like vacation.
             </p>
           </aside>
 
@@ -209,7 +163,7 @@ export default async function Home({ searchParams }: PageProps) {
                 <span className={styles.routeIndex}>
                   {String(index + 1).padStart(2, "0")}
                 </span>
-                <time>{stop.time}</time>
+                <span className={styles.routeMeta}>{stop.step}</span>
                 <strong>{stop.title}</strong>
                 <p>{stop.copy}</p>
               </li>
