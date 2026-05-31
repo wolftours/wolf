@@ -495,8 +495,7 @@ export const museums: Museum[] = [
     city: "Rome",
     image:
       "https://images.unsplash.com/photo-1624347061892-822a65656966?auto=format&fit=crop&w=900&q=80",
-    heroImage:
-      "https://images.unsplash.com/photo-1604051724595-d79e6bedf54f?auto=format&fit=crop&w=1800&q=80",
+    heroImage: "/sistine-chapel.png",
     note: "Ancient sculpture, Raphael's rooms, and the Sistine Chapel — one of the world's great museum journeys.",
     description: [
       "The Vatican Museums are not a single building but a sequence of worlds: courtyards, papal apartments, long galleries, and finally the Sistine Chapel. WolfTours shapes the day so the climax still feels sacred, not rushed.",
@@ -514,8 +513,7 @@ export const museums: Museum[] = [
       },
       {
         title: "Ancient sculpture and the Belvedere",
-        image:
-          "https://images.unsplash.com/photo-1604051724595-d79e6bedf54f?auto=format&fit=crop&w=1200&q=80",
+        image: "/sistine-chapel.png",
         paragraphs: [
           "The classical rooms are where many visitors fall in love with the museum: marble that still feels alive, portraits of emperors, and mythological scenes carved with impossible skill.",
           "These galleries reward slow movement — a bench, a second look, a moment to read the label instead of photographing and moving on.",
@@ -532,8 +530,7 @@ export const museums: Museum[] = [
       },
       {
         title: "The Sistine Chapel — quiet rules, loud impact",
-        image:
-          "https://images.unsplash.com/photo-1604051724595-d79e6bedf54f?auto=format&fit=crop&w=1200&q=80",
+        image: "/sistine-chapel.png",
         paragraphs: [
           "No photography, no noise, and a ceiling that rewires how you think about human ability. The visit rules are strict for good reason — the space is still a chapel.",
           "We plan your slot and route so this final room lands when you still have attention left, then you step back into Rome with the city at your feet.",
@@ -567,8 +564,7 @@ export const museums: Museum[] = [
       {
         slug: "vatican-skip-line",
         title: "Vatican Museums & Sistine Chapel entry",
-        image:
-          "https://images.unsplash.com/photo-1604051724595-d79e6bedf54f?auto=format&fit=crop&w=800&q=80",
+        image: "/sistine-chapel.png",
         meta: "Skip-the-line slot",
         price: "From 32 EUR",
         adultPrice: 32,

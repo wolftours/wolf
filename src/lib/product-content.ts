@@ -314,7 +314,7 @@ const PRODUCT_EXTRAS: Record<
   "vatican-skip-line": {
     gallery: [
       "https://images.unsplash.com/photo-1624347061892-822a65656966?auto=format&fit=crop&w=900&q=80",
-      "https://images.unsplash.com/photo-1604051724595-d79e6bedf54f?auto=format&fit=crop&w=900&q=80",
+      "/sistine-chapel.png",
       "https://images.unsplash.com/photo-1601680406053-7898f0564c3b?auto=format&fit=crop&w=900&q=80",
       "https://images.unsplash.com/photo-1651561823300-c501e2462edd?auto=format&fit=crop&w=900&q=80",
     ],
@@ -362,7 +362,7 @@ const PRODUCT_EXTRAS: Record<
   "vatican-standard-admission": {
     gallery: [
       "https://images.unsplash.com/photo-1624347061892-822a65656966?auto=format&fit=crop&w=900&q=80",
-      "https://images.unsplash.com/photo-1604051724595-d79e6bedf54f?auto=format&fit=crop&w=900&q=80",
+      "/sistine-chapel.png",
       "https://images.unsplash.com/photo-1601680406053-7898f0564c3b?auto=format&fit=crop&w=900&q=80",
       "https://images.unsplash.com/photo-1651561823300-c501e2462edd?auto=format&fit=crop&w=900&q=80",
     ],
@@ -409,7 +409,7 @@ const PRODUCT_EXTRAS: Record<
   },
   "vatican-private": {
     gallery: [
-      "https://images.unsplash.com/photo-1604051724595-d79e6bedf54f?auto=format&fit=crop&w=900&q=80",
+      "/sistine-chapel.png",
       "https://images.unsplash.com/photo-1624347061892-822a65656966?auto=format&fit=crop&w=900&q=80",
       "https://images.unsplash.com/photo-1601680406053-7898f0564c3b?auto=format&fit=crop&w=900&q=80",
     ],
