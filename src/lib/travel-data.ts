@@ -276,9 +276,9 @@ export const museums: Museum[] = [
     name: "Musee d'Orsay",
     city: "Paris",
     image:
-      "https://images.unsplash.com/photo-1577083552431-6e5fd01aa342?auto=format&fit=crop&w=900&q=80",
+      "https://images.unsplash.com/photo-1491238824974-e22b282decba?auto=format&fit=crop&w=900&q=80",
     heroImage:
-      "https://images.unsplash.com/photo-1577083552431-6e5fd01aa342?auto=format&fit=crop&w=1800&q=80",
+      "https://images.unsplash.com/photo-1491238824974-e22b282decba?auto=format&fit=crop&w=1800&q=80",
     note: "Impressionists, sculpture, and a former railway station that makes Paris feel golden.",
     description: [
       "Musee d'Orsay is the Paris museum for travelers who want beauty without the Louvre's scale. The building itself is half the pleasure: a grand railway station transformed into galleries of light, clocks, sculpture, and color.",
@@ -288,7 +288,7 @@ export const museums: Museum[] = [
       {
         title: "A railway station turned art cathedral",
         image:
-          "https://images.unsplash.com/photo-1494526585095-c41746248156?auto=format&fit=crop&w=1200&q=80",
+          "https://images.unsplash.com/photo-1491238824974-e22b282decba?auto=format&fit=crop&w=1200&q=80",
         paragraphs: [
           "The old Gare d'Orsay still shapes the visit: long views, iron, glass, and a central nave that feels more like a film set than a traditional museum.",
           "We start with the building so the galleries make sense as a journey through Paris in transition — industrial, modern, and suddenly full of color.",
@@ -297,7 +297,7 @@ export const museums: Museum[] = [
       {
         title: "Impressionist rooms with real breathing space",
         image:
-          "https://images.unsplash.com/photo-1579783900882-c0d3dad7b119?auto=format&fit=crop&w=1200&q=80",
+          "https://images.unsplash.com/photo-1714233689324-48483a12c561?auto=format&fit=crop&w=1200&q=80",
         paragraphs: [
           "Monet, Renoir, Degas, Van Gogh, Cezanne — the names are huge, but the museum can still feel human when you move through it with a clear order.",
           "WolfTours pacing avoids the trap of stopping at every canvas. You focus on the rooms that tell the strongest story and leave space to enjoy them.",
@@ -306,7 +306,7 @@ export const museums: Museum[] = [
       {
         title: "Clock views and a left-bank finish",
         image:
-          "https://images.unsplash.com/photo-1502602898657-3e91760cbb34?auto=format&fit=crop&w=1200&q=80",
+          "https://images.unsplash.com/photo-1680189857535-3f41eb861033?auto=format&fit=crop&w=1200&q=80",
         paragraphs: [
           "The famous clock views are more than a photo. They place the museum back inside Paris, with the city framed through time, glass, and metal.",
           "After the visit, the Seine and Saint-Germain are right there. We keep the schedule loose enough for a walk, a cafe, or a bridge crossing toward the Tuileries.",
@@ -323,7 +323,7 @@ export const museums: Museum[] = [
         slug: "orsay-standard-admission",
         title: "Musee d'Orsay standard admission ticket",
         image:
-          "https://images.unsplash.com/photo-1577083552431-6e5fd01aa342?auto=format&fit=crop&w=800&q=80",
+          "https://images.unsplash.com/photo-1491238824974-e22b282decba?auto=format&fit=crop&w=800&q=80",
         meta: "Standard admission · Timed entry",
         price: "From 24 EUR",
         adultPrice: 24,
@@ -643,9 +643,9 @@ export const museums: Museum[] = [
     name: "Sagrada Familia",
     city: "Barcelona",
     image:
-      "https://images.unsplash.com/photo-1583422409516-2895a77efded?auto=format&fit=crop&w=900&q=80",
+      "https://images.unsplash.com/photo-1728249960363-13079cc2c6f6?auto=format&fit=crop&w=900&q=80",
     heroImage:
-      "https://images.unsplash.com/photo-1583422409516-2895a77efded?auto=format&fit=crop&w=1800&q=80",
+      "https://images.unsplash.com/photo-1722545331003-bc5507a8bdf8?auto=format&fit=crop&w=1800&q=80",
     note: "Gaudi's light, symbols, and towers explained without the overwhelm.",
     description: [
       "Sagrada Familia is Gaudi's unfinished masterpiece and one of Europe's most expressive sacred buildings.",
@@ -657,7 +657,7 @@ export const museums: Museum[] = [
         slug: "sagrada-standard-admission",
         title: "Sagrada Familia standard admission ticket",
         image:
-          "https://images.unsplash.com/photo-1583422409516-2895a77efded?auto=format&fit=crop&w=800&q=80",
+          "https://images.unsplash.com/photo-1728249960363-13079cc2c6f6?auto=format&fit=crop&w=800&q=80",
         meta: "Standard admission · Timed entry",
         price: "From 26 EUR",
         adultPrice: 26,
@@ -675,7 +675,7 @@ export const museums: Museum[] = [
         slug: "sagrada-basilica",
         title: "Sagrada Familia basilica entry",
         image:
-          "https://images.unsplash.com/photo-1583422409516-2895a77efded?auto=format&fit=crop&w=800&q=80",
+          "https://images.unsplash.com/photo-1722545331003-bc5507a8bdf8?auto=format&fit=crop&w=800&q=80",
         meta: "Timed entry",
         price: "From 28 EUR",
         adultPrice: 28,
@@ -689,7 +689,7 @@ export const museums: Museum[] = [
         slug: "sagrada-towers",
         title: "Sagrada Familia entry with tower access",
         image:
-          "https://images.unsplash.com/photo-1583422409516-2895a77efded?auto=format&fit=crop&w=800&q=80",
+          "https://images.unsplash.com/photo-1650964827770-421afa7960ac?auto=format&fit=crop&w=800&q=80",
         meta: "Tower option",
         price: "From 38 EUR",
         adultPrice: 38,

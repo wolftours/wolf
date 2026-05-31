@@ -177,10 +177,10 @@ const PRODUCT_EXTRAS: Record<
   },
   "orsay-standard-admission": {
     gallery: [
-      "https://images.unsplash.com/photo-1577083552431-6e5fd01aa342?auto=format&fit=crop&w=900&q=80",
-      "https://images.unsplash.com/photo-1579783900882-c0d3dad7b119?auto=format&fit=crop&w=900&q=80",
-      "https://images.unsplash.com/photo-1494526585095-c41746248156?auto=format&fit=crop&w=900&q=80",
-      "https://images.unsplash.com/photo-1502602898657-3e91760cbb34?auto=format&fit=crop&w=900&q=80",
+      "https://images.unsplash.com/photo-1491238824974-e22b282decba?auto=format&fit=crop&w=900&q=80",
+      "https://images.unsplash.com/photo-1714233689324-48483a12c561?auto=format&fit=crop&w=900&q=80",
+      "https://images.unsplash.com/photo-1719398026703-0d3f3d162e51?auto=format&fit=crop&w=900&q=80",
+      "https://images.unsplash.com/photo-1680189857535-3f41eb861033?auto=format&fit=crop&w=900&q=80",
     ],
     included: [
       "Musee d'Orsay standard admission",
@@ -449,10 +449,10 @@ const PRODUCT_EXTRAS: Record<
   },
   "sagrada-standard-admission": {
     gallery: [
-      "https://images.unsplash.com/photo-1583422409516-2895a77efded?auto=format&fit=crop&w=900&q=80",
-      "https://images.unsplash.com/photo-1539037116277-4db20889f2d4?auto=format&fit=crop&w=900&q=80",
-      "https://images.unsplash.com/photo-1558642452-9d2a7deb7f62?auto=format&fit=crop&w=900&q=80",
-      "https://images.unsplash.com/photo-1523531294919-4bcd7c65e216?auto=format&fit=crop&w=900&q=80",
+      "https://images.unsplash.com/photo-1728249960363-13079cc2c6f6?auto=format&fit=crop&w=900&q=80",
+      "https://images.unsplash.com/photo-1650964827770-421afa7960ac?auto=format&fit=crop&w=900&q=80",
+      "https://images.unsplash.com/photo-1570097703562-2afcbfc7355d?auto=format&fit=crop&w=900&q=80",
+      "https://images.unsplash.com/photo-1722545331003-bc5507a8bdf8?auto=format&fit=crop&w=900&q=80",
     ],
     included: [
       "Sagrada Familia standard timed admission",
