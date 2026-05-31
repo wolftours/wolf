@@ -93,8 +93,8 @@ export default async function CityPage({ params }: PageProps) {
                 <div>
                   <dt>
                     <svg viewBox="0 0 24 24" aria-hidden="true">
-                      <path d="M5 9h14v8.5A1.5 1.5 0 0 1 17.5 19h-11A1.5 1.5 0 0 1 5 17.5V9Z" />
-                      <path d="M5 9V6.5A1.5 1.5 0 0 1 6.5 5h11A1.5 1.5 0 0 1 19 6.5V9M8 14h4" />
+                      <path d="M12 3.8 18.5 6v5.4c0 4.2-2.6 7.3-6.5 8.8-3.9-1.5-6.5-4.6-6.5-8.8V6L12 3.8Z" />
+                      <path d="m9.5 12.2 1.7 1.7 3.4-3.8" />
                     </svg>
                   </dt>
                   <dd>Secure payment</dd>
