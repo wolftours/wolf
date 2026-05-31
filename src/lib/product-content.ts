@@ -194,10 +194,10 @@ const PRODUCT_EXTRAS: Record<
   },
   "eiffel-tower-standard-admission": {
     gallery: [
-      "https://images.unsplash.com/photo-1511739001486-6bfe10ce785f?auto=format&fit=crop&w=900&q=80",
-      "https://images.unsplash.com/photo-1549144511-f099e773c147?auto=format&fit=crop&w=900&q=80",
-      "https://images.unsplash.com/photo-1502602898657-3e91760cbb34?auto=format&fit=crop&w=900&q=80",
-      "https://images.unsplash.com/photo-1499856871958-5b9627545d1a?auto=format&fit=crop&w=900&q=80",
+      "https://plus.unsplash.com/premium_photo-1719430569503-338fc89eb21f?auto=format&fit=crop&w=900&q=80",
+      "https://images.unsplash.com/photo-1679231926688-ef9cdab5ed2f?auto=format&fit=crop&w=900&q=80",
+      "https://images.unsplash.com/photo-1570097703229-b195d6dd291f?auto=format&fit=crop&w=900&q=80",
+      "https://plus.unsplash.com/premium_photo-1690522008026-ea48d3e1eafd?auto=format&fit=crop&w=900&q=80",
     ],
     included: [
       "Timed Eiffel Tower standard access",
@@ -290,10 +290,10 @@ const PRODUCT_EXTRAS: Record<
   },
   "guggenheim-general": {
     gallery: [
-      "https://images.unsplash.com/photo-1604580864964-0462f5d5b1a8?auto=format&fit=crop&w=900&q=80",
-      "https://images.unsplash.com/photo-1696697727554-63685819055a?auto=format&fit=crop&w=900&q=80",
-      "https://images.unsplash.com/photo-1585320806297-9794b3e4eeae?auto=format&fit=crop&w=900&q=80",
-      "https://images.unsplash.com/photo-1539037116277-4db20889f2d4?auto=format&fit=crop&w=900&q=80",
+      "https://images.unsplash.com/photo-1636556602097-2435ad5198ef?auto=format&fit=crop&w=900&q=80",
+      "https://images.unsplash.com/photo-1636556590144-7e3189066277?auto=format&fit=crop&w=900&q=80",
+      "https://images.unsplash.com/photo-1716246089868-8cc9a89742e9?auto=format&fit=crop&w=900&q=80",
+      "https://images.unsplash.com/photo-1710619364167-63e4e0aa804d?auto=format&fit=crop&w=900&q=80",
     ],
     included: [
       "Timed Guggenheim Museum entry",
@@ -338,9 +338,9 @@ const PRODUCT_EXTRAS: Record<
   },
   "guggenheim-guided": {
     gallery: [
-      "https://images.unsplash.com/photo-1696697727554-63685819055a?auto=format&fit=crop&w=900&q=80",
-      "https://images.unsplash.com/photo-1604580864964-0462f5d5b1a8?auto=format&fit=crop&w=900&q=80",
-      "https://images.unsplash.com/photo-1585320806297-9794b3e4eeae?auto=format&fit=crop&w=900&q=80",
+      "https://images.unsplash.com/photo-1636556590144-7e3189066277?auto=format&fit=crop&w=900&q=80",
+      "https://images.unsplash.com/photo-1636556602097-2435ad5198ef?auto=format&fit=crop&w=900&q=80",
+      "https://images.unsplash.com/photo-1710619364167-63e4e0aa804d?auto=format&fit=crop&w=900&q=80",
     ],
     included: [
       "Licensed English-speaking guide",
@@ -378,10 +378,10 @@ const PRODUCT_EXTRAS: Record<
   },
   "vatican-skip-line": {
     gallery: [
-      "https://images.unsplash.com/photo-1531572753322-ad063cecc140?auto=format&fit=crop&w=900&q=80",
-      "https://images.unsplash.com/photo-1513828583688-c52646db42da?auto=format&fit=crop&w=900&q=80",
-      "https://images.unsplash.com/photo-1579783902614-a3fb3927b6a5?auto=format&fit=crop&w=900&q=80",
-      "https://images.unsplash.com/photo-1529260830199-42c24126f198?auto=format&fit=crop&w=900&q=80",
+      "https://images.unsplash.com/photo-1624347061892-822a65656966?auto=format&fit=crop&w=900&q=80",
+      "https://images.unsplash.com/photo-1604051724595-d79e6bedf54f?auto=format&fit=crop&w=900&q=80",
+      "https://images.unsplash.com/photo-1601680406053-7898f0564c3b?auto=format&fit=crop&w=900&q=80",
+      "https://images.unsplash.com/photo-1651561823300-c501e2462edd?auto=format&fit=crop&w=900&q=80",
     ],
     included: [
       "Reserved Vatican Museums entry",
@@ -426,10 +426,10 @@ const PRODUCT_EXTRAS: Record<
   },
   "vatican-standard-admission": {
     gallery: [
-      "https://images.unsplash.com/photo-1531572753322-ad063cecc140?auto=format&fit=crop&w=900&q=80",
-      "https://images.unsplash.com/photo-1513828583688-c52646db42da?auto=format&fit=crop&w=900&q=80",
-      "https://images.unsplash.com/photo-1579783902614-a3fb3927b6a5?auto=format&fit=crop&w=900&q=80",
-      "https://images.unsplash.com/photo-1529260830199-42c24126f198?auto=format&fit=crop&w=900&q=80",
+      "https://images.unsplash.com/photo-1624347061892-822a65656966?auto=format&fit=crop&w=900&q=80",
+      "https://images.unsplash.com/photo-1604051724595-d79e6bedf54f?auto=format&fit=crop&w=900&q=80",
+      "https://images.unsplash.com/photo-1601680406053-7898f0564c3b?auto=format&fit=crop&w=900&q=80",
+      "https://images.unsplash.com/photo-1651561823300-c501e2462edd?auto=format&fit=crop&w=900&q=80",
     ],
     included: [
       "Vatican Museums standard reserved admission",
@@ -474,9 +474,9 @@ const PRODUCT_EXTRAS: Record<
   },
   "vatican-private": {
     gallery: [
-      "https://images.unsplash.com/photo-1513828583688-c52646db42da?auto=format&fit=crop&w=900&q=80",
-      "https://images.unsplash.com/photo-1531572753322-ad063cecc140?auto=format&fit=crop&w=900&q=80",
-      "https://images.unsplash.com/photo-1529260830199-42c24126f198?auto=format&fit=crop&w=900&q=80",
+      "https://images.unsplash.com/photo-1604051724595-d79e6bedf54f?auto=format&fit=crop&w=900&q=80",
+      "https://images.unsplash.com/photo-1624347061892-822a65656966?auto=format&fit=crop&w=900&q=80",
+      "https://images.unsplash.com/photo-1601680406053-7898f0564c3b?auto=format&fit=crop&w=900&q=80",
     ],
     included: [
       "Private licensed guide",

@@ -238,9 +238,9 @@ export const museums: Museum[] = [
     name: "Eiffel Tower",
     city: "Paris",
     image:
-      "https://images.unsplash.com/photo-1511739001486-6bfe10ce785f?auto=format&fit=crop&w=900&q=80",
+      "https://images.unsplash.com/photo-1679231926688-ef9cdab5ed2f?auto=format&fit=crop&w=900&q=80",
     heroImage:
-      "https://images.unsplash.com/photo-1511739001486-6bfe10ce785f?auto=format&fit=crop&w=1800&q=80",
+      "https://images.unsplash.com/photo-1570097703229-b195d6dd291f?auto=format&fit=crop&w=1800&q=80",
     note: "Paris from the iron icon: timed access, clear entry notes, and skyline pacing without the queue confusion.",
     description: [
       "The Eiffel Tower is not just a viewpoint. It is the moment Paris turns into a panorama: the Seine drawing curves through the city, the Louvre and Invalides lining up below, and the whole street pattern suddenly making sense.",
@@ -250,7 +250,7 @@ export const museums: Museum[] = [
       {
         title: "Approach through the Champ de Mars",
         image:
-          "https://images.unsplash.com/photo-1549144511-f099e773c147?auto=format&fit=crop&w=1200&q=80",
+          "https://plus.unsplash.com/premium_photo-1719430569503-338fc89eb21f?auto=format&fit=crop&w=1200&q=80",
         paragraphs: [
           "The best Eiffel Tower visit starts before the ticket scanner. The lawns, bridges, and river angles all build the drama of the structure before you stand beneath it.",
           "We note the practical approach: where to arrive, how security works, and why a little buffer time keeps the day from feeling stressed.",
@@ -259,7 +259,7 @@ export const museums: Museum[] = [
       {
         title: "Second floor views with Paris in layers",
         image:
-          "https://images.unsplash.com/photo-1502602898657-3e91760cbb34?auto=format&fit=crop&w=1200&q=80",
+          "https://images.unsplash.com/photo-1679231926688-ef9cdab5ed2f?auto=format&fit=crop&w=1200&q=80",
         paragraphs: [
           "The second floor is where many guests get the strongest city view. Landmarks are close enough to recognize, streets still have shape, and the river connects everything.",
           "WolfTours pacing notes point out what to look for in each direction so the view becomes a map of your Paris day, not just a photo stop.",
@@ -268,7 +268,7 @@ export const museums: Museum[] = [
       {
         title: "Summit option and the long horizon",
         image:
-          "https://images.unsplash.com/photo-1499856871958-5b9627545d1a?auto=format&fit=crop&w=1200&q=80",
+          "https://images.unsplash.com/photo-1570097703229-b195d6dd291f?auto=format&fit=crop&w=1200&q=80",
         paragraphs: [
           "When summit access is available, the mood changes: higher, windier, and more about the horizon than street-level detail. It is spectacular, but it adds time.",
           "We help travelers decide if the summit is worth it for their day, especially when pairing the tower with the Louvre, Orsay, or an evening cruise.",
@@ -285,7 +285,7 @@ export const museums: Museum[] = [
         slug: "eiffel-tower-standard-admission",
         title: "Eiffel Tower standard admission ticket",
         image:
-          "https://images.unsplash.com/photo-1511739001486-6bfe10ce785f?auto=format&fit=crop&w=800&q=80",
+          "https://images.unsplash.com/photo-1679231926688-ef9cdab5ed2f?auto=format&fit=crop&w=800&q=80",
         meta: "Standard admission · Timed access",
         price: "From 42 EUR",
         adultPrice: 42,
@@ -422,9 +422,9 @@ export const museums: Museum[] = [
     name: "Guggenheim Museum",
     city: "Barcelona",
     image:
-      "https://images.unsplash.com/photo-1604580864964-0462f5d5b1a8?auto=format&fit=crop&w=900&q=80",
+      "https://images.unsplash.com/photo-1636556602097-2435ad5198ef?auto=format&fit=crop&w=900&q=80",
     heroImage:
-      "https://images.unsplash.com/photo-1604580864964-0462f5d5b1a8?auto=format&fit=crop&w=1800&q=80",
+      "https://images.unsplash.com/photo-1636556590144-7e3189066277?auto=format&fit=crop&w=1800&q=80",
     note: "Frank Gehry's titanium curves, contemporary masters, and the Nervión riverfront — a museum that is the artwork.",
     description: [
       "The Guggenheim Bilbao changed how cities think about culture. WolfTours treats the visit as architecture, collection, and riverfront rhythm — not a quick lap around the galleries.",
@@ -434,7 +434,7 @@ export const museums: Museum[] = [
       {
         title: "A building that changed a waterfront",
         image:
-          "https://images.unsplash.com/photo-1604580864964-0462f5d5b1a8?auto=format&fit=crop&w=1200&q=80",
+          "https://images.unsplash.com/photo-1636556602097-2435ad5198ef?auto=format&fit=crop&w=1200&q=80",
         paragraphs: [
           "Before you step inside, the museum already tells a story: titanium scales, impossible curves, and light that slides across the facade like water. Gehry designed a structure that feels in motion — and Bilbao built a whole urban story around it.",
           "We start outside: how to read the volumes, where to stand for the best angles, and why this building belongs in every conversation about 21st-century architecture.",
@@ -443,7 +443,7 @@ export const museums: Museum[] = [
       {
         title: "Inside the atrium — space as sculpture",
         image:
-          "https://images.unsplash.com/photo-1696697727554-63685819055a?auto=format&fit=crop&w=1200&q=80",
+          "https://images.unsplash.com/photo-1636556590144-7e3189066277?auto=format&fit=crop&w=1200&q=80",
         paragraphs: [
           "The central atrium is the museum's breathing room: catwalks, glass, height, and a sense that you are inside a machine made for looking. WolfTours notes where to pause so the scale registers before you rush into the galleries.",
           "From here the collection unfolds in wings that reward curiosity rather than a strict chronological march.",
@@ -452,7 +452,7 @@ export const museums: Museum[] = [
       {
         title: "Contemporary works that reward slow looking",
         image:
-          "https://images.unsplash.com/photo-1585320806297-9794b3e4eeae?auto=format&fit=crop&w=1200&q=80",
+          "https://images.unsplash.com/photo-1716246089868-8cc9a89742e9?auto=format&fit=crop&w=1200&q=80",
         paragraphs: [
           "The permanent and temporary shows move from bold sculpture to painting, installation, and film. Some rooms are quiet and contemplative; others are deliberately provocative.",
           "We highlight the pieces and rooms that give the visit a spine — so you leave with a clear memory, not a blur of white walls.",
@@ -461,7 +461,7 @@ export const museums: Museum[] = [
       {
         title: "River walk and golden hour",
         image:
-          "https://images.unsplash.com/photo-1539037116277-4db20889f2d4?auto=format&fit=crop&w=1200&q=80",
+          "https://images.unsplash.com/photo-1710619364167-63e4e0aa804d?auto=format&fit=crop&w=1200&q=80",
         paragraphs: [
           "The museum sits on the Nervión estuary. After your slot, the riverfront walk, bridges, and old-town lanes are part of the experience WolfTours builds into the day.",
           "Barcelona guests often pair this stop with a longer northern Spain route — we keep timing realistic so Bilbao feels like a destination, not a whistle-stop.",
@@ -478,7 +478,7 @@ export const museums: Museum[] = [
         slug: "guggenheim-general",
         title: "Guggenheim Museum general admission",
         image:
-          "https://images.unsplash.com/photo-1604580864964-0462f5d5b1a8?auto=format&fit=crop&w=800&q=80",
+          "https://images.unsplash.com/photo-1636556602097-2435ad5198ef?auto=format&fit=crop&w=800&q=80",
         meta: "Timed entry",
         price: "From 18 EUR",
         adultPrice: 18,
@@ -492,7 +492,7 @@ export const museums: Museum[] = [
         slug: "guggenheim-guided",
         title: "Guggenheim architecture & art guided tour",
         image:
-          "https://images.unsplash.com/photo-1696697727554-63685819055a?auto=format&fit=crop&w=800&q=80",
+          "https://images.unsplash.com/photo-1636556590144-7e3189066277?auto=format&fit=crop&w=800&q=80",
         meta: "Small group · EN guide",
         price: "From 48 EUR",
         adultPrice: 48,
@@ -548,9 +548,9 @@ export const museums: Museum[] = [
     name: "Vatican Museums",
     city: "Rome",
     image:
-      "https://images.unsplash.com/photo-1531572753322-ad063cecc140?auto=format&fit=crop&w=900&q=80",
+      "https://images.unsplash.com/photo-1624347061892-822a65656966?auto=format&fit=crop&w=900&q=80",
     heroImage:
-      "https://images.unsplash.com/photo-1531572753322-ad063cecc140?auto=format&fit=crop&w=1800&q=80",
+      "https://images.unsplash.com/photo-1604051724595-d79e6bedf54f?auto=format&fit=crop&w=1800&q=80",
     note: "Ancient sculpture, Raphael's rooms, and the Sistine Chapel — one of the world's great museum journeys.",
     description: [
       "The Vatican Museums are not a single building but a sequence of worlds: courtyards, papal apartments, long galleries, and finally the Sistine Chapel. WolfTours shapes the day so the climax still feels sacred, not rushed.",
@@ -560,7 +560,7 @@ export const museums: Museum[] = [
       {
         title: "Courtyards, maps, and the scale of Rome",
         image:
-          "https://images.unsplash.com/photo-1531572753322-ad063cecc140?auto=format&fit=crop&w=1200&q=80",
+          "https://images.unsplash.com/photo-1624347061892-822a65656966?auto=format&fit=crop&w=1200&q=80",
         paragraphs: [
           "You enter through spaces that already feel historic — stone, coats of arms, and the sense that every corridor has been walked for centuries. The route quickly opens into collections that span continents and millennia.",
           "WolfTours sets expectations early: this is a long museum when done properly. We help you decide what to prioritize before fatigue sets in.",
@@ -569,7 +569,7 @@ export const museums: Museum[] = [
       {
         title: "Ancient sculpture and the Belvedere",
         image:
-          "https://images.unsplash.com/photo-1513828583688-c52646db42da?auto=format&fit=crop&w=1200&q=80",
+          "https://images.unsplash.com/photo-1604051724595-d79e6bedf54f?auto=format&fit=crop&w=1200&q=80",
         paragraphs: [
           "The classical rooms are where many visitors fall in love with the museum: marble that still feels alive, portraits of emperors, and mythological scenes carved with impossible skill.",
           "These galleries reward slow movement — a bench, a second look, a moment to read the label instead of photographing and moving on.",
@@ -578,7 +578,7 @@ export const museums: Museum[] = [
       {
         title: "Raphael's rooms and the path to the Chapel",
         image:
-          "https://images.unsplash.com/photo-1579783902614-a3fb3927b6a5?auto=format&fit=crop&w=1200&q=80",
+          "https://images.unsplash.com/photo-1624347061892-822a65656966?auto=format&fit=crop&w=1200&q=80",
         paragraphs: [
           "The Raphael Rooms are a masterclass in Renaissance ambition — color, perspective, and papal power translated into paint. They also mark the emotional build toward the Sistine Chapel.",
           "WolfTours sequences this section so you arrive at Michelangelo with context, not as a tired traveler who only remembers the crowd.",
@@ -587,7 +587,7 @@ export const museums: Museum[] = [
       {
         title: "The Sistine Chapel — quiet rules, loud impact",
         image:
-          "https://images.unsplash.com/photo-1529260830199-42c24126f198?auto=format&fit=crop&w=1200&q=80",
+          "https://images.unsplash.com/photo-1604051724595-d79e6bedf54f?auto=format&fit=crop&w=1200&q=80",
         paragraphs: [
           "No photography, no noise, and a ceiling that rewires how you think about human ability. The visit rules are strict for good reason — the space is still a chapel.",
           "We plan your slot and route so this final room lands when you still have attention left, then you step back into Rome with the city at your feet.",
@@ -604,7 +604,7 @@ export const museums: Museum[] = [
         slug: "vatican-standard-admission",
         title: "Vatican Museums standard admission ticket",
         image:
-          "https://images.unsplash.com/photo-1531572753322-ad063cecc140?auto=format&fit=crop&w=800&q=80",
+          "https://images.unsplash.com/photo-1624347061892-822a65656966?auto=format&fit=crop&w=800&q=80",
         meta: "Standard admission · Sistine Chapel route",
         price: "From 29 EUR",
         adultPrice: 29,
@@ -622,7 +622,7 @@ export const museums: Museum[] = [
         slug: "vatican-skip-line",
         title: "Vatican Museums & Sistine Chapel entry",
         image:
-          "https://images.unsplash.com/photo-1531572753322-ad063cecc140?auto=format&fit=crop&w=800&q=80",
+          "https://images.unsplash.com/photo-1604051724595-d79e6bedf54f?auto=format&fit=crop&w=800&q=80",
         meta: "Skip-the-line slot",
         price: "From 32 EUR",
         adultPrice: 32,
@@ -636,7 +636,7 @@ export const museums: Museum[] = [
         slug: "vatican-private",
         title: "Private Vatican Museums tour",
         image:
-          "https://images.unsplash.com/photo-1531572753322-ad063cecc140?auto=format&fit=crop&w=800&q=80",
+          "https://images.unsplash.com/photo-1624347061892-822a65656966?auto=format&fit=crop&w=800&q=80",
         meta: "Small private group",
         price: "From 175 EUR",
         adultPrice: 175,
@@ -783,7 +783,7 @@ export const cities: City[] = [
     slug: "rome",
     name: "Rome",
     image:
-      "https://images.unsplash.com/photo-1529260830199-42c24126f198?auto=format&fit=crop&w=900&q=80",
+      "https://images.unsplash.com/photo-1624347061892-822a65656966?auto=format&fit=crop&w=900&q=80",
     copy: "Ancient streets, sacred art, espresso breaks, and stories layered over centuries.",
     museumSlugs: ["vatican-museums"],
   },
