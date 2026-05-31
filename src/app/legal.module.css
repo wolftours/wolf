@@ -1,0 +1,107 @@
+.page {
+  min-height: 100vh;
+  color: var(--foreground);
+}
+
+.shell {
+  width: min(820px, calc(100% - 40px));
+  margin-inline: auto;
+  padding: 108px 0 72px;
+}
+
+.breadcrumb {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  color: var(--muted);
+  font-size: 13px;
+  font-weight: 700;
+}
+
+.breadcrumb a:hover {
+  color: var(--navy);
+}
+
+.header {
+  margin-top: 28px;
+}
+
+.eyebrow {
+  color: var(--gold-deep);
+  font-size: 13px;
+  font-weight: 800;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+}
+
+.header h1 {
+  margin-top: 12px;
+  font-family: var(--font-serif), Georgia, serif;
+  font-size: clamp(36px, 5vw, 52px);
+  font-weight: 400;
+  letter-spacing: -0.04em;
+  line-height: 1.05;
+}
+
+.lead {
+  margin-top: 18px;
+  color: #243850;
+  font-size: 17px;
+  line-height: 1.7;
+}
+
+.meta {
+  margin-top: 12px;
+  color: var(--muted);
+  font-size: 14px;
+}
+
+.content {
+  margin-top: 40px;
+}
+
+.content section + section {
+  margin-top: 32px;
+  padding-top: 32px;
+  border-top: 1px solid rgba(26, 53, 87, 0.08);
+}
+
+.content h2 {
+  color: var(--navy);
+  font-family: var(--font-serif), Georgia, serif;
+  font-size: 26px;
+  font-weight: 400;
+  letter-spacing: -0.03em;
+}
+
+.content p,
+.content li {
+  margin-top: 12px;
+  color: #243850;
+  font-size: 16px;
+  line-height: 1.75;
+}
+
+.content ul {
+  padding-left: 1.2rem;
+}
+
+.content li + li {
+  margin-top: 8px;
+}
+
+.content a {
+  color: var(--gold-deep);
+  font-weight: 700;
+}
+
+.content a:hover {
+  color: var(--navy);
+}
+
+@media (max-width: 680px) {
+  .shell {
+    width: min(100% - 28px, 820px);
+    padding-top: 92px;
+  }
+}

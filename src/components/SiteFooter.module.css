@@ -1,0 +1,92 @@
+.footer {
+  margin-top: 0;
+  padding: 48px 0 40px;
+  border-top: 1px solid rgba(26, 53, 87, 0.1);
+  background: rgba(255, 255, 255, 0.55);
+}
+
+.shell {
+  width: min(1240px, calc(100% - 40px));
+  margin-inline: auto;
+}
+
+.footerGrid {
+  display: grid;
+  grid-template-columns: minmax(0, 1.5fr) auto auto;
+  gap: 28px 48px;
+  align-items: start;
+  color: var(--muted);
+  font-size: 14px;
+}
+
+.footerLogo {
+  width: auto;
+  height: 56px;
+}
+
+.footerBrand p {
+  max-width: 360px;
+  margin-top: 14px;
+  line-height: 1.65;
+}
+
+.footerAddress {
+  display: grid;
+  gap: 4px;
+  margin-top: 18px;
+  font-style: normal;
+  line-height: 1.55;
+}
+
+.footerAddress strong {
+  color: var(--foreground);
+  font-weight: 700;
+}
+
+.footerNav {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  font-weight: 700;
+}
+
+.footerNavLabel {
+  color: var(--gold-deep);
+  font-size: 11px;
+  font-weight: 800;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+}
+
+.footerNav a:hover {
+  color: var(--navy);
+}
+
+.footerBottom {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px 24px;
+  align-items: center;
+  justify-content: space-between;
+  margin-top: 36px;
+  padding-top: 24px;
+  border-top: 1px solid rgba(26, 53, 87, 0.08);
+  color: var(--muted);
+  font-size: 13px;
+}
+
+.footerRegistry {
+  color: var(--gold-deep);
+  font-weight: 700;
+}
+
+.footerRegistry:hover {
+  color: var(--navy);
+}
+
+@media (max-width: 820px) {
+  .footerGrid {
+    grid-template-columns: 1fr;
+    gap: 24px;
+  }
+}
