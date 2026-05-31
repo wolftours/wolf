@@ -68,10 +68,10 @@ const PRODUCT_EXTRAS: Record<
   },
   "louvre-standard-admission": {
     gallery: [
-      "https://images.unsplash.com/photo-1565099824688-e93eb20fe622?auto=format&fit=crop&w=900&q=80",
-      "https://images.unsplash.com/photo-1544989164-31dc3c645987?auto=format&fit=crop&w=900&q=80",
-      "https://images.unsplash.com/photo-1550340499-a6c60fc8287c?auto=format&fit=crop&w=900&q=80",
-      "https://images.unsplash.com/photo-1502602898657-3e91760cbb34?auto=format&fit=crop&w=900&q=80",
+      "https://images.unsplash.com/photo-1587648415693-4a5362b2ce41?auto=format&fit=crop&w=900&q=80",
+      "https://images.unsplash.com/photo-1610023709598-3881e09811c2?auto=format&fit=crop&w=900&q=80",
+      "https://images.unsplash.com/photo-1566127444979-b3d2b654e3d7?auto=format&fit=crop&w=900&q=80",
+      "https://images.unsplash.com/photo-1499634231146-3393ed854a33?auto=format&fit=crop&w=900&q=80",
     ],
     included: [
       "Timed Louvre Museum standard admission",
@@ -116,10 +116,10 @@ const PRODUCT_EXTRAS: Record<
   },
   "louvre-audio-guide": {
     gallery: [
-      "https://images.unsplash.com/photo-1565099824688-e93eb20fe622?auto=format&fit=crop&w=900&q=80",
-      "https://images.unsplash.com/photo-1544989164-31dc3c645987?auto=format&fit=crop&w=900&q=80",
-      "https://images.unsplash.com/photo-1550340499-a6c60fc8287c?auto=format&fit=crop&w=900&q=80",
-      "https://images.unsplash.com/photo-1502602898657-3e91760cbb34?auto=format&fit=crop&w=900&q=80",
+      "https://images.unsplash.com/photo-1587648415693-4a5362b2ce41?auto=format&fit=crop&w=900&q=80",
+      "https://images.unsplash.com/photo-1610023709598-3881e09811c2?auto=format&fit=crop&w=900&q=80",
+      "https://images.unsplash.com/photo-1566127444979-b3d2b654e3d7?auto=format&fit=crop&w=900&q=80",
+      "https://images.unsplash.com/photo-1499634231146-3393ed854a33?auto=format&fit=crop&w=900&q=80",
     ],
     included: [
       "Timed Louvre Museum entry",
@@ -164,9 +164,9 @@ const PRODUCT_EXTRAS: Record<
   },
   "louvre-seine-cruise": {
     gallery: [
-      "https://images.unsplash.com/photo-1550340499-a6c60fc8287c?auto=format&fit=crop&w=900&q=80",
-      "https://images.unsplash.com/photo-1565099824688-e93eb20fe622?auto=format&fit=crop&w=900&q=80",
-      "https://images.unsplash.com/photo-1502602898657-3e91760cbb34?auto=format&fit=crop&w=900&q=80",
+      "https://images.unsplash.com/photo-1499634231146-3393ed854a33?auto=format&fit=crop&w=900&q=80",
+      "https://images.unsplash.com/photo-1587648415693-4a5362b2ce41?auto=format&fit=crop&w=900&q=80",
+      "https://images.unsplash.com/photo-1566127444979-b3d2b654e3d7?auto=format&fit=crop&w=900&q=80",
     ],
     details: [
       "Pair the world's most visited museum with an hour on the Seine — one booking, two classic Paris experiences.",
@@ -179,9 +179,9 @@ const PRODUCT_EXTRAS: Record<
   },
   "louvre-private-tour": {
     gallery: [
-      "https://images.unsplash.com/photo-1544989164-31dc3c645987?auto=format&fit=crop&w=900&q=80",
-      "https://images.unsplash.com/photo-1565099824688-e93eb20fe622?auto=format&fit=crop&w=900&q=80",
-      "https://images.unsplash.com/photo-1550340499-a6c60fc8287c?auto=format&fit=crop&w=900&q=80",
+      "https://images.unsplash.com/photo-1566127444979-b3d2b654e3d7?auto=format&fit=crop&w=900&q=80",
+      "https://images.unsplash.com/photo-1587648415693-4a5362b2ce41?auto=format&fit=crop&w=900&q=80",
+      "https://images.unsplash.com/photo-1610023709598-3881e09811c2?auto=format&fit=crop&w=900&q=80",
     ],
     details: [
       "Your guide adapts the route to your interests — first visit, sculpture-heavy, or a focused masterpiece day.",

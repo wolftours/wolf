@@ -51,9 +51,9 @@ export const museums: Museum[] = [
     name: "Louvre Museum",
     city: "Paris",
     image:
-      "https://images.unsplash.com/photo-1565099824688-e93eb20fe622?auto=format&fit=crop&w=900&q=80",
+      "https://images.unsplash.com/photo-1587648415693-4a5362b2ce41?auto=format&fit=crop&w=900&q=80",
     heroImage:
-      "https://images.unsplash.com/photo-1565099824688-e93eb20fe622?auto=format&fit=crop&w=1800&q=80",
+      "https://images.unsplash.com/photo-1499634231146-3393ed854a33?auto=format&fit=crop&w=1800&q=80",
     note: "Masterpieces, hidden wings, and a smooth route through the world's most visited museum.",
     description: [
       "The Louvre is not one museum — it is a palace, a collection, and a walk through centuries of European imagination. WolfTours shapes the day so it feels curated, not crowded.",
@@ -62,7 +62,7 @@ export const museums: Museum[] = [
       {
         title: "A royal palace turned public gallery",
         image:
-          "https://images.unsplash.com/photo-1565099824688-e93eb20fe622?auto=format&fit=crop&w=1200&q=80",
+          "https://images.unsplash.com/photo-1587648415693-4a5362b2ce41?auto=format&fit=crop&w=1200&q=80",
         paragraphs: [
           "Long before it became the world's most visited museum, the Louvre was a fortress, a royal residence, and a symbol of French power. Walking its stone corridors, you still feel that layered history — court life, revolution, empire, and finally the idea that great art belongs to everyone.",
           "We start by framing the building itself: why the rooms feel grand, why the layout surprises you, and why the Louvre is as much architecture as it is painting and sculpture.",
@@ -71,7 +71,7 @@ export const museums: Museum[] = [
       {
         title: "Through the pyramid, into the collection",
         image:
-          "https://images.unsplash.com/photo-1544989164-31dc3c645987?auto=format&fit=crop&w=1200&q=80",
+          "https://images.unsplash.com/photo-1566127444979-b3d2b654e3d7?auto=format&fit=crop&w=1200&q=80",
         paragraphs: [
           "The glass pyramid is the modern front door, but the visit quickly opens into older wings, long perspectives, and rooms that reward slow looking. WolfTours sequences the entry so you are not fighting the first rush — you move with purpose toward the works that matter most to your day.",
           "This is where the route becomes practical: which wing first, where to pause, and how to avoid spending your best energy in busy bottlenecks before you have seen anything you came for.",
@@ -80,7 +80,7 @@ export const museums: Museum[] = [
       {
         title: "Masterpieces with room to breathe",
         image:
-          "https://images.unsplash.com/photo-1550340499-a6c60fc8287c?auto=format&fit=crop&w=1200&q=80",
+          "https://images.unsplash.com/photo-1610023709598-3881e09811c2?auto=format&fit=crop&w=1200&q=80",
         paragraphs: [
           "The Mona Lisa, the Winged Victory of Samothrace, the Venus de Milo — the names everyone knows. We do not skip them, but we do not treat them like a frantic checklist either. You get context, a sensible angle on the crowd, and enough time to actually look.",
           "Along the way there are quieter rooms: Dutch light, Italian drama, French portraits, ancient marble. Those detours are often what make people say the Louvre felt personal, not overwhelming.",
@@ -89,7 +89,7 @@ export const museums: Museum[] = [
       {
         title: "Finish before the rooms empty out",
         image:
-          "https://images.unsplash.com/photo-1502602898657-3e91760cbb34?auto=format&fit=crop&w=1200&q=80",
+          "https://images.unsplash.com/photo-1499634231146-3393ed854a33?auto=format&fit=crop&w=1200&q=80",
         paragraphs: [
           "The last hour in a major museum is underrated. Crowds thin, the light shifts, and the building feels closer to what it was before ticket queues and selfie clusters. We plan the day so your final rooms are strong — not whatever is left when you are already tired.",
           "Step outside and Paris is right there: the river, a cafe, the sense that you saw the city through art, not just through a map of famous names.",
@@ -106,7 +106,7 @@ export const museums: Museum[] = [
         slug: "stripe-test-product",
         title: "Stripe test booking - 1 EUR",
         image:
-          "https://images.unsplash.com/photo-1565099824688-e93eb20fe622?auto=format&fit=crop&w=800&q=80",
+          "https://images.unsplash.com/photo-1587648415693-4a5362b2ce41?auto=format&fit=crop&w=800&q=80",
         meta: "Test product · Stripe checkout",
         price: "From 1 EUR",
         adultPrice: 1,
@@ -124,7 +124,7 @@ export const museums: Museum[] = [
         slug: "louvre-standard-admission",
         title: "Louvre Museum standard admission ticket",
         image:
-          "https://images.unsplash.com/photo-1565099824688-e93eb20fe622?auto=format&fit=crop&w=800&q=80",
+          "https://images.unsplash.com/photo-1587648415693-4a5362b2ce41?auto=format&fit=crop&w=800&q=80",
         meta: "Standard admission · Timed entry",
         price: "From 35 EUR",
         adultPrice: 35,
@@ -142,7 +142,7 @@ export const museums: Museum[] = [
         slug: "louvre-seine-cruise",
         title: "Ticket to the Louvre Museum and Seine River Cruise",
         image:
-          "https://images.unsplash.com/photo-1550340499-a6c60fc8287c?auto=format&fit=crop&w=800&q=80",
+          "https://images.unsplash.com/photo-1499634231146-3393ed854a33?auto=format&fit=crop&w=800&q=80",
         meta: "Audio guide available",
         price: "From 60.99 EUR",
         adultPrice: 60.99,
@@ -160,7 +160,7 @@ export const museums: Museum[] = [
         slug: "louvre-audio-guide",
         title: "Ticket to the Louvre Museum with Audio Guide App",
         image:
-          "https://images.unsplash.com/photo-1565099824688-e93eb20fe622?auto=format&fit=crop&w=800&q=80",
+          "https://images.unsplash.com/photo-1610023709598-3881e09811c2?auto=format&fit=crop&w=800&q=80",
         meta: "Flexible entry",
         price: "From 55 EUR",
         adultPrice: 55,
@@ -178,7 +178,7 @@ export const museums: Museum[] = [
         slug: "louvre-private-tour",
         title: "Private Guided Tour of the Louvre Museum",
         image:
-          "https://images.unsplash.com/photo-1544989164-31dc3c645987?auto=format&fit=crop&w=800&q=80",
+          "https://images.unsplash.com/photo-1566127444979-b3d2b654e3d7?auto=format&fit=crop&w=800&q=80",
         meta: "Small private group",
         price: "From 200 EUR",
         adultPrice: 200,
