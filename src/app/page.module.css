@@ -1306,33 +1306,82 @@
   }
 
   .hero {
-    min-height: 760px;
-    padding: 28px 0 40px;
+    min-height: auto;
+    padding: 28px 0 30px;
     background:
-      linear-gradient(180deg, rgba(7, 24, 39, 0.82) 0%, rgba(7, 24, 39, 0.64) 45%, rgba(7, 24, 39, 0.9) 100%),
-      url("/wolftours-hero-brand.png") center bottom / cover no-repeat,
+      radial-gradient(circle at 82% 10%, rgba(217, 177, 96, 0.28), transparent 14rem),
       linear-gradient(135deg, #071827 0%, #102944 55%, #1a3557 100%);
   }
 
+  .hero::before {
+    right: -46vw;
+    top: -28vw;
+    width: 92vw;
+    height: 92vw;
+  }
+
+  .hero::after {
+    background-size: 44px 44px;
+    opacity: 0.32;
+  }
+
   .heroPremium {
-    display: block;
+    display: grid;
+    gap: 22px;
   }
 
   .heroImageFrame {
-    display: none;
+    display: block;
+    max-width: 100%;
+    padding: 7px;
+    border-radius: 22px;
+    box-shadow: 0 18px 44px rgba(0, 0, 0, 0.26);
+  }
+
+  .heroImageFrame::before {
+    inset: 7px;
+    border-radius: 16px;
+  }
+
+  .heroBannerImage {
+    border-radius: 16px;
   }
 
   .heroPremiumCopy h1 {
-    font-size: clamp(38px, 12vw, 54px);
+    max-width: 11ch;
+    margin-top: 12px;
+    font-size: clamp(42px, 13vw, 58px);
+    line-height: 0.9;
+    letter-spacing: -0.06em;
+  }
+
+  .heroPremiumCopy p {
+    max-width: 34ch;
+    margin-top: 14px;
+    font-size: 15px;
+    line-height: 1.6;
+  }
+
+  .heroEyebrow {
+    font-size: 10px;
+    letter-spacing: 0.16em;
   }
 
   .heroImageBadge {
-    left: 20px;
-    top: 20px;
+    left: 16px;
+    top: 16px;
+    padding: 8px 10px;
   }
 
   .heroImageCaption {
-    display: none;
+    right: 16px;
+    bottom: 16px;
+    gap: 6px;
+  }
+
+  .heroImageCaption span {
+    padding: 7px 9px;
+    font-size: 10px;
   }
 
   .heroScroll {
@@ -1349,22 +1398,25 @@
 
   .searchBar {
     grid-template-columns: 1fr;
-    gap: 8px;
-    padding: 8px;
-    border-radius: 22px;
+    gap: 7px;
+    margin-top: 22px;
+    padding: 7px;
+    border-radius: 20px;
     background: rgba(255, 255, 255, 0.96);
+    box-shadow: 0 18px 42px rgba(0, 0, 0, 0.24);
   }
 
   .searchBar input {
-    min-height: 50px;
+    min-height: 48px;
     padding: 0 16px;
-    border-radius: 16px;
+    border-radius: 14px;
+    font-size: 14px;
   }
 
   .searchBar button {
-    min-height: 50px;
+    min-height: 48px;
     padding: 0 18px;
-    border-radius: 16px;
+    border-radius: 14px;
     font-size: 14px;
   }
 
