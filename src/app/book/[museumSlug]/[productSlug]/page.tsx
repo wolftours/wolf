@@ -59,6 +59,23 @@ export default async function ProductBookingPage({ params }: PageProps) {
   const closedSlotKeys = closedSlots.map(
     (slot) => `${slot.visit_date}:${slot.entry_time}`,
   );
+  const visitFlow = [
+    {
+      label: "Book",
+      title: "Reserve the ticket",
+      copy: "Choose your date, time, guest count, and complete secure payment online.",
+    },
+    {
+      label: "Arrive",
+      title: "Go to the right entrance",
+      copy: `Bring your mobile voucher and arrive 15 minutes early at ${product.museumName}.`,
+    },
+    {
+      label: "Explore",
+      title: "Follow the visit rhythm",
+      copy: "Use the included notes to see the key rooms, slow down where it matters, and leave without rushing.",
+    },
+  ];
 
   return (
     <main className={styles.page}>
@@ -119,6 +136,24 @@ export default async function ProductBookingPage({ params }: PageProps) {
                 <li key={item}>{item}</li>
               ))}
             </ul>
+
+            <section className={styles.bookingFlow}>
+              <p className={styles.eyebrow}>From checkout to visit day</p>
+              <h2>Book the ticket, arrive prepared, explore at your pace.</h2>
+              <div className={styles.bookingFlowGrid}>
+                {visitFlow.map((item, index) => (
+                  <article
+                    data-step={String(index + 1).padStart(2, "0")}
+                    key={item.title}
+                  >
+                    <span>{String(index + 1).padStart(2, "0")}</span>
+                    <small>{item.label}</small>
+                    <h3>{item.title}</h3>
+                    <p>{item.copy}</p>
+                  </article>
+                ))}
+              </div>
+            </section>
 
             <section className={styles.block}>
               <h2>What&apos;s included</h2>

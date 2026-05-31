@@ -1,6 +1,6 @@
 "use client";
 
-import { useMemo, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 import type { BookableProduct } from "@/lib/travel-data";
 import {
   formatDisplayDate,
@@ -77,6 +77,13 @@ export function BookingWidget({ product, closedSlots = [] }: BookingWidgetProps)
   const [error, setError] = useState("");
   const [submitting, setSubmitting] = useState(false);
   const [confirmed, setConfirmed] = useState<ConfirmedBooking | null>(null);
+  const [now, setNow] = useState<number | null>(null);
+
+  useEffect(() => {
+    const timer = window.setTimeout(() => setNow(Date.now()), 0);
+
+    return () => window.clearTimeout(timer);
+  }, []);
 
   const closedSlotSet = useMemo(() => new Set(closedSlots), [closedSlots]);
   const slots = useMemo(
@@ -93,9 +100,9 @@ export function BookingWidget({ product, closedSlots = [] }: BookingWidgetProps)
         const [hours, minutes] = slot.split(":").map(Number);
         const slotDate = new Date();
         slotDate.setHours(hours, minutes, 0, 0);
-        return slotDate.getTime() > Date.now();
+        return now === null || slotDate.getTime() > now;
       }),
-    [closedSlotSet, date, minDate],
+    [closedSlotSet, date, minDate, now],
   );
   const calendarDays = useMemo(
     () => getCalendarDays(calendarMonth),
@@ -191,6 +198,11 @@ export function BookingWidget({ product, closedSlots = [] }: BookingWidgetProps)
 
       if (!response.ok) {
         setError(payload.error ?? "Could not create this booking.");
+        return;
+      }
+
+      if (typeof payload.checkoutUrl === "string") {
+        window.location.href = payload.checkoutUrl;
         return;
       }
 
@@ -486,12 +498,12 @@ export function BookingWidget({ product, closedSlots = [] }: BookingWidgetProps)
         type="submit"
         disabled={submitting || dateUnavailable || slots.length === 0}
       >
-        {submitting ? "Saving booking..." : `Confirm booking · ${formatMoney(total)}`}
+        {submitting ? "Opening secure payment..." : `Pay securely · ${formatMoney(total)}`}
       </button>
 
       <p className={styles.finePrint}>
-        Free cancellation up to 24h before entry. We will email your voucher
-        after processing this request.
+        Secure card payment is handled by Stripe. We email your voucher and
+        visit notes after payment is completed.
       </p>
     </form>
   );

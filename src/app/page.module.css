@@ -472,6 +472,91 @@
   color: var(--navy);
 }
 
+.howSection {
+  display: grid;
+  grid-template-columns: minmax(260px, 0.72fr) minmax(0, 1fr);
+  gap: clamp(28px, 5vw, 64px);
+  align-items: start;
+  margin-top: 86px;
+  padding: 38px;
+  border: 1px solid rgba(16, 32, 51, 0.08);
+  border-radius: 28px;
+  background:
+    radial-gradient(circle at 100% 0%, rgba(196, 165, 116, 0.14), transparent 20rem),
+    rgba(255, 255, 255, 0.72);
+  box-shadow: 0 22px 52px rgba(16, 32, 51, 0.08);
+}
+
+.howIntro h2 {
+  margin-top: 12px;
+  color: #102033;
+  font-family: var(--font-serif), Georgia, serif;
+  font-size: clamp(34px, 4vw, 54px);
+  font-weight: 400;
+  line-height: 0.98;
+  letter-spacing: -0.05em;
+}
+
+.howIntro p:not(.eyebrow) {
+  margin-top: 18px;
+  color: var(--muted);
+  font-size: 15px;
+  line-height: 1.75;
+}
+
+.howGrid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 14px;
+  list-style: none;
+}
+
+.howGrid li {
+  position: relative;
+  min-height: 190px;
+  padding: 22px;
+  overflow: hidden;
+  border: 1px solid rgba(16, 32, 51, 0.08);
+  border-radius: 20px;
+  background: #fffaf2;
+}
+
+.howGrid li::after {
+  position: absolute;
+  right: 16px;
+  bottom: -18px;
+  color: rgba(183, 138, 44, 0.12);
+  content: "WT";
+  font-family: var(--font-serif), Georgia, serif;
+  font-size: 78px;
+  line-height: 1;
+  letter-spacing: -0.12em;
+}
+
+.howGrid span {
+  color: #9a721f;
+  font-size: 12px;
+  font-weight: 900;
+  letter-spacing: 0.16em;
+}
+
+.howGrid strong {
+  display: block;
+  margin-top: 12px;
+  color: #102033;
+  font-size: 20px;
+  font-weight: 900;
+}
+
+.howGrid p {
+  position: relative;
+  z-index: 1;
+  margin-top: 10px;
+  color: #405166;
+  font-size: 14px;
+  line-height: 1.65;
+}
+
 .wolfRoute {
   position: relative;
   display: grid;
@@ -1253,6 +1338,10 @@
     grid-template-columns: 1fr;
   }
 
+  .howSection {
+    grid-template-columns: 1fr;
+  }
+
   .routeIntro {
     position: static;
   }
@@ -1372,6 +1461,14 @@
   }
 
   .museumGrid {
+    grid-template-columns: 1fr;
+  }
+
+  .howSection {
+    padding: 24px;
+  }
+
+  .howGrid {
     grid-template-columns: 1fr;
   }
 

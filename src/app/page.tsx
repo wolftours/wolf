@@ -32,6 +32,29 @@ const wolfRoute = [
   },
 ];
 
+const howItWorks = [
+  {
+    step: "01",
+    title: "Choose your city",
+    copy: "Start with Paris, Rome, Barcelona, or Bilbao and open the museum day that fits your trip.",
+  },
+  {
+    step: "02",
+    title: "Pick your product",
+    copy: "Compare standard tickets, guided options, audio routes, and bundles before choosing a date.",
+  },
+  {
+    step: "03",
+    title: "Pay securely",
+    copy: "Enter your visitor details and complete payment through Stripe's secure checkout.",
+  },
+  {
+    step: "04",
+    title: "Arrive with notes",
+    copy: "Use the mobile voucher, entry timing, and WolfTours pacing notes when visit day arrives.",
+  },
+];
+
 type PageProps = {
   searchParams?: Promise<{ search?: string }>;
 };
@@ -141,6 +164,30 @@ export default async function Home({ searchParams }: PageProps) {
       </section>
 
       <Marquee />
+
+      <Reveal>
+        <section className={`${styles.shell} ${styles.howSection}`}>
+          <div className={styles.howIntro}>
+            <p className={styles.eyebrow}>How to use WolfTours</p>
+            <h2>Choose the experience, pay online, arrive prepared.</h2>
+            <p>
+              WolfTours is built for travelers who want the ticket and the day
+              around it to make sense. Pick a destination, choose the product,
+              complete payment, then follow the arrival notes we send.
+            </p>
+          </div>
+
+          <ol className={styles.howGrid}>
+            {howItWorks.map((item) => (
+              <li key={item.title}>
+                <span>{item.step}</span>
+                <strong>{item.title}</strong>
+                <p>{item.copy}</p>
+              </li>
+            ))}
+          </ol>
+        </section>
+      </Reveal>
 
       <Reveal>
         <section
