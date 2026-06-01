@@ -345,6 +345,35 @@
   font-weight: 700;
 }
 
+.policyCheck {
+  display: flex;
+  gap: 10px;
+  align-items: flex-start;
+  margin-bottom: 14px;
+  padding: 12px 14px;
+  border: 1px solid rgba(16, 32, 51, 0.1);
+  border-radius: 14px;
+  background: rgba(255, 255, 255, 0.72);
+  color: #405166;
+  font-size: 12px;
+  font-weight: 650;
+  line-height: 1.55;
+}
+
+.policyCheck input {
+  width: 16px;
+  height: 16px;
+  margin-top: 2px;
+  accent-color: #071827;
+}
+
+.policyCheck a {
+  color: #9a721f;
+  font-weight: 900;
+  text-decoration: underline;
+  text-underline-offset: 2px;
+}
+
 .success {
   text-align: center;
 }

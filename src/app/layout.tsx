@@ -34,6 +34,19 @@ export default function RootLayout({
       <body>
         {children}
         <Script
+          src="https://www.googletagmanager.com/gtag/js?id=G-MVDZWDCQSD"
+          strategy="afterInteractive"
+        />
+        <Script id="google-tags" strategy="afterInteractive">
+          {`
+            window.dataLayer = window.dataLayer || [];
+            function gtag(){dataLayer.push(arguments);}
+            gtag('js', new Date());
+            gtag('config', 'G-MVDZWDCQSD');
+            gtag('config', 'AW-18199793120');
+          `}
+        </Script>
+        <Script
           src="https://code.tidio.co/imszxayuewpygpbi1ecsxd70xaasvbn6.js"
           strategy="afterInteractive"
         />

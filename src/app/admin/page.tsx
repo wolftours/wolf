@@ -2,6 +2,7 @@ import Link from "next/link";
 import { cookies } from "next/headers";
 import { ADMIN_SESSION_COOKIE, isAdminSessionTokenValid } from "@/lib/admin-auth";
 import { formatMoney, getMinBookableDate, TIME_SLOTS } from "@/lib/booking";
+import { getAdultPackagePrice, getServiceFee } from "@/lib/pricing";
 import { cities, getAllBookableProducts, museums } from "@/lib/travel-data";
 import {
   closeSlotAction,
@@ -287,7 +288,9 @@ export default async function AdminPage({ searchParams }: PageProps) {
                       <th>Museum</th>
                       <th>Title</th>
                       <th>Slug</th>
-                      <th>Price</th>
+                      <th>Official ticket</th>
+                      <th>Service fee</th>
+                      <th>Package from</th>
                     </tr>
                   </thead>
                   <tbody>
@@ -297,7 +300,9 @@ export default async function AdminPage({ searchParams }: PageProps) {
                         <td>{product.museumName}</td>
                         <td>{product.title}</td>
                         <td>{product.slug}</td>
-                        <td>{product.price}</td>
+                        <td>{formatMoney(product.adultPrice)}</td>
+                        <td>{formatMoney(getServiceFee(product))}</td>
+                        <td>{formatMoney(getAdultPackagePrice(product))}</td>
                       </tr>
                     ))}
                   </tbody>

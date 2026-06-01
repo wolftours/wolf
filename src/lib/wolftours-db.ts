@@ -3,10 +3,9 @@ import {
   createBookingReference,
   getAvailableTimeSlots,
 } from "@/lib/booking";
+import { getServiceFee } from "@/lib/pricing";
 import { getProduct } from "@/lib/travel-data";
 import { getSupabaseAdmin, hasSupabaseAdminEnv } from "./supabase-server";
-
-export const SERVICE_FEE = 2.5;
 
 export type WolfToursOrder = {
   id: string;
@@ -193,8 +192,9 @@ export async function createWolfToursOrder(input: CreateOrderInput) {
     return { ok: false as const, error: "This entry time is no longer available." };
   }
 
+  const serviceFee = getServiceFee(product);
   const subtotal = adults * product.adultPrice + children * product.childPrice;
-  const total = subtotal + SERVICE_FEE;
+  const total = subtotal + serviceFee;
   const reference = createBookingReference();
 
   try {
@@ -215,7 +215,7 @@ export async function createWolfToursOrder(input: CreateOrderInput) {
         customer_email: input.customerEmail.trim(),
         customer_phone: input.customerPhone.trim(),
         subtotal,
-        service_fee: SERVICE_FEE,
+        service_fee: serviceFee,
         total,
       })
       .select("*")

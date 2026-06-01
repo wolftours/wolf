@@ -5,6 +5,8 @@ import { notFound } from "next/navigation";
 import { SiteFooter } from "@/components/SiteFooter";
 import { Reveal } from "@/components/Reveal";
 import { SiteHeader } from "@/components/SiteHeader";
+import { formatMoney } from "@/lib/booking";
+import { getAdultPackagePrice } from "@/lib/pricing";
 import {
   getMuseum,
   getProductsForMuseum,
@@ -131,7 +133,9 @@ export default async function MuseumPage({ params }: PageProps) {
                   <h3>{experience.title}</h3>
                   <p className={styles.meta}>{experience.highlights[0]}</p>
                   <p className={styles.experienceDesc}>{experience.description}</p>
-                  <p className={styles.price}>{experience.price}</p>
+                  <p className={styles.price}>
+                    From {formatMoney(getAdultPackagePrice(experience))}
+                  </p>
                   <div className={styles.experienceActions}>
                     <Link
                       className={styles.linkAction}

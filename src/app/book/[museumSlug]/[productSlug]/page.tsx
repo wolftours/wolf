@@ -6,6 +6,7 @@ import { BookingWidget } from "@/components/BookingWidget";
 import { SiteFooter } from "@/components/SiteFooter";
 import { SiteHeader } from "@/components/SiteHeader";
 import { formatMoney } from "@/lib/booking";
+import { getAdultPackagePrice, getServiceFee } from "@/lib/pricing";
 import { getEnrichedProduct } from "@/lib/product-content";
 import {
   getAllBookableProducts,
@@ -59,6 +60,8 @@ export default async function ProductBookingPage({ params }: PageProps) {
   const closedSlotKeys = closedSlots.map(
     (slot) => `${slot.visit_date}:${slot.entry_time}`,
   );
+  const adultPackagePrice = getAdultPackagePrice(product);
+  const serviceFee = getServiceFee(product);
 
   return (
     <main className={styles.page}>
@@ -87,7 +90,8 @@ export default async function ProductBookingPage({ params }: PageProps) {
           </p>
           <h1>{product.title}</h1>
           <p className={styles.heroSummary}>
-            {product.description} · from {formatMoney(product.adultPrice)} per adult
+            {product.description} · from {formatMoney(adultPackagePrice)} per
+            adult package
           </p>
         </div>
       </section>
@@ -157,12 +161,16 @@ export default async function ProductBookingPage({ params }: PageProps) {
                 <dd>{product.duration}</dd>
               </div>
               <div>
-                <dt>Adult</dt>
+                <dt>Adult package</dt>
+                <dd>{formatMoney(adultPackagePrice)}</dd>
+              </div>
+              <div>
+                <dt>Official adult ticket</dt>
                 <dd>{formatMoney(product.adultPrice)}</dd>
               </div>
               <div>
-                <dt>Child</dt>
-                <dd>{formatMoney(product.childPrice)}</dd>
+                <dt>Service fee</dt>
+                <dd>{formatMoney(serviceFee)}</dd>
               </div>
               <div>
                 <dt>City</dt>
@@ -265,7 +273,9 @@ export default async function ProductBookingPage({ params }: PageProps) {
                     </span>
                     <h3>{item.title}</h3>
                     <p className={styles.relatedMeta}>{item.meta}</p>
-                    <p className={styles.relatedPrice}>{item.price}</p>
+                    <p className={styles.relatedPrice}>
+                      From {formatMoney(getAdultPackagePrice(item))}
+                    </p>
                     <span className={styles.relatedCta}>View & book</span>
                   </div>
                 </Link>
@@ -276,7 +286,7 @@ export default async function ProductBookingPage({ params }: PageProps) {
       ) : null}
 
       <Link className={styles.floatingBookNow} href="#booking-calendar">
-        Book now <span>from {formatMoney(product.adultPrice)}</span>
+        Book now <span>from {formatMoney(adultPackagePrice)}</span>
       </Link>
 
       <SiteFooter />

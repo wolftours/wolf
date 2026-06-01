@@ -5,6 +5,8 @@ import { notFound } from "next/navigation";
 import { SiteFooter } from "@/components/SiteFooter";
 import { Reveal } from "@/components/Reveal";
 import { SiteHeader } from "@/components/SiteHeader";
+import { formatMoney } from "@/lib/booking";
+import { getAdultPackagePrice } from "@/lib/pricing";
 import { cities, getCity, getMuseumsForCity } from "@/lib/travel-data";
 import styles from "../../detail.module.css";
 
@@ -203,7 +205,7 @@ export default async function CityPage({ params }: PageProps) {
                   </span>
                   <h3>{product.title}</h3>
                   <p>{product.meta}</p>
-                  <strong>{product.price}</strong>
+                  <strong>From {formatMoney(getAdultPackagePrice(product))}</strong>
                   <span className={styles.cityProductCta}>Book this attraction</span>
                 </div>
               </Link>

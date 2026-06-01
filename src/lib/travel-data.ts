@@ -12,6 +12,7 @@ export type MuseumProduct = {
   price: string;
   adultPrice: number;
   childPrice: number;
+  serviceFee?: number;
   description: string;
   highlights: string[];
   duration: string;

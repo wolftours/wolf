@@ -15,7 +15,7 @@ export const company = {
   founded: "14 April 2026",
   shareCapital: "€5,000 (paid in full)",
   email: "info@wolftours-global.com",
-  website: "www.wolftours.sk",
+  website: "wolftours-global.com",
   tagline: "Explore the world's pack",
   subtitle: "Global ticket sales for all attractions",
   finstatUrl: "https://finstat.sk/57567247",

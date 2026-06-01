@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useMemo, useState } from "react";
+import Link from "next/link";
 import type { BookableProduct } from "@/lib/travel-data";
 import {
   formatDisplayDate,
@@ -11,6 +12,7 @@ import {
   isDateUnavailable,
   toIsoDate,
 } from "@/lib/booking";
+import { getAdultPackagePrice, getServiceFee } from "@/lib/pricing";
 import styles from "./BookingWidget.module.css";
 
 type BookingWidgetProps = {
@@ -18,7 +20,6 @@ type BookingWidgetProps = {
   closedSlots?: string[];
 };
 
-const SERVICE_FEE = 2.5;
 const WEEKDAYS = ["Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun"];
 
 type ConfirmedBooking = {
@@ -78,6 +79,7 @@ export function BookingWidget({ product, closedSlots = [] }: BookingWidgetProps)
   const [submitting, setSubmitting] = useState(false);
   const [confirmed, setConfirmed] = useState<ConfirmedBooking | null>(null);
   const [now, setNow] = useState<number | null>(null);
+  const [acceptedPolicies, setAcceptedPolicies] = useState(false);
 
   useEffect(() => {
     const timer = window.setTimeout(() => setNow(Date.now()), 0);
@@ -112,8 +114,10 @@ export function BookingWidget({ product, closedSlots = [] }: BookingWidgetProps)
 
   const subtotal =
     adults * product.adultPrice + children * product.childPrice;
-  const total = subtotal + (adults + children > 0 ? SERVICE_FEE : 0);
+  const serviceFee = getServiceFee(product);
+  const total = subtotal + (adults + children > 0 ? serviceFee : 0);
   const guests = adults + children;
+  const adultPackagePrice = getAdultPackagePrice(product);
 
   const activeTime = time || slots[0] || "";
 
@@ -173,6 +177,11 @@ export function BookingWidget({ product, closedSlots = [] }: BookingWidgetProps)
 
     if (!customerPhone.trim()) {
       setError("Please enter your phone number.");
+      return;
+    }
+
+    if (!acceptedPolicies) {
+      setError("Please accept the terms and refund policy before continuing.");
       return;
     }
 
@@ -275,8 +284,8 @@ export function BookingWidget({ product, closedSlots = [] }: BookingWidgetProps)
       <div className={styles.cardHeader}>
         <p className={styles.eyebrow}>Book now</p>
         <p className={styles.fromPrice}>
-          from {formatMoney(product.adultPrice)}{" "}
-          <span>per adult</span>
+          from {formatMoney(adultPackagePrice)}{" "}
+          <span>per adult package</span>
         </p>
       </div>
 
@@ -378,7 +387,7 @@ export function BookingWidget({ product, closedSlots = [] }: BookingWidgetProps)
         <div className={styles.guestRow}>
           <div>
             <strong>Adult</strong>
-            <p>Ages 18+ · {formatMoney(product.adultPrice)}</p>
+            <p>Ages 18+ · ticket {formatMoney(product.adultPrice)}</p>
           </div>
           <div className={styles.stepper}>
             <button
@@ -404,7 +413,7 @@ export function BookingWidget({ product, closedSlots = [] }: BookingWidgetProps)
         <div className={styles.guestRow}>
           <div>
             <strong>Child</strong>
-            <p>Ages 4-17 · {formatMoney(product.childPrice)}</p>
+            <p>Ages 4-17 · ticket {formatMoney(product.childPrice)}</p>
           </div>
           <div className={styles.stepper}>
             <button
@@ -483,7 +492,7 @@ export function BookingWidget({ product, closedSlots = [] }: BookingWidgetProps)
         ) : null}
         <div>
           <span>Service fee</span>
-          <span>{formatMoney(guests > 0 ? SERVICE_FEE : 0)}</span>
+          <span>{formatMoney(guests > 0 ? serviceFee : 0)}</span>
         </div>
         <div className={styles.grandTotal}>
           <span>Total</span>
@@ -493,10 +502,32 @@ export function BookingWidget({ product, closedSlots = [] }: BookingWidgetProps)
 
       {error ? <p className={styles.error}>{error}</p> : null}
 
+      <label className={styles.policyCheck}>
+        <input
+          type="checkbox"
+          checked={acceptedPolicies}
+          onChange={(event) => setAcceptedPolicies(event.target.checked)}
+          required
+        />
+        <span>
+          I accept the{" "}
+          <Link href="/terms" target="_blank">
+            Terms &amp; conditions
+          </Link>{" "}
+          and{" "}
+          <Link href="/refunds" target="_blank">
+            Refund policy
+          </Link>
+          .
+        </span>
+      </label>
+
       <button
         className={styles.submit}
         type="submit"
-        disabled={submitting || dateUnavailable || slots.length === 0}
+        disabled={
+          submitting || dateUnavailable || slots.length === 0 || !acceptedPolicies
+        }
       >
         {submitting ? "Opening secure payment..." : `Pay securely · ${formatMoney(total)}`}
       </button>
