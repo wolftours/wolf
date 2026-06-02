@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useMemo, useState } from "react";
+import { useCallback, useEffect, useMemo, useState } from "react";
 import Link from "next/link";
 import type { BookableProduct } from "@/lib/travel-data";
 import {
@@ -88,14 +88,14 @@ export function BookingWidget({ product, closedSlots = [] }: BookingWidgetProps)
   }, []);
 
   const closedSlotSet = useMemo(() => new Set(closedSlots), [closedSlots]);
-  const slots = useMemo(
-    () =>
-      getAvailableTimeSlots(date).filter((slot) => {
-        if (closedSlotSet.has(`${date}:${slot}`)) {
+  const getOpenSlotsForDate = useCallback(
+    (visitDate: string) =>
+      getAvailableTimeSlots(visitDate).filter((slot) => {
+        if (closedSlotSet.has(`${visitDate}:${slot}`)) {
           return false;
         }
 
-        if (date !== minDate) {
+        if (visitDate !== minDate) {
           return true;
         }
 
@@ -104,13 +104,17 @@ export function BookingWidget({ product, closedSlots = [] }: BookingWidgetProps)
         slotDate.setHours(hours, minutes, 0, 0);
         return now === null || slotDate.getTime() > now;
       }),
-    [closedSlotSet, date, minDate, now],
+    [closedSlotSet, minDate, now],
+  );
+  const slots = useMemo(
+    () => getOpenSlotsForDate(date),
+    [date, getOpenSlotsForDate],
   );
   const calendarDays = useMemo(
     () => getCalendarDays(calendarMonth),
     [calendarMonth],
   );
-  const dateUnavailable = date ? isDateUnavailable(date) : false;
+  const dateUnavailable = date ? isDateUnavailable(date) || slots.length === 0 : false;
 
   const subtotal =
     adults * product.adultPrice + children * product.childPrice;
@@ -339,8 +343,11 @@ export function BookingWidget({ product, closedSlots = [] }: BookingWidgetProps)
         <div className={styles.calendarGrid}>
           {calendarDays.map((day) => {
             const isSelected = day.iso === date;
-            const isSoldOut = isDateUnavailable(day.iso);
             const isOutOfRange = day.iso < minDate || day.iso > maxDate;
+            const isSoldOut =
+              !isOutOfRange &&
+              (isDateUnavailable(day.iso) ||
+                getOpenSlotsForDate(day.iso).length === 0);
 
             return (
               <button
