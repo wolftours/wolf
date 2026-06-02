@@ -5,7 +5,9 @@ import { revalidatePath } from "next/cache";
 import { redirect } from "next/navigation";
 import { ADMIN_SESSION_COOKIE, isAdminSessionTokenValid } from "@/lib/admin-auth";
 import {
+  closeWolfToursProductDays,
   closeWolfToursSlot,
+  openWolfToursProductDay,
   openWolfToursSlot,
   setWolfToursOrderSent,
 } from "@/lib/wolftours-db";
@@ -56,11 +58,50 @@ export async function closeSlotAction(formData: FormData) {
   redirect("/admin?tab=times");
 }
 
+export async function closeProductDaysAction(formData: FormData) {
+  await assertAdmin();
+
+  const [museumSlug, productSlug] = String(formData.get("productKey") ?? "").split(
+    ":",
+  );
+
+  try {
+    await closeWolfToursProductDays(
+      museumSlug ?? "",
+      productSlug ?? "",
+      String(formData.get("startDate") ?? ""),
+      String(formData.get("endDate") || formData.get("startDate") || ""),
+    );
+  } catch (error) {
+    redirect(`/admin?tab=times&error=${encodeURIComponent(getErrorMessage(error))}`);
+  }
+
+  revalidatePath("/admin");
+  redirect("/admin?tab=times");
+}
+
 export async function openSlotAction(formData: FormData) {
   await assertAdmin();
 
   try {
     await openWolfToursSlot(String(formData.get("closedSlotId") ?? ""));
+  } catch (error) {
+    redirect(`/admin?tab=times&error=${encodeURIComponent(getErrorMessage(error))}`);
+  }
+
+  revalidatePath("/admin");
+  redirect("/admin?tab=times");
+}
+
+export async function openProductDayAction(formData: FormData) {
+  await assertAdmin();
+
+  try {
+    await openWolfToursProductDay(
+      String(formData.get("museumSlug") ?? ""),
+      String(formData.get("productSlug") ?? ""),
+      String(formData.get("visitDate") ?? ""),
+    );
   } catch (error) {
     redirect(`/admin?tab=times&error=${encodeURIComponent(getErrorMessage(error))}`);
   }

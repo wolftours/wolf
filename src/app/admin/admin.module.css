@@ -817,6 +817,19 @@
   margin-top: 16px;
 }
 
+.adminFormHint {
+  margin-top: 8px;
+  color: #6b7280;
+  font-size: 14px;
+  line-height: 1.55;
+}
+
+.adminDateFields {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 12px;
+}
+
 .adminSlotForm label {
   display: grid;
   gap: 7px;
@@ -911,6 +924,10 @@
 
   .adminCards,
   .adminTimeGrid {
+    grid-template-columns: 1fr;
+  }
+
+  .adminDateFields {
     grid-template-columns: 1fr;
   }
 

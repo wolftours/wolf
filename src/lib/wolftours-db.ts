@@ -2,6 +2,7 @@ import {
   TIME_SLOTS,
   createBookingReference,
   getAvailableTimeSlots,
+  toIsoDate,
 } from "@/lib/booking";
 import { getServiceFee } from "@/lib/pricing";
 import { getProduct } from "@/lib/travel-data";
@@ -336,6 +337,92 @@ export async function closeWolfToursSlot(
     },
     { onConflict: "museum_slug,product_slug,visit_date,entry_time" },
   );
+
+  if (error) {
+    throw new Error(getDatabaseErrorMessage(error));
+  }
+}
+
+function getDateRange(startDate: string, endDate: string) {
+  if (!startDate || !endDate) {
+    throw new Error("Start and end date are required.");
+  }
+
+  const start = new Date(`${startDate}T12:00:00`);
+  const end = new Date(`${endDate}T12:00:00`);
+
+  if (Number.isNaN(start.getTime()) || Number.isNaN(end.getTime())) {
+    throw new Error("Invalid date range.");
+  }
+
+  if (start > end) {
+    throw new Error("Start date must be before end date.");
+  }
+
+  const dates: string[] = [];
+  const cursor = new Date(start);
+
+  while (cursor <= end) {
+    dates.push(toIsoDate(cursor));
+    cursor.setDate(cursor.getDate() + 1);
+  }
+
+  if (dates.length > 90) {
+    throw new Error("You can close up to 90 days at once.");
+  }
+
+  return dates;
+}
+
+export async function closeWolfToursProductDays(
+  museumSlug: string,
+  productSlug: string,
+  startDate: string,
+  endDate: string,
+) {
+  if (!museumSlug || !productSlug) {
+    throw new Error("Product is required.");
+  }
+
+  const rows = getDateRange(startDate, endDate).flatMap((visitDate) =>
+    getAvailableTimeSlots(visitDate).map((entryTime) => ({
+      museum_slug: museumSlug,
+      product_slug: productSlug,
+      visit_date: visitDate,
+      entry_time: entryTime,
+    })),
+  );
+
+  if (rows.length === 0) {
+    throw new Error("No bookable slots found for this date range.");
+  }
+
+  const { error } = await getSupabaseAdmin()
+    .from("wolftours_closed_slots")
+    .upsert(rows, {
+      onConflict: "museum_slug,product_slug,visit_date,entry_time",
+    });
+
+  if (error) {
+    throw new Error(getDatabaseErrorMessage(error));
+  }
+}
+
+export async function openWolfToursProductDay(
+  museumSlug: string,
+  productSlug: string,
+  visitDate: string,
+) {
+  if (!museumSlug || !productSlug || !visitDate) {
+    throw new Error("Product and visit date are required.");
+  }
+
+  const { error } = await getSupabaseAdmin()
+    .from("wolftours_closed_slots")
+    .delete()
+    .eq("museum_slug", museumSlug)
+    .eq("product_slug", productSlug)
+    .eq("visit_date", visitDate);
 
   if (error) {
     throw new Error(getDatabaseErrorMessage(error));

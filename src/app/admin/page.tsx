@@ -1,17 +1,25 @@
 import Link from "next/link";
 import { cookies } from "next/headers";
 import { ADMIN_SESSION_COOKIE, isAdminSessionTokenValid } from "@/lib/admin-auth";
-import { formatMoney, getMinBookableDate, TIME_SLOTS } from "@/lib/booking";
+import {
+  formatMoney,
+  getAvailableTimeSlots,
+  getMinBookableDate,
+  TIME_SLOTS,
+} from "@/lib/booking";
 import { getAdultPackagePrice, getServiceFee } from "@/lib/pricing";
 import { cities, getAllBookableProducts, museums } from "@/lib/travel-data";
 import {
+  closeProductDaysAction,
   closeSlotAction,
+  openProductDayAction,
   openSlotAction,
   setOrderSentAction,
 } from "./actions";
 import {
   listWolfToursClosedSlots,
   listWolfToursOrders,
+  type WolfToursClosedSlot,
 } from "@/lib/wolftours-db";
 import styles from "./admin.module.css";
 
@@ -26,6 +34,47 @@ const TAB_LABELS: Record<AdminTab, string> = {
 type PageProps = {
   searchParams?: Promise<{ error?: string; tab?: string }>;
 };
+
+type ClosedProductDay = {
+  key: string;
+  museum_slug: string;
+  product_slug: string;
+  visit_date: string;
+  closedSlotCount: number;
+};
+
+function getClosedProductDays(closedSlots: WolfToursClosedSlot[]) {
+  const groupedSlots = new Map<string, Set<string>>();
+
+  for (const slot of closedSlots) {
+    const key = `${slot.museum_slug}:${slot.product_slug}:${slot.visit_date}`;
+    const entryTimes = groupedSlots.get(key) ?? new Set<string>();
+    entryTimes.add(slot.entry_time);
+    groupedSlots.set(key, entryTimes);
+  }
+
+  return Array.from(groupedSlots.entries())
+    .map(([key, entryTimes]) => {
+      const [museumSlug, productSlug, visitDate] = key.split(":");
+      const availableSlots = getAvailableTimeSlots(visitDate);
+      const isFullDayClosed =
+        availableSlots.length > 0 &&
+        availableSlots.every((slot) => entryTimes.has(slot));
+
+      if (!isFullDayClosed) {
+        return null;
+      }
+
+      return {
+        key,
+        museum_slug: museumSlug,
+        product_slug: productSlug,
+        visit_date: visitDate,
+        closedSlotCount: availableSlots.length,
+      } satisfies ClosedProductDay;
+    })
+    .filter((day): day is ClosedProductDay => Boolean(day));
+}
 
 export default async function AdminPage({ searchParams }: PageProps) {
   const params = (await searchParams) ?? {};
@@ -69,6 +118,14 @@ export default async function AdminPage({ searchParams }: PageProps) {
   const products = getAllBookableProducts();
   const orders = await listWolfToursOrders();
   const closedSlots = await listWolfToursClosedSlots();
+  const closedProductDays = getClosedProductDays(closedSlots);
+  const closedProductDayKeys = new Set(closedProductDays.map((day) => day.key));
+  const individualClosedSlots = closedSlots.filter(
+    (slot) =>
+      !closedProductDayKeys.has(
+        `${slot.museum_slug}:${slot.product_slug}:${slot.visit_date}`,
+      ),
+  );
   const activeTab: AdminTab = ADMIN_TABS.includes(params.tab as AdminTab)
     ? (params.tab as AdminTab)
     : "orders";
@@ -315,9 +372,58 @@ export default async function AdminPage({ searchParams }: PageProps) {
             <section className={styles.adminPanel}>
               <h3>Time slot setup</h3>
               <p className={styles.adminPanelIntro}>
-                Close specific dates and entry times per product. Closed slots disappear from the booking widget.
+                Close full days or specific entry times per product. Closed
+                availability disappears from the booking widget.
               </p>
               <div className={styles.adminTimeGrid}>
+                <article>
+                  <h4>Close full days</h4>
+                  <p className={styles.adminFormHint}>
+                    Pick a product and a date range. Every bookable slot on
+                    those days will be closed for that product.
+                  </p>
+                  <form className={styles.adminSlotForm} action={closeProductDaysAction}>
+                    <label>
+                      Product
+                      <select name="productKey" defaultValue="" required>
+                        <option value="" disabled>
+                          Choose product
+                        </option>
+                        {products.map((product) => (
+                          <option
+                            key={`${product.museumSlug}:${product.slug}`}
+                            value={`${product.museumSlug}:${product.slug}`}
+                          >
+                            {product.museumName} · {product.title}
+                          </option>
+                        ))}
+                      </select>
+                    </label>
+                    <div className={styles.adminDateFields}>
+                      <label>
+                        Start date
+                        <input
+                          type="date"
+                          name="startDate"
+                          min={getMinBookableDate()}
+                          required
+                        />
+                      </label>
+                      <label>
+                        End date
+                        <input
+                          type="date"
+                          name="endDate"
+                          min={getMinBookableDate()}
+                        />
+                      </label>
+                    </div>
+                    <button className={styles.adminPrimaryButton} type="submit">
+                      Close full days
+                    </button>
+                  </form>
+                </article>
+
                 <article>
                   <h4>Close a slot</h4>
                   <form className={styles.adminSlotForm} action={closeSlotAction}>
@@ -363,10 +469,56 @@ export default async function AdminPage({ searchParams }: PageProps) {
                 </article>
 
                 <article>
-                  <h4>Closed slots</h4>
+                  <h4>Closed full days</h4>
                   <div className={styles.adminClosedSlotList}>
-                    {closedSlots.length > 0 ? (
-                      closedSlots.map((slot) => {
+                    {closedProductDays.length > 0 ? (
+                      closedProductDays.map((day) => {
+                        const product = products.find(
+                          (item) =>
+                            item.museumSlug === day.museum_slug &&
+                            item.slug === day.product_slug,
+                        );
+
+                        return (
+                          <div className={styles.adminClosedSlot} key={day.key}>
+                            <div>
+                              <strong>{product?.title ?? day.product_slug}</strong>
+                              <span>
+                                {day.visit_date} · all {day.closedSlotCount} slots
+                              </span>
+                            </div>
+                            <form action={openProductDayAction}>
+                              <input
+                                type="hidden"
+                                name="museumSlug"
+                                value={day.museum_slug}
+                              />
+                              <input
+                                type="hidden"
+                                name="productSlug"
+                                value={day.product_slug}
+                              />
+                              <input
+                                type="hidden"
+                                name="visitDate"
+                                value={day.visit_date}
+                              />
+                              <button type="submit">Open day</button>
+                            </form>
+                          </div>
+                        );
+                      })
+                    ) : (
+                      <p className={styles.adminEmpty}>No full days closed yet.</p>
+                    )}
+                  </div>
+                </article>
+
+                <article>
+                  <h4>Closed individual slots</h4>
+                  <div className={styles.adminClosedSlotList}>
+                    {individualClosedSlots.length > 0 ? (
+                      individualClosedSlots.map((slot) => {
                         const product = products.find(
                           (item) =>
                             item.museumSlug === slot.museum_slug &&
@@ -393,7 +545,9 @@ export default async function AdminPage({ searchParams }: PageProps) {
                         );
                       })
                     ) : (
-                      <p className={styles.adminEmpty}>No closed slots yet.</p>
+                      <p className={styles.adminEmpty}>
+                        No individual slots closed yet.
+                      </p>
                     )}
                   </div>
                 </article>
