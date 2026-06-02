@@ -23,7 +23,7 @@ export function SiteHeader() {
     >
       <Link className={styles.brand} href="/#top" aria-label="WolfTours home">
         <Image
-          src="/wolftours-mark.svg"
+          src="/wolftours-logo.png"
           alt="WolfTours"
           width={168}
           height={56}

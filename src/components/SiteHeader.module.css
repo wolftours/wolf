@@ -44,15 +44,19 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  width: 180px;
-  height: 58px;
-  overflow: visible;
+  width: 98px;
+  height: 48px;
+  overflow: hidden;
+  border-radius: 14px;
+  background: #fff;
+  box-shadow: 0 8px 24px rgba(7, 24, 39, 0.18);
 }
 
 .brandLogo {
-  width: 172px;
-  height: auto;
+  width: 168px;
+  height: 56px;
   object-fit: contain;
+  transform: scale(1.25);
 }
 
 .siteNotice {
@@ -171,12 +175,13 @@
   }
 
   .brand {
-    width: 124px;
-    height: 42px;
+    width: 76px;
+    height: 38px;
+    border-radius: 12px;
   }
 
   .brandLogo {
-    width: 120px;
+    transform: scale(1.05);
   }
 
   .siteNotice {
