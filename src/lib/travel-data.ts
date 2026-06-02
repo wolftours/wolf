@@ -428,9 +428,10 @@ export const museums: Museum[] = [
         image:
           "https://images.unsplash.com/photo-1636556602097-2435ad5198ef?auto=format&fit=crop&w=800&q=80",
         meta: "Timed entry",
-        price: "From 39.90 EUR",
-        adultPrice: 30.9,
-        childPrice: 10,
+        price: "From 1 EUR",
+        adultPrice: 1,
+        childPrice: 1,
+        serviceFee: 0,
         description:
           "Timed entry to the Guggenheim with a WolfTours route through the atrium, collection highlights, and the best exterior viewpoints.",
         highlights: ["Timed entry", "Collection route", "Exterior photo stops"],
