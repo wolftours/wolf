@@ -159,6 +159,10 @@ export async function createWolfToursOrder(input: CreateOrderInput) {
     return { ok: false as const, error: "Unknown product." };
   }
 
+  if (product.isClosed) {
+    return { ok: false as const, error: "This product is currently unavailable." };
+  }
+
   const adults = Math.trunc(input.adults);
   const children = Math.trunc(input.children);
 
@@ -253,6 +257,24 @@ export async function listWolfToursOrders() {
   } catch {
     return [];
   }
+}
+
+export async function getWolfToursOrderById(orderId: string) {
+  if (!orderId || !hasSupabaseAdminEnv()) {
+    return null;
+  }
+
+  const { data, error } = await getSupabaseAdmin()
+    .from("wolftours_orders")
+    .select("*")
+    .eq("id", orderId)
+    .maybeSingle();
+
+  if (error) {
+    throw new Error(getDatabaseErrorMessage(error));
+  }
+
+  return data ? (data as WolfToursOrder) : null;
 }
 
 export async function setWolfToursOrderSent(orderId: string, sent: boolean) {

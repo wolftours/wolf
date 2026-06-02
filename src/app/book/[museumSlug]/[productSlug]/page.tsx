@@ -269,14 +269,18 @@ export default async function ProductBookingPage({ params }: PageProps) {
                   />
                   <div className={styles.relatedBody}>
                     <span className={styles.relatedTag}>
-                      Option {String(index + 1).padStart(2, "0")}
+                      {item.isClosed
+                        ? "Closed"
+                        : `Option ${String(index + 1).padStart(2, "0")}`}
                     </span>
                     <h3>{item.title}</h3>
                     <p className={styles.relatedMeta}>{item.meta}</p>
                     <p className={styles.relatedPrice}>
                       From {formatMoney(getAdultPackagePrice(item))}
                     </p>
-                    <span className={styles.relatedCta}>View & book</span>
+                    <span className={styles.relatedCta}>
+                      {item.isClosed ? "View details" : "View & book"}
+                    </span>
                   </div>
                 </Link>
               ))}
@@ -285,8 +289,14 @@ export default async function ProductBookingPage({ params }: PageProps) {
         </section>
       ) : null}
 
-      <Link className={styles.floatingBookNow} href="#booking-calendar">
-        Book now <span>from {formatMoney(adultPackagePrice)}</span>
+      <Link
+        className={`${styles.floatingBookNow} ${
+          product.isClosed ? styles.floatingBookNowClosed : ""
+        }`}
+        href="#booking-calendar"
+      >
+        {product.isClosed ? "Closed" : "Book now"}{" "}
+        <span>from {formatMoney(adultPackagePrice)}</span>
       </Link>
 
       <SiteFooter />

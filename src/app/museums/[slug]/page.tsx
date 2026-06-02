@@ -129,6 +129,7 @@ export default async function MuseumPage({ params }: PageProps) {
                   <div className={styles.experienceBadges}>
                     <span>{experience.duration}</span>
                     <span>{experience.meta}</span>
+                    {experience.isClosed ? <span>Closed</span> : null}
                   </div>
                   <h3>{experience.title}</h3>
                   <p className={styles.meta}>{experience.highlights[0]}</p>
@@ -143,12 +144,16 @@ export default async function MuseumPage({ params }: PageProps) {
                     >
                       Details
                     </Link>
-                    <Link
-                      className={styles.btnSolid}
-                      href={`/book/${museum.slug}/${experience.slug}`}
-                    >
-                      Book now
-                    </Link>
+                    {experience.isClosed ? (
+                      <span className={styles.btnClosed}>Closed</span>
+                    ) : (
+                      <Link
+                        className={styles.btnSolid}
+                        href={`/book/${museum.slug}/${experience.slug}`}
+                      >
+                        Book now
+                      </Link>
+                    )}
                   </div>
                 </div>
               </article>

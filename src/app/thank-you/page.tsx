@@ -29,9 +29,9 @@ export default async function ThankYouPage({ searchParams }: PageProps) {
           <p className={styles.eyebrow}>Booking received</p>
           <h1>Thank you, your museum day is on its way.</h1>
           <p className={styles.lead}>
-            Your payment has been received. We will check the selected slot and
-            send your voucher, arrival notes, and visit guidance to the email
-            you used at checkout.
+            Your payment has been received. A confirmation email is sent right
+            away, then we check the selected slot and prepare your voucher,
+            arrival notes, and visit guidance.
           </p>
           {params.session_id ? (
             <p className={styles.meta}>Stripe session: {params.session_id}</p>
@@ -43,6 +43,7 @@ export default async function ThankYouPage({ searchParams }: PageProps) {
             <h2>What happens next</h2>
             <ul>
               <li>WolfTours confirms the attraction, date, entry time, and ticket count.</li>
+              <li>A payment confirmation email is sent to the checkout email address.</li>
               <li>Your mobile voucher and visit notes are emailed after the booking is processed.</li>
               <li>On visit day, arrive early and follow the entrance notes in your confirmation.</li>
             </ul>

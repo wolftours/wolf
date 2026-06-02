@@ -643,6 +643,14 @@
   transform: translateY(-2px);
 }
 
+.floatingBookNowClosed {
+  background: #4b5563;
+}
+
+.floatingBookNowClosed:hover {
+  background: #4b5563;
+}
+
 @media (max-width: 960px) {
   .gallery {
     grid-template-columns: 1fr 1fr;

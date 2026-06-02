@@ -29,8 +29,9 @@ export default async function BookingSuccessPage({ searchParams }: PageProps) {
           <p className={styles.eyebrow}>Secure payment complete</p>
           <h1>Thanks, your booking is paid.</h1>
           <p className={styles.lead}>
-            We have received your payment and will email your voucher, arrival
-            notes, and visit flow shortly after we confirm the ticket details.
+            We have received your payment and sent a confirmation email. Your
+            voucher, arrival notes, and visit flow follow shortly after we
+            confirm the ticket details.
           </p>
           {params.session_id ? (
             <p className={styles.meta}>Stripe session: {params.session_id}</p>
@@ -42,7 +43,8 @@ export default async function BookingSuccessPage({ searchParams }: PageProps) {
             <h2>What happens next</h2>
             <ul>
               <li>WolfTours checks the selected time slot and ticket details.</li>
-              <li>Your voucher and route notes are sent to the email you used at checkout.</li>
+              <li>A payment confirmation email is sent to the email you used at checkout.</li>
+              <li>Your voucher and route notes follow after the booking is processed.</li>
               <li>On visit day, arrive a little early and show the mobile voucher at the correct entrance.</li>
             </ul>
           </section>

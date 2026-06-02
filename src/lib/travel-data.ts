@@ -13,6 +13,7 @@ export type MuseumProduct = {
   adultPrice: number;
   childPrice: number;
   serviceFee?: number;
+  isClosed?: boolean;
   description: string;
   highlights: string[];
   duration: string;
@@ -109,8 +110,8 @@ export const museums: Museum[] = [
         image:
           "https://images.unsplash.com/photo-1587648415693-4a5362b2ce41?auto=format&fit=crop&w=800&q=80",
         meta: "Standard admission · Timed entry",
-        price: "From 35 EUR",
-        adultPrice: 35,
+        price: "From 39.90 EUR",
+        adultPrice: 30.9,
         childPrice: 18,
         description:
           "A clean Louvre timed-entry ticket for travelers who want the essential museum access without extras. Get inside with a clear slot, then use WolfTours notes to move through the palace, masterpieces, and calmer wings at a realistic pace.",
@@ -127,8 +128,8 @@ export const museums: Museum[] = [
         image:
           "https://images.unsplash.com/photo-1610023709598-3881e09811c2?auto=format&fit=crop&w=800&q=80",
         meta: "Flexible entry",
-        price: "From 55 EUR",
-        adultPrice: 55,
+        price: "From 49.90 EUR",
+        adultPrice: 40.9,
         childPrice: 28,
         description:
           "Skip the guesswork with a clear entry window and a WolfTours audio route through the museum's essential rooms and masterpieces.",
@@ -234,8 +235,8 @@ export const museums: Museum[] = [
         image:
           "https://images.unsplash.com/photo-1679231926688-ef9cdab5ed2f?auto=format&fit=crop&w=800&q=80",
         meta: "Standard admission · Timed access",
-        price: "From 42 EUR",
-        adultPrice: 42,
+        price: "From 29.90 EUR",
+        adultPrice: 20.9,
         childPrice: 24,
         description:
           "Timed Eiffel Tower access with WolfTours arrival notes, viewpoint pacing, and practical guidance for security, lifts, and the best photo angles before and after your slot.",
@@ -326,8 +327,8 @@ export const museums: Museum[] = [
         image:
           "https://images.unsplash.com/photo-1491238824974-e22b282decba?auto=format&fit=crop&w=800&q=80",
         meta: "Standard admission · Timed entry",
-        price: "From 24 EUR",
-        adultPrice: 24,
+        price: "From 29.90 EUR",
+        adultPrice: 20.9,
         childPrice: 12,
         description:
           "Standard admission to Musee d'Orsay with a WolfTours route through the station nave, Impressionist highlights, sculpture levels, and the clock-view moments that make the museum unforgettable.",
@@ -427,8 +428,8 @@ export const museums: Museum[] = [
         image:
           "https://images.unsplash.com/photo-1636556602097-2435ad5198ef?auto=format&fit=crop&w=800&q=80",
         meta: "Timed entry",
-        price: "From 18 EUR",
-        adultPrice: 18,
+        price: "From 39.90 EUR",
+        adultPrice: 30.9,
         childPrice: 10,
         description:
           "Timed entry to the Guggenheim with a WolfTours route through the atrium, collection highlights, and the best exterior viewpoints.",
@@ -441,9 +442,10 @@ export const museums: Museum[] = [
         image:
           "https://images.unsplash.com/photo-1636556590144-7e3189066277?auto=format&fit=crop&w=800&q=80",
         meta: "Small group · EN guide",
-        price: "From 48 EUR",
-        adultPrice: 48,
+        price: "From 99.90 EUR",
+        adultPrice: 90.9,
         childPrice: 32,
+        isClosed: true,
         description:
           "A guide connects Gehry's building to the works inside — ideal for first visits and anyone who wants context, not just photos.",
         highlights: ["Licensed guide", "Architecture + collection", "Skip the guesswork"],
@@ -550,8 +552,8 @@ export const museums: Museum[] = [
         image:
           "https://images.unsplash.com/photo-1624347061892-822a65656966?auto=format&fit=crop&w=800&q=80",
         meta: "Standard admission · Sistine Chapel route",
-        price: "From 29 EUR",
-        adultPrice: 29,
+        price: "From 34.90 EUR",
+        adultPrice: 25.9,
         childPrice: 18,
         description:
           "Standard reserved admission to the Vatican Museums with the Sistine Chapel route included, plus WolfTours pacing notes for the long galleries, Raphael Rooms, dress code, and arrival timing.",
@@ -567,8 +569,8 @@ export const museums: Museum[] = [
         title: "Vatican Museums & Sistine Chapel entry",
         image: "/sistine-chapel.png",
         meta: "Skip-the-line slot",
-        price: "From 32 EUR",
-        adultPrice: 32,
+        price: "From 39.90 EUR",
+        adultPrice: 30.9,
         childPrice: 20,
         description:
           "Reserved entry with a clear time window and WolfTours pacing notes from the galleries through the Sistine Chapel.",
@@ -581,9 +583,10 @@ export const museums: Museum[] = [
         image:
           "https://images.unsplash.com/photo-1624347061892-822a65656966?auto=format&fit=crop&w=800&q=80",
         meta: "Small private group",
-        price: "From 175 EUR",
-        adultPrice: 175,
+        price: "From 199.90 EUR",
+        adultPrice: 190.9,
         childPrice: 95,
+        isClosed: true,
         description:
           "Private guide through the essential galleries — ancient sculpture, Raphael, and Michelangelo with context at every stage.",
         highlights: ["Private licensed guide", "Custom pacing", "Sistine Chapel finish"],
@@ -656,8 +659,8 @@ export const museums: Museum[] = [
         image:
           "https://images.unsplash.com/photo-1728249960363-13079cc2c6f6?auto=format&fit=crop&w=800&q=80",
         meta: "Standard admission · Timed entry",
-        price: "From 26 EUR",
-        adultPrice: 26,
+        price: "From 39.90 EUR",
+        adultPrice: 30.9,
         childPrice: 15,
         description:
           "Standard timed entry to Sagrada Familia with WolfTours notes on the Nativity and Passion facades, the interior light, Gaudi symbolism, and how to pace the basilica without rushing.",
@@ -674,8 +677,8 @@ export const museums: Museum[] = [
         image:
           "https://images.unsplash.com/photo-1722545331003-bc5507a8bdf8?auto=format&fit=crop&w=800&q=80",
         meta: "Timed entry",
-        price: "From 28 EUR",
-        adultPrice: 28,
+        price: "From 39.90 EUR",
+        adultPrice: 30.9,
         childPrice: 16,
         description:
           "Timed entry to Gaudi's basilica with notes on light, symbolism, and the best interior viewpoints.",
@@ -688,8 +691,8 @@ export const museums: Museum[] = [
         image:
           "https://images.unsplash.com/photo-1650964827770-421afa7960ac?auto=format&fit=crop&w=800&q=80",
         meta: "Tower option",
-        price: "From 38 EUR",
-        adultPrice: 38,
+        price: "From 49.90 EUR",
+        adultPrice: 40.9,
         childPrice: 22,
         description:
           "Basilica entry plus tower access when available — skyline views and Gaudi details up close.",

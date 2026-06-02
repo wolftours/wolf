@@ -496,6 +496,17 @@
   transform: translateY(-2px);
 }
 
+.btnClosed {
+  padding: 10px 14px;
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.14);
+  color: rgba(255, 255, 255, 0.72);
+  font-size: 11px;
+  font-weight: 900;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+}
+
 .experienceActions .linkAction {
   color: rgba(255, 255, 255, 0.82);
   font-size: 11px;

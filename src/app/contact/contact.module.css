@@ -1,0 +1,241 @@
+.page {
+  min-height: 100vh;
+  color: var(--foreground);
+}
+
+.shell {
+  width: min(1180px, calc(100% - 40px));
+  margin-inline: auto;
+}
+
+.hero {
+  padding: 108px 0 76px;
+  background:
+    radial-gradient(circle at 15% 10%, rgba(245, 212, 140, 0.22), transparent 28rem),
+    linear-gradient(135deg, #071827 0%, #1a3557 72%, #8d6a25 140%);
+  color: #fff;
+}
+
+.breadcrumb {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  color: rgba(255, 255, 255, 0.68);
+  font-size: 13px;
+  font-weight: 800;
+}
+
+.breadcrumb a:hover {
+  color: #fff;
+}
+
+.header {
+  max-width: 760px;
+  margin-top: 34px;
+}
+
+.eyebrow {
+  color: var(--gold);
+  font-size: 12px;
+  font-weight: 900;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+}
+
+.header h1 {
+  margin-top: 14px;
+  font-family: var(--font-serif), Georgia, serif;
+  font-size: clamp(44px, 7vw, 78px);
+  font-weight: 400;
+  line-height: 0.96;
+  letter-spacing: -0.055em;
+}
+
+.lead {
+  max-width: 640px;
+  margin-top: 20px;
+  color: rgba(255, 255, 255, 0.82);
+  font-size: 18px;
+  line-height: 1.7;
+}
+
+.heroActions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin-top: 28px;
+}
+
+.primaryCta,
+.secondaryCta {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 48px;
+  padding: 0 18px;
+  border-radius: 999px;
+  font-size: 13px;
+  font-weight: 900;
+}
+
+.primaryCta {
+  background: #f5d48c;
+  color: #111722;
+}
+
+.secondaryCta {
+  border: 1px solid rgba(255, 255, 255, 0.22);
+  color: #fff;
+}
+
+.content {
+  display: grid;
+  gap: 34px;
+  padding: 56px 0 76px;
+}
+
+.supportGrid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 18px;
+}
+
+.supportCard {
+  display: flex;
+  min-height: 280px;
+  flex-direction: column;
+  padding: 24px;
+  border: 1px solid rgba(16, 32, 51, 0.08);
+  border-radius: 24px;
+  background: #fffaf2;
+  box-shadow: 0 18px 44px rgba(16, 32, 51, 0.08);
+}
+
+.supportCard span {
+  color: rgba(183, 138, 44, 0.55);
+  font-family: var(--font-serif), Georgia, serif;
+  font-size: 46px;
+  line-height: 0.9;
+}
+
+.supportCard h2,
+.infoPanel h2,
+.companyPanel h2,
+.policyLinks h2 {
+  margin-top: 16px;
+  color: #1d3557;
+  font-family: var(--font-serif), Georgia, serif;
+  font-size: 30px;
+  font-weight: 400;
+  line-height: 1.08;
+  letter-spacing: -0.035em;
+}
+
+.supportCard p,
+.infoPanel p,
+.companyPanel p,
+.checklist li {
+  margin-top: 14px;
+  color: #405166;
+  font-size: 15px;
+  line-height: 1.7;
+}
+
+.supportCard a {
+  margin-top: auto;
+  padding-top: 18px;
+  color: #9a721f;
+  font-size: 13px;
+  font-weight: 900;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.infoPanel,
+.companyPanel {
+  display: grid;
+  grid-template-columns: minmax(0, 1.1fr) minmax(280px, 0.9fr);
+  gap: 28px;
+  padding: 28px;
+  border: 1px solid rgba(16, 32, 51, 0.08);
+  border-radius: 28px;
+  background: #fff;
+  box-shadow: 0 18px 44px rgba(16, 32, 51, 0.06);
+}
+
+.infoPanel .eyebrow,
+.companyPanel .eyebrow {
+  color: var(--gold-deep);
+}
+
+.infoPanel a,
+.companyPanel a,
+.policyLinks a {
+  color: #9a721f;
+  font-weight: 900;
+}
+
+.responseTime {
+  font-weight: 700;
+}
+
+.checklist {
+  padding: 22px;
+  border-radius: 20px;
+  background: #faead6;
+}
+
+.checklist h3 {
+  color: #1d3557;
+  font-size: 16px;
+}
+
+.checklist ul {
+  margin-top: 10px;
+  padding-left: 1.1rem;
+}
+
+.policyLinks {
+  padding: 28px;
+  border-radius: 28px;
+  background: linear-gradient(135deg, #faead6, #fffaf2);
+}
+
+.policyLinks div {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin-top: 18px;
+}
+
+.policyLinks a {
+  padding: 10px 14px;
+  border: 1px solid rgba(154, 114, 31, 0.2);
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.64);
+  font-size: 13px;
+}
+
+@media (max-width: 880px) {
+  .supportGrid,
+  .infoPanel,
+  .companyPanel {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 680px) {
+  .shell {
+    width: min(100% - 28px, 1180px);
+  }
+
+  .hero {
+    padding-top: 92px;
+  }
+
+  .infoPanel,
+  .companyPanel,
+  .policyLinks {
+    padding: 22px;
+  }
+}

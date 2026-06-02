@@ -279,6 +279,21 @@ export function BookingWidget({ product, closedSlots = [] }: BookingWidgetProps)
     );
   }
 
+  if (product.isClosed) {
+    return (
+      <div className={styles.card} id="booking-calendar">
+        <div className={styles.unavailable}>
+          <span className={styles.unavailableBadge}>Closed</span>
+          <h2>Currently unavailable</h2>
+          <p>
+            This product is temporarily closed for online booking. Please choose
+            another WolfTours option for this attraction.
+          </p>
+        </div>
+      </div>
+    );
+  }
+
   return (
     <form className={styles.card} id="booking-calendar" onSubmit={handleSubmit}>
       <div className={styles.cardHeader}>

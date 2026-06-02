@@ -6,6 +6,7 @@ import { SiteFooter } from "@/components/SiteFooter";
 import { Reveal } from "@/components/Reveal";
 import { SiteHeader } from "@/components/SiteHeader";
 import { formatMoney } from "@/lib/booking";
+import { company } from "@/lib/company-data";
 import { getAdultPackagePrice } from "@/lib/pricing";
 import { cities, getCity, getMuseumsForCity } from "@/lib/travel-data";
 import styles from "../../detail.module.css";
@@ -199,6 +200,7 @@ export default async function CityPage({ params }: PageProps) {
                   <div className={styles.experienceBadges}>
                     <span>{product.museumName}</span>
                     <span>{product.duration}</span>
+                    {product.isClosed ? <span>Closed</span> : null}
                   </div>
                   <span className={styles.museumTileLink}>
                     Option {String(index + 1).padStart(2, "0")}
@@ -206,7 +208,9 @@ export default async function CityPage({ params }: PageProps) {
                   <h3>{product.title}</h3>
                   <p>{product.meta}</p>
                   <strong>From {formatMoney(getAdultPackagePrice(product))}</strong>
-                  <span className={styles.cityProductCta}>Book this attraction</span>
+                  <span className={styles.cityProductCta}>
+                    {product.isClosed ? "Closed" : "Book this attraction"}
+                  </span>
                 </div>
               </Link>
             ))}
@@ -222,7 +226,7 @@ export default async function CityPage({ params }: PageProps) {
           </div>
           <div className={styles.ctaActions}>
             <Link className={styles.ctaButton} href="/#contact">
-              info@wolftours-global.com
+              {company.email}
             </Link>
             <Link className={styles.ctaGhost} href="/#museums">
               Browse all museums

@@ -10,7 +10,7 @@ export function SiteFooter() {
         <div className={styles.footerGrid}>
           <div className={styles.footerBrand}>
             <Image
-              src="/wolftours-logo.png"
+              src="/wolftours-mark.svg"
               alt={company.brand}
               width={180}
               height={72}
