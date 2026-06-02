@@ -20,8 +20,9 @@ export const metadata: Metadata = {
   description:
     "Curated museum tickets and city tours in Paris, Rome, and Barcelona. Operated by Wolf Tourist s. r. o., Slovakia.",
   icons: {
-    icon: [{ url: "/icon.svg", type: "image/svg+xml" }],
-    apple: [{ url: "/apple-icon.svg", type: "image/svg+xml" }],
+    icon: [{ url: "/favicon.svg?v=2", type: "image/svg+xml" }],
+    shortcut: [{ url: "/favicon.svg?v=2", type: "image/svg+xml" }],
+    apple: [{ url: "/apple-icon.svg?v=2", type: "image/svg+xml" }],
   },
 };
 

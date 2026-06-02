@@ -44,7 +44,7 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  width: 98px;
+  width: 136px;
   height: 48px;
   overflow: hidden;
   border-radius: 14px;
@@ -53,10 +53,9 @@
 }
 
 .brandLogo {
-  width: 168px;
-  height: 56px;
+  width: 126px;
+  height: auto;
   object-fit: contain;
-  transform: scale(1.25);
 }
 
 .siteNotice {
@@ -175,17 +174,13 @@
   }
 
   .brand {
-    width: 76px;
+    width: 102px;
     height: 38px;
     border-radius: 12px;
   }
 
   .siteNotice {
     display: none;
-  }
-
-  .brandLogo {
-    transform: scale(1.05);
   }
 
   .navLinks {
