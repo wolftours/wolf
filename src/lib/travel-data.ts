@@ -445,7 +445,6 @@ export const museums: Museum[] = [
         price: "From 99.90 EUR",
         adultPrice: 90.9,
         childPrice: 32,
-        isClosed: true,
         description:
           "A guide connects Gehry's building to the works inside — ideal for first visits and anyone who wants context, not just photos.",
         highlights: ["Licensed guide", "Architecture + collection", "Skip the guesswork"],
@@ -586,7 +585,6 @@ export const museums: Museum[] = [
         price: "From 199.90 EUR",
         adultPrice: 190.9,
         childPrice: 95,
-        isClosed: true,
         description:
           "Private guide through the essential galleries — ancient sculpture, Raphael, and Michelangelo with context at every stage.",
         highlights: ["Private licensed guide", "Custom pacing", "Sistine Chapel finish"],
