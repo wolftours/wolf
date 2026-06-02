@@ -28,7 +28,7 @@ export default function CookiesPage() {
             This page describes how {company.legalName} uses cookies and similar
             technologies on the {company.brand} website.
           </p>
-          <p className={styles.meta}>Last updated: May 2026</p>
+          <p className={styles.meta}>Last updated: June 2026</p>
         </header>
 
         <div className={styles.content}>
@@ -50,7 +50,7 @@ export default function CookiesPage() {
               </li>
               <li>
                 <strong>Preference cookies</strong> — remember choices such as
-                language or form state
+                language, form state, or your cookie consent choice
               </li>
               <li>
                 <strong>Analytics cookies</strong> — help us measure traffic and
@@ -72,6 +72,12 @@ export default function CookiesPage() {
               or read identifiers to understand which pages were visited, whether
               an enquiry or booking happened, and how advertising campaigns
               perform.
+            </p>
+            <p>
+              Google advertising and analytics storage is disabled by default.
+              If you accept optional cookies in the cookie banner, we update
+              Google Consent Mode to allow analytics, advertising measurement,
+              ad user data, and ad personalization where permitted by law.
             </p>
             <p>
               Google may combine this information with other data if you are
@@ -97,9 +103,11 @@ export default function CookiesPage() {
               non-essential cookies.
             </p>
             <p>
-              If a cookie consent banner is shown, you can accept, reject, or
-              change non-essential cookie categories there. You can also clear
-              cookies at any time in your browser.
+              Our cookie banner lets you accept or reject optional analytics and
+              advertising cookies. We store your choice in your browser so the
+              banner does not keep reappearing. You can reopen Cookie settings
+              from the site, change your choice, or clear cookies at any time in
+              your browser.
             </p>
           </section>
 

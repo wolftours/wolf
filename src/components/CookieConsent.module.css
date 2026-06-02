@@ -1,0 +1,149 @@
+.banner {
+  position: fixed;
+  right: max(16px, calc((100vw - 1240px) / 2));
+  bottom: 18px;
+  z-index: 50;
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  gap: 22px;
+  align-items: end;
+  width: min(760px, calc(100vw - 32px));
+  padding: 22px;
+  border: 1px solid rgba(196, 165, 116, 0.42);
+  border-radius: 24px;
+  background: rgba(255, 250, 242, 0.96);
+  box-shadow: 0 22px 64px rgba(7, 24, 39, 0.22);
+  color: var(--foreground);
+}
+
+.copy {
+  display: grid;
+  gap: 8px;
+}
+
+.eyebrow {
+  color: var(--gold-deep);
+  font-size: 11px;
+  font-weight: 800;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+}
+
+.copy h2 {
+  font-family: var(--font-serif), Georgia, serif;
+  font-size: clamp(26px, 4vw, 34px);
+  font-weight: 400;
+  line-height: 1;
+}
+
+.copy p:not(.eyebrow) {
+  max-width: 560px;
+  color: var(--muted);
+  font-size: 14px;
+  line-height: 1.65;
+}
+
+.policyLink {
+  width: fit-content;
+  color: var(--gold-deep);
+  font-size: 14px;
+  font-weight: 800;
+}
+
+.policyLink:hover {
+  color: var(--navy);
+}
+
+.actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  justify-content: flex-end;
+}
+
+.primaryButton,
+.secondaryButton,
+.settingsButton {
+  border: 0;
+  border-radius: 999px;
+  cursor: pointer;
+  font-family: inherit;
+  font-weight: 800;
+  transition:
+    background 180ms ease,
+    color 180ms ease,
+    transform 180ms ease,
+    box-shadow 180ms ease;
+}
+
+.primaryButton,
+.secondaryButton {
+  min-height: 44px;
+  padding: 0 18px;
+  font-size: 14px;
+}
+
+.primaryButton {
+  background: var(--navy);
+  color: #fff;
+  box-shadow: 0 12px 24px rgba(26, 53, 87, 0.18);
+}
+
+.secondaryButton {
+  border: 1px solid rgba(26, 53, 87, 0.14);
+  background: rgba(255, 255, 255, 0.74);
+  color: var(--foreground);
+}
+
+.primaryButton:hover,
+.secondaryButton:hover,
+.settingsButton:hover {
+  transform: translateY(-1px);
+}
+
+.primaryButton:hover {
+  background: var(--navy-deep);
+}
+
+.secondaryButton:hover {
+  background: #fff;
+}
+
+.settingsButton {
+  position: fixed;
+  right: max(16px, calc((100vw - 1240px) / 2));
+  bottom: 18px;
+  z-index: 49;
+  min-height: 36px;
+  padding: 0 14px;
+  border: 1px solid rgba(26, 53, 87, 0.12);
+  background: rgba(255, 255, 255, 0.86);
+  box-shadow: 0 10px 28px rgba(7, 24, 39, 0.14);
+  color: var(--foreground);
+  font-size: 12px;
+}
+
+@media (max-width: 720px) {
+  .banner {
+    left: 12px;
+    right: 12px;
+    bottom: 12px;
+    grid-template-columns: 1fr;
+    width: auto;
+    padding: 18px;
+  }
+
+  .actions {
+    justify-content: stretch;
+  }
+
+  .primaryButton,
+  .secondaryButton {
+    flex: 1 1 160px;
+  }
+
+  .settingsButton {
+    right: 12px;
+    bottom: 12px;
+  }
+}
