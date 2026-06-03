@@ -248,13 +248,17 @@ export async function listWolfToursOrders() {
     const { data, error } = await getSupabaseAdmin()
       .from("wolftours_orders")
       .select("*")
-      .order("created_at", { ascending: false });
+      .order("created_at", { ascending: false, nullsFirst: false });
 
     if (error) {
       return [];
     }
 
-    return (data ?? []) as WolfToursOrder[];
+    return ((data ?? []) as WolfToursOrder[]).sort(
+      (firstOrder, secondOrder) =>
+        new Date(secondOrder.created_at).getTime() -
+        new Date(firstOrder.created_at).getTime(),
+    );
   } catch {
     return [];
   }
