@@ -18,7 +18,12 @@ const TAB_LABELS: Record<AdminTab, string> = {
 };
 
 type PageProps = {
-  searchParams?: Promise<{ error?: string; tab?: string }>;
+  searchParams?: Promise<{
+    date?: string;
+    error?: string;
+    productKey?: string;
+    tab?: string;
+  }>;
 };
 
 export default async function AdminPage({ searchParams }: PageProps) {
@@ -313,7 +318,12 @@ export default async function AdminPage({ searchParams }: PageProps) {
                 individual entry times. Closed availability disappears from the
                 booking widget.
               </p>
-              <AdminAvailabilityCalendar products={products} closedSlots={closedSlots} />
+              <AdminAvailabilityCalendar
+                closedSlots={closedSlots}
+                initialDate={params.date}
+                initialProductKey={params.productKey}
+                products={products}
+              />
             </section>
           ) : null}
         </div>

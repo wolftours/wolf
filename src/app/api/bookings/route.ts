@@ -1,12 +1,12 @@
 import { NextResponse } from "next/server";
 import { formatMoney } from "@/lib/booking";
 import { getStripe } from "@/lib/stripe";
-import { createWolfToursOrder } from "@/lib/wolftours-db";
+import { prepareWolfToursOrder } from "@/lib/wolftours-db";
 
 export async function POST(request: Request) {
   try {
     const body = await request.json();
-    const result = await createWolfToursOrder({
+    const result = await prepareWolfToursOrder({
       museumSlug: String(body.museumSlug ?? ""),
       productSlug: String(body.productSlug ?? ""),
       visitDate: String(body.visitDate ?? ""),
@@ -32,16 +32,19 @@ export async function POST(request: Request) {
       success_url: `${origin}/thank-you?session_id={CHECKOUT_SESSION_ID}`,
       cancel_url: `${origin}/book/${order.museum_slug}/${order.product_slug}?payment=cancelled#booking-calendar`,
       metadata: {
-        orderId: order.id,
-        reference: order.reference,
+        adults: String(order.adults),
+        children: String(order.children),
+        customerEmail: order.customer_email,
+        customerName: order.customer_name,
+        customerPhone: order.customer_phone,
+        entryTime: order.entry_time,
         museumSlug: order.museum_slug,
         productSlug: order.product_slug,
+        reference: order.reference,
         visitDate: order.visit_date,
-        entryTime: order.entry_time,
       },
       payment_intent_data: {
         metadata: {
-          orderId: order.id,
           reference: order.reference,
         },
       },

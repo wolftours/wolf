@@ -3,26 +3,59 @@ import { NextResponse } from "next/server";
 import type Stripe from "stripe";
 import { sendBookingConfirmationEmail } from "@/lib/email";
 import { getStripe } from "@/lib/stripe";
-import { getWolfToursOrderById } from "@/lib/wolftours-db";
+import {
+  createWolfToursOrder,
+  getWolfToursOrderByReference,
+} from "@/lib/wolftours-db";
 
 export const runtime = "nodejs";
+
+function getRequiredMetadata(
+  metadata: Stripe.Metadata | null,
+  key: string,
+) {
+  const value = metadata?.[key];
+
+  if (!value) {
+    throw new Error(`Stripe session is missing ${key} metadata.`);
+  }
+
+  return value;
+}
 
 async function handleCheckoutSessionCompleted(session: Stripe.Checkout.Session) {
   if (session.payment_status !== "paid") {
     return;
   }
 
-  const orderId = session.metadata?.orderId;
-  if (!orderId) {
-    throw new Error("Stripe session is missing orderId metadata.");
+  const reference = getRequiredMetadata(session.metadata, "reference");
+  const existingOrder = await getWolfToursOrderByReference(reference);
+
+  if (existingOrder) {
+    return;
   }
 
-  const order = await getWolfToursOrderById(orderId);
-  if (!order) {
-    throw new Error(`Order not found for Stripe session metadata: ${orderId}`);
+  const result = await createWolfToursOrder(
+    {
+      adults: Number(getRequiredMetadata(session.metadata, "adults")),
+      children: Number(getRequiredMetadata(session.metadata, "children")),
+      customerEmail: getRequiredMetadata(session.metadata, "customerEmail"),
+      customerName: getRequiredMetadata(session.metadata, "customerName"),
+      customerPhone: getRequiredMetadata(session.metadata, "customerPhone"),
+      entryTime: getRequiredMetadata(session.metadata, "entryTime"),
+      museumSlug: getRequiredMetadata(session.metadata, "museumSlug"),
+      productSlug: getRequiredMetadata(session.metadata, "productSlug"),
+      reference,
+      visitDate: getRequiredMetadata(session.metadata, "visitDate"),
+    },
+    { skipAvailabilityCheck: true },
+  );
+
+  if (!result.ok) {
+    throw new Error(result.error);
   }
 
-  await sendBookingConfirmationEmail(order);
+  await sendBookingConfirmationEmail(result.order);
 }
 
 export async function POST(request: Request) {

@@ -10,7 +10,7 @@ import {
 import type { BookableProduct } from "@/lib/travel-data";
 import type { WolfToursClosedSlot } from "@/lib/wolftours-db";
 import {
-  closeProductDaysAction,
+  closeProductDayAction,
   closeSlotAction,
   openProductDayAction,
   openSlotAction,
@@ -20,6 +20,8 @@ import styles from "./admin.module.css";
 type AdminAvailabilityCalendarProps = {
   products: BookableProduct[];
   closedSlots: WolfToursClosedSlot[];
+  initialDate?: string;
+  initialProductKey?: string;
 };
 
 type CalendarDay = {
@@ -70,15 +72,29 @@ function getSlotKey(slot: Pick<WolfToursClosedSlot, "visit_date" | "entry_time">
   return `${slot.visit_date}:${slot.entry_time}`;
 }
 
+function isIsoDate(value: string | undefined) {
+  return Boolean(value && /^\d{4}-\d{2}-\d{2}$/.test(value));
+}
+
 export default function AdminAvailabilityCalendar({
   products,
   closedSlots,
+  initialDate,
+  initialProductKey,
 }: AdminAvailabilityCalendarProps) {
+  const fallbackProductKey = products[0] ? getProductKey(products[0]) : "";
+  const safeInitialProductKey =
+    initialProductKey && products.some((product) => getProductKey(product) === initialProductKey)
+      ? initialProductKey
+      : fallbackProductKey;
+  const safeInitialDate = isIsoDate(initialDate) ? initialDate : getMinBookableDate();
   const [selectedProductKey, setSelectedProductKey] = useState(
-    products[0] ? getProductKey(products[0]) : "",
+    safeInitialProductKey,
   );
-  const [visibleMonth, setVisibleMonth] = useState(() => getMonthStart(new Date()));
-  const [selectedDate, setSelectedDate] = useState(() => getMinBookableDate());
+  const [visibleMonth, setVisibleMonth] = useState(() =>
+    getMonthStart(new Date(`${safeInitialDate}T12:00:00`)),
+  );
+  const [selectedDate, setSelectedDate] = useState(safeInitialDate);
   const [isPending, startTransition] = useTransition();
   const minBookableDate = useMemo(() => getMinBookableDate(), []);
 
@@ -143,11 +159,10 @@ export default function AdminAvailabilityCalendar({
 
     const formData = new FormData();
     formData.set("productKey", selectedProductKey);
-    formData.set("startDate", day.isoDate);
-    formData.set("endDate", day.isoDate);
+    formData.set("visitDate", day.isoDate);
 
     startTransition(() => {
-      void closeProductDaysAction(formData);
+      void closeProductDayAction(formData);
     });
   }
 
@@ -245,16 +260,16 @@ export default function AdminAvailabilityCalendar({
           {selectedProduct ? (
             <>
               <div className={styles.dayActions}>
-                <form action={closeProductDaysAction}>
+                <form action={closeProductDayAction}>
                   <input type="hidden" name="productKey" value={selectedProductKey} />
-                  <input type="hidden" name="startDate" value={selectedDate} />
-                  <input type="hidden" name="endDate" value={selectedDate} />
+                  <input type="hidden" name="visitDate" value={selectedDate} />
                   <button disabled={selectedDate < minBookableDate} type="submit">
                     Close whole day
                   </button>
                 </form>
                 {isSelectedDayClosed ? (
                   <form action={openProductDayAction}>
+                    <input type="hidden" name="productKey" value={selectedProductKey} />
                     <input
                       type="hidden"
                       name="museumSlug"
@@ -280,6 +295,12 @@ export default function AdminAvailabilityCalendar({
                   if (closedSlot) {
                     return (
                       <form action={openSlotAction} key={slot}>
+                        <input
+                          type="hidden"
+                          name="productKey"
+                          value={selectedProductKey}
+                        />
+                        <input type="hidden" name="visitDate" value={selectedDate} />
                         <input
                           type="hidden"
                           name="closedSlotId"

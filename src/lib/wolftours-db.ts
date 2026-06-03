@@ -31,6 +31,11 @@ export type WolfToursOrder = {
   created_at: string;
 };
 
+export type WolfToursOrderDraft = Omit<
+  WolfToursOrder,
+  "created_at" | "id" | "sent" | "sent_at"
+>;
+
 export type WolfToursClosedSlot = {
   id: string;
   museum_slug: string;
@@ -51,6 +56,11 @@ export type CreateOrderInput = {
   customerName: string;
   customerEmail: string;
   customerPhone: string;
+  reference?: string;
+};
+
+type PrepareOrderOptions = {
+  skipAvailabilityCheck?: boolean;
 };
 
 function getDatabaseErrorMessage(error: unknown) {
@@ -153,7 +163,10 @@ export async function getAvailableSlotsForProduct(
   );
 }
 
-export async function createWolfToursOrder(input: CreateOrderInput) {
+export async function prepareWolfToursOrder(
+  input: CreateOrderInput,
+  options: PrepareOrderOptions = {},
+) {
   const product = getProduct(input.museumSlug, input.productSlug);
 
   if (!product) {
@@ -187,11 +200,13 @@ export async function createWolfToursOrder(input: CreateOrderInput) {
     return { ok: false as const, error: "Please enter your phone number." };
   }
 
-  const availableSlots = await getAvailableSlotsForProduct(
-    input.museumSlug,
-    input.productSlug,
-    input.visitDate,
-  );
+  const availableSlots = options.skipAvailabilityCheck
+    ? [input.entryTime]
+    : await getAvailableSlotsForProduct(
+        input.museumSlug,
+        input.productSlug,
+        input.visitDate,
+      );
 
   if (!availableSlots.includes(input.entryTime)) {
     return { ok: false as const, error: "This entry time is no longer available." };
@@ -200,29 +215,51 @@ export async function createWolfToursOrder(input: CreateOrderInput) {
   const serviceFee = getServiceFee(product);
   const subtotal = adults * product.adultPrice + children * product.childPrice;
   const total = subtotal + serviceFee;
-  const reference = createBookingReference();
+  const reference = input.reference ?? createBookingReference();
+
+  return {
+    ok: true as const,
+    order: {
+      reference,
+      museum_slug: input.museumSlug,
+      museum_name: product.museumName,
+      product_slug: input.productSlug,
+      product_title: product.title,
+      city: product.city,
+      visit_date: input.visitDate,
+      entry_time: input.entryTime,
+      adults,
+      children,
+      customer_name: input.customerName.trim(),
+      customer_email: input.customerEmail.trim(),
+      customer_phone: input.customerPhone.trim(),
+      subtotal,
+      service_fee: serviceFee,
+      total,
+    } satisfies WolfToursOrderDraft,
+  };
+}
+
+export async function createWolfToursOrder(
+  input: CreateOrderInput,
+  options: PrepareOrderOptions = {},
+) {
+  const prepared = await prepareWolfToursOrder(input, options);
+
+  if (!prepared.ok) {
+    return prepared;
+  }
+
+  const existingOrder = await getWolfToursOrderByReference(prepared.order.reference);
+
+  if (existingOrder) {
+    return { ok: true as const, order: existingOrder };
+  }
 
   try {
     const { data: order, error } = await getSupabaseAdmin()
       .from("wolftours_orders")
-      .insert({
-        reference,
-        museum_slug: input.museumSlug,
-        museum_name: product.museumName,
-        product_slug: input.productSlug,
-        product_title: product.title,
-        city: product.city,
-        visit_date: input.visitDate,
-        entry_time: input.entryTime,
-        adults,
-        children,
-        customer_name: input.customerName.trim(),
-        customer_email: input.customerEmail.trim(),
-        customer_phone: input.customerPhone.trim(),
-        subtotal,
-        service_fee: serviceFee,
-        total,
-      })
+      .insert(prepared.order)
       .select("*")
       .single();
 
@@ -273,6 +310,24 @@ export async function getWolfToursOrderById(orderId: string) {
     .from("wolftours_orders")
     .select("*")
     .eq("id", orderId)
+    .maybeSingle();
+
+  if (error) {
+    throw new Error(getDatabaseErrorMessage(error));
+  }
+
+  return data ? (data as WolfToursOrder) : null;
+}
+
+export async function getWolfToursOrderByReference(reference: string) {
+  if (!reference || !hasSupabaseAdminEnv()) {
+    return null;
+  }
+
+  const { data, error } = await getSupabaseAdmin()
+    .from("wolftours_orders")
+    .select("*")
+    .eq("reference", reference)
     .maybeSingle();
 
   if (error) {
