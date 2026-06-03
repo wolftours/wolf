@@ -76,6 +76,14 @@ function isIsoDate(value: string | undefined) {
   return Boolean(value && /^\d{4}-\d{2}-\d{2}$/.test(value));
 }
 
+function getSafeInitialDate(initialDate: string | undefined): string {
+  if (isIsoDate(initialDate) && initialDate) {
+    return initialDate;
+  }
+
+  return getMinBookableDate();
+}
+
 export default function AdminAvailabilityCalendar({
   products,
   closedSlots,
@@ -87,7 +95,7 @@ export default function AdminAvailabilityCalendar({
     initialProductKey && products.some((product) => getProductKey(product) === initialProductKey)
       ? initialProductKey
       : fallbackProductKey;
-  const safeInitialDate = isIsoDate(initialDate) ? initialDate : getMinBookableDate();
+  const safeInitialDate = getSafeInitialDate(initialDate);
   const [selectedProductKey, setSelectedProductKey] = useState(
     safeInitialProductKey,
   );
