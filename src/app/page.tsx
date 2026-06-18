@@ -14,7 +14,7 @@ const wolfRoute = [
   {
     step: "01",
     title: "Choose your city",
-    copy: "Start with Paris, Rome, or Barcelona and see the attractions we actually sell there.",
+    copy: "Start with Paris, Rome, Barcelona, or Milan and see the attractions we actually sell there.",
   },
   {
     step: "02",
@@ -136,6 +136,7 @@ export default async function Home({ searchParams }: PageProps) {
               <span>Paris</span>
               <span>Rome</span>
               <span>Barcelona</span>
+              <span>Milan</span>
             </div>
           </div>
         </div>

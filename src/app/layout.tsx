@@ -19,7 +19,7 @@ const serif = Instrument_Serif({
 export const metadata: Metadata = {
   title: `${company.brand} | ${company.subtitle}`,
   description:
-    "Curated museum tickets and city tours in Paris, Rome, and Barcelona. Operated by Wolf Tourist s. r. o., Slovakia.",
+    "Curated museum tickets and city tours in Paris, Rome, Barcelona, and Milan. Operated by Wolf Tourist s. r. o., Slovakia.",
   icons: {
     icon: [{ url: "/favicon.svg?v=2", type: "image/svg+xml" }],
     shortcut: [{ url: "/favicon.svg?v=2", type: "image/svg+xml" }],

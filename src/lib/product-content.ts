@@ -495,6 +495,54 @@ const PRODUCT_EXTRAS: Record<
       author: "Petra · visited June",
     },
   },
+  "last-supper-standard-admission": {
+    gallery: [
+      "https://images.unsplash.com/photo-1758145025876-66f5b3cb349e?auto=format&fit=crop&w=900&q=80",
+      "https://images.unsplash.com/photo-1713700672893-4f491223f7b0?auto=format&fit=crop&w=900&q=80",
+      "https://images.unsplash.com/photo-1513581166391-887a96ddeafd?auto=format&fit=crop&w=900&q=80",
+      "https://images.unsplash.com/photo-1494891848038-7bd202a2afeb?auto=format&fit=crop&w=900&q=80",
+    ],
+    included: [
+      "The Last Supper reserved timed admission",
+      "15-minute refectory viewing slot",
+      "Mobile ticket delivery",
+      "WolfTours arrival and entrance notes",
+      "Leonardo fresco viewing guide",
+      "Email support until visit day",
+    ],
+    details: [
+      "The Last Supper is one of the hardest tickets in Italy to get right. Inventory is tight, names are checked at the door, and the visit itself is short. This product gives you the reserved slot plus the context that makes those minutes count.",
+      "Leonardo's fresco is not intact like a panel painting — it is a wall that has survived humidity, wartime damage, and centuries of restoration. WolfTours notes explain what you are actually looking at: composition, apostles, perspective, and the drama of Judas isolated in shadow.",
+      "Treat this as a Milan anchor, not a casual add-on. Arrive early, travel with the ID used at booking, and leave the rest of the day for the Duomo, Brera, or a slow walk through the Navigli.",
+    ],
+    itinerary: [
+      {
+        label: "Step 01",
+        title: "Arrive at the Cenacolo entrance",
+        copy: "Meet the correct gate at Santa Maria delle Grazie with your mobile voucher and ID ready.",
+      },
+      {
+        label: "Step 02",
+        title: "Enter the refectory",
+        copy: "Follow staff through the controlled route into the room where the fresco covers the north wall.",
+      },
+      {
+        label: "Step 03",
+        title: "Focus your 15 minutes",
+        copy: "Use the WolfTours viewing notes for Christ, the apostles, perspective lines, and Judas.",
+      },
+      {
+        label: "Step 04",
+        title: "Step back into Milan",
+        copy: "Leave with time for the cloister, a coffee, or the next stop on your city day.",
+      },
+    ],
+    testimonial: {
+      quote:
+        "The slot was short but we knew exactly what to look for. Felt like we saw Leonardo, not just a famous wall.",
+      author: "Giulia · visited September",
+    },
+  },
 };
 
 function uniqueImages(images: string[]) {

@@ -27,7 +27,7 @@ export type MuseumFaq = {
 export type Museum = {
   slug: string;
   name: string;
-  city: "Paris" | "Rome" | "Barcelona";
+  city: "Paris" | "Rome" | "Barcelona" | "Milan";
   image: string;
   heroImage: string;
   note: string;
@@ -41,7 +41,7 @@ export type Museum = {
 
 export type City = {
   slug: string;
-  name: "Paris" | "Rome" | "Barcelona";
+  name: "Paris" | "Rome" | "Barcelona" | "Milan";
   image: string;
   copy: string;
   museumSlugs: string[];
@@ -712,6 +712,113 @@ export const museums: Museum[] = [
       },
     ],
   },
+  {
+    slug: "last-supper",
+    name: "The Last Supper",
+    city: "Milan",
+    image:
+      "https://images.unsplash.com/photo-1758145025876-66f5b3cb349e?auto=format&fit=crop&w=900&q=80",
+    heroImage:
+      "https://images.unsplash.com/photo-1713700672893-4f491223f7b0?auto=format&fit=crop&w=1800&q=80",
+    note: "Leonardo's fresco in the refectory of Santa Maria delle Grazie — timed entry, strict rules, and a visit worth planning ahead.",
+    description: [
+      "The Last Supper is not a museum you wander through. It is a single room, a single wall, and fifteen minutes with one of the most studied paintings in history.",
+      "WolfTours handles the part travelers get wrong: securing a timed slot, arriving at the correct entrance, and knowing what to look for before the guard moves you on.",
+    ],
+    storySections: [
+      {
+        title: "Santa Maria delle Grazie and the Dominican refectory",
+        image:
+          "https://images.unsplash.com/photo-1758145025876-66f5b3cb349e?auto=format&fit=crop&w=1200&q=80",
+        paragraphs: [
+          "Leonardo painted The Last Supper on the north wall of the monastery refectory, not in a gallery. The room itself — long, quiet, lit from the sides — was part of the experience monks lived with every day.",
+          "WolfTours frames the visit with that context: why the wall was chosen, how the painting survived bombardment and humidity, and why access today is limited to small groups with strict timing.",
+        ],
+      },
+      {
+        title: "Fifteen minutes with Leonardo",
+        image:
+          "https://images.unsplash.com/photo-1731707668557-dd20bd59ccfa?auto=format&fit=crop&w=1200&q=80",
+        paragraphs: [
+          "Your slot is short by design. Crowds, humidity, and conservation demand it. The visit works when you arrive prepared: the apostles' reactions, Judas's shadow, the perspective lines pulling your eye to Christ.",
+          "We send pacing notes so those minutes feel focused, not frantic — what to notice first, where to stand, and why this fresco changed how painters thought about drama and space.",
+        ],
+      },
+      {
+        title: "Milan around the monastery",
+        image:
+          "https://images.unsplash.com/photo-1513581166391-887a96ddeafd?auto=format&fit=crop&w=1200&q=80",
+        paragraphs: [
+          "The church and cloister of Santa Maria delle Grazie are worth a slow walk before or after your slot. Milan's centro storico, the Navigli, and the Duomo are all within easy reach.",
+          "WolfTours keeps the day realistic: one strong anchor visit, buffer time for security, and room for espresso afterward without stacking another major museum on the same hour.",
+        ],
+      },
+    ],
+    facts: [
+      "Painted by Leonardo da Vinci between 1495 and 1498",
+      "Visits are limited to timed 15-minute entry slots",
+      "Located in the refectory of Santa Maria delle Grazie, Milan",
+    ],
+    experiences: [
+      {
+        slug: "last-supper-standard-admission",
+        title: "The Last Supper standard admission ticket",
+        image:
+          "https://images.unsplash.com/photo-1758145025876-66f5b3cb349e?auto=format&fit=crop&w=800&q=80",
+        meta: "Standard admission · Timed 15-min slot",
+        price: "From 34.90 EUR",
+        adultPrice: 25.9,
+        childPrice: 18,
+        description:
+          "Reserved timed entry to Leonardo's Last Supper with WolfTours arrival notes, refectory context, and a focused viewing guide for your 15-minute slot at Santa Maria delle Grazie.",
+        highlights: [
+          "Reserved timed entry",
+          "Refectory viewing slot",
+          "Leonardo viewing notes",
+        ],
+        duration: "Approx. 15 min viewing + arrival buffer",
+      },
+    ],
+    recommendations: [
+      "Arrive 15 minutes before your printed slot",
+      "No photography or video inside the refectory",
+      "Book weeks ahead in peak season",
+      "Pair with the Duomo or Brera on the same day, not the same hour",
+      "Bring the ID used at booking",
+    ],
+    faqs: [
+      {
+        question: "How long is the visit inside?",
+        answer:
+          "The viewing slot is about 15 minutes in the refectory. Plan extra time for ticket checks and the short walk from the meeting point to the painted wall.",
+      },
+      {
+        question: "Where is the entrance?",
+        answer:
+          "Timed tickets use the Cenacolo Vinciano entrance at Santa Maria delle Grazie. WolfTours sends the correct gate and map pin for your voucher — do not queue at the main church door unless your ticket says so.",
+      },
+      {
+        question: "Can I take photos of The Last Supper?",
+        answer:
+          "No. Photography and video are strictly forbidden in the refectory. Guards enforce the rule to protect the fragile fresco.",
+      },
+      {
+        question: "How far ahead should I book?",
+        answer:
+          "Slots release on a rolling schedule and sell out quickly in spring and summer. Book as early as your dates allow; WolfTours confirms your window at checkout.",
+      },
+      {
+        question: "Is the visit accessible?",
+        answer:
+          "The refectory route includes steps and limited seating. Contact us before booking if you need step-free access so we can confirm the current visitor path.",
+      },
+      {
+        question: "Do children need a separate ticket?",
+        answer:
+          "Yes. Every visitor in the refectory needs a named timed ticket, including children. Child pricing is shown at checkout.",
+      },
+    ],
+  },
 ];
 
 export const cities: City[] = [
@@ -730,6 +837,14 @@ export const cities: City[] = [
       "https://images.unsplash.com/photo-1624347061892-822a65656966?auto=format&fit=crop&w=900&q=80",
     copy: "Ancient streets, sacred art, espresso breaks, and stories layered over centuries.",
     museumSlugs: ["vatican-museums"],
+  },
+  {
+    slug: "milan",
+    name: "Milan",
+    image:
+      "https://images.unsplash.com/photo-1513581166391-887a96ddeafd?auto=format&fit=crop&w=900&q=80",
+    copy: "Renaissance masterpieces, design capital energy, and aperitivo after the gallery.",
+    museumSlugs: ["last-supper"],
   },
   {
     slug: "barcelona",

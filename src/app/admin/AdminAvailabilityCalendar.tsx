@@ -90,9 +90,19 @@ export default function AdminAvailabilityCalendar({
   initialDate,
   initialProductKey,
 }: AdminAvailabilityCalendarProps) {
-  const fallbackProductKey = products[0] ? getProductKey(products[0]) : "";
+  const sortedProducts = useMemo(
+    () =>
+      [...products].sort((first, second) =>
+        `${first.city} ${first.museumName} ${first.title}`.localeCompare(
+          `${second.city} ${second.museumName} ${second.title}`,
+        ),
+      ),
+    [products],
+  );
+  const fallbackProductKey = sortedProducts[0] ? getProductKey(sortedProducts[0]) : "";
   const safeInitialProductKey =
-    initialProductKey && products.some((product) => getProductKey(product) === initialProductKey)
+    initialProductKey &&
+    sortedProducts.some((product) => getProductKey(product) === initialProductKey)
       ? initialProductKey
       : fallbackProductKey;
   const safeInitialDate = getSafeInitialDate(initialDate);
@@ -106,7 +116,7 @@ export default function AdminAvailabilityCalendar({
   const [isPending, startTransition] = useTransition();
   const minBookableDate = useMemo(() => getMinBookableDate(), []);
 
-  const selectedProduct = products.find(
+  const selectedProduct = sortedProducts.find(
     (product) => getProductKey(product) === selectedProductKey,
   );
   const selectedProductClosedSlots = useMemo(() => {
@@ -183,7 +193,7 @@ export default function AdminAvailabilityCalendar({
             value={selectedProductKey}
             onChange={(event) => setSelectedProductKey(event.target.value)}
           >
-            {products.map((product) => (
+            {sortedProducts.map((product) => (
               <option key={getProductKey(product)} value={getProductKey(product)}>
                 {product.museumName} - {product.title}
               </option>

@@ -23,13 +23,30 @@ async function assertAdmin() {
 
 function getProductParts(formData: FormData) {
   const productKey = String(formData.get("productKey") ?? "");
-  const [museumSlug, productSlug] = productKey.split(":");
+  const separatorIndex = productKey.indexOf(":");
+
+  if (separatorIndex === -1) {
+    return {
+      museumSlug: String(formData.get("museumSlug") ?? ""),
+      productKey,
+      productSlug: String(formData.get("productSlug") ?? ""),
+    };
+  }
 
   return {
-    museumSlug: museumSlug ?? "",
+    museumSlug: productKey.slice(0, separatorIndex),
     productKey,
-    productSlug: productSlug ?? "",
+    productSlug: productKey.slice(separatorIndex + 1),
   };
+}
+
+function revalidateAvailability(museumSlug: string, productSlug: string) {
+  revalidatePath("/admin");
+
+  if (museumSlug && productSlug) {
+    revalidatePath(`/book/${museumSlug}/${productSlug}`);
+    revalidatePath(`/museums/${museumSlug}`);
+  }
 }
 
 function getTimesRedirectUrl(formData: FormData) {
@@ -81,7 +98,7 @@ export async function closeSlotAction(formData: FormData) {
     redirect(`/admin?tab=times&error=${encodeURIComponent(getErrorMessage(error))}`);
   }
 
-  revalidatePath("/admin");
+  revalidateAvailability(museumSlug ?? "", productSlug ?? "");
   redirect(getTimesRedirectUrl(formData));
 }
 
@@ -101,7 +118,7 @@ export async function closeProductDaysAction(formData: FormData) {
     redirect(`/admin?tab=times&error=${encodeURIComponent(getErrorMessage(error))}`);
   }
 
-  revalidatePath("/admin");
+  revalidateAvailability(museumSlug ?? "", productSlug ?? "");
   redirect(getTimesRedirectUrl(formData));
 }
 
@@ -117,12 +134,14 @@ export async function closeProductDayAction(formData: FormData) {
     redirect(`/admin?tab=times&error=${encodeURIComponent(getErrorMessage(error))}`);
   }
 
-  revalidatePath("/admin");
+  revalidateAvailability(museumSlug, productSlug);
   redirect(getTimesRedirectUrl(formData));
 }
 
 export async function openSlotAction(formData: FormData) {
   await assertAdmin();
+
+  const { museumSlug, productSlug } = getProductParts(formData);
 
   try {
     await openWolfToursSlot(String(formData.get("closedSlotId") ?? ""));
@@ -130,24 +149,27 @@ export async function openSlotAction(formData: FormData) {
     redirect(`/admin?tab=times&error=${encodeURIComponent(getErrorMessage(error))}`);
   }
 
-  revalidatePath("/admin");
+  revalidateAvailability(museumSlug ?? "", productSlug ?? "");
   redirect(getTimesRedirectUrl(formData));
 }
 
 export async function openProductDayAction(formData: FormData) {
   await assertAdmin();
 
+  const museumSlug = String(formData.get("museumSlug") ?? "");
+  const productSlug = String(formData.get("productSlug") ?? "");
+
   try {
     await openWolfToursProductDay(
-      String(formData.get("museumSlug") ?? ""),
-      String(formData.get("productSlug") ?? ""),
+      museumSlug,
+      productSlug,
       String(formData.get("visitDate") ?? ""),
     );
   } catch (error) {
     redirect(`/admin?tab=times&error=${encodeURIComponent(getErrorMessage(error))}`);
   }
 
-  revalidatePath("/admin");
+  revalidateAvailability(museumSlug, productSlug);
   redirect(getTimesRedirectUrl(formData));
 }
 
