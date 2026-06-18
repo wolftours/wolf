@@ -2,6 +2,7 @@ import Link from "next/link";
 import { GoogleAdsConversion } from "@/components/GoogleAdsConversion";
 import { SiteFooter } from "@/components/SiteFooter";
 import { SiteHeader } from "@/components/SiteHeader";
+import { fulfillStripeCheckoutBySessionId } from "@/lib/fulfill-stripe-checkout";
 import styles from "@/app/legal.module.css";
 
 const GOOGLE_ADS_PURCHASE_CONVERSION_ID = "AW-18236537339/LUVPCPvNmr4cEPvz7fdD";
@@ -17,6 +18,14 @@ export const metadata = {
 
 export default async function BookingSuccessPage({ searchParams }: PageProps) {
   const params = (await searchParams) ?? {};
+
+  if (params.session_id) {
+    try {
+      await fulfillStripeCheckoutBySessionId(params.session_id);
+    } catch (error) {
+      console.error("Could not fulfill Stripe checkout:", error);
+    }
+  }
 
   return (
     <main className={styles.page}>

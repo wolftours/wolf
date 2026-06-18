@@ -1074,6 +1074,12 @@
   grid-column: 8 / 13;
 }
 
+.cityTile:nth-child(4) {
+  grid-column: 1 / -1;
+  grid-row: 3;
+  min-height: 260px;
+}
+
 .cityTileImage {
   position: absolute;
   inset: 0;
@@ -1104,6 +1110,7 @@
   z-index: 1;
   display: flex;
   height: 100%;
+  min-width: 0;
   flex-direction: column;
   justify-content: flex-end;
   padding: 24px;
@@ -1368,7 +1375,8 @@
 
   .cityTile:nth-child(1),
   .cityTile:nth-child(2),
-  .cityTile:nth-child(3) {
+  .cityTile:nth-child(3),
+  .cityTile:nth-child(4) {
     grid-column: 1 / -1;
     grid-row: auto;
     min-height: 280px;
