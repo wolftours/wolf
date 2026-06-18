@@ -1,12 +1,12 @@
 import { NextResponse } from "next/server";
 import { formatMoney } from "@/lib/booking";
 import { getStripe } from "@/lib/stripe";
-import { prepareWolfToursOrder } from "@/lib/wolftours-db";
+import { createWolfToursOrder } from "@/lib/wolftours-db";
 
 export async function POST(request: Request) {
   try {
     const body = await request.json();
-    const result = await prepareWolfToursOrder({
+    const orderInput = {
       museumSlug: String(body.museumSlug ?? ""),
       productSlug: String(body.productSlug ?? ""),
       visitDate: String(body.visitDate ?? ""),
@@ -16,7 +16,8 @@ export async function POST(request: Request) {
       customerName: String(body.customerName ?? ""),
       customerEmail: String(body.customerEmail ?? ""),
       customerPhone: String(body.customerPhone ?? ""),
-    });
+    };
+    const result = await createWolfToursOrder(orderInput);
 
     if (!result.ok) {
       return NextResponse.json({ error: result.error }, { status: 400 });

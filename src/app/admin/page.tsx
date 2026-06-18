@@ -4,7 +4,7 @@ import { ADMIN_SESSION_COOKIE, isAdminSessionTokenValid } from "@/lib/admin-auth
 import { formatMoney } from "@/lib/booking";
 import { getAdultPackagePrice, getServiceFee } from "@/lib/pricing";
 import { cities, getAllBookableProducts, museums } from "@/lib/travel-data";
-import { setOrderSentAction } from "./actions";
+import { setOrderSentAction, syncStripeSessionAction } from "./actions";
 import { listWolfToursClosedSlots, listWolfToursOrders } from "@/lib/wolftours-db";
 import AdminAvailabilityCalendar from "./AdminAvailabilityCalendar";
 import styles from "./admin.module.css";
@@ -208,6 +208,18 @@ export default async function AdminPage({ searchParams }: PageProps) {
               <p className={styles.adminPanelIntro}>
                 Live WolfTours bookings from Supabase. Use the sent toggle once vouchers are delivered.
               </p>
+              <form className={styles.adminSyncForm} action={syncStripeSessionAction}>
+                <label htmlFor="stripe-session-id">Recover paid Stripe checkout</label>
+                <div className={styles.adminSyncRow}>
+                  <input
+                    id="stripe-session-id"
+                    name="sessionId"
+                    placeholder="cs_live_..."
+                    type="text"
+                  />
+                  <button type="submit">Sync order</button>
+                </div>
+              </form>
               <div className={styles.adminTableWrap}>
                 <table className={styles.adminTable}>
                   <thead>

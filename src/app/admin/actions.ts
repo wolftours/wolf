@@ -4,6 +4,7 @@ import { cookies } from "next/headers";
 import { revalidatePath } from "next/cache";
 import { redirect } from "next/navigation";
 import { ADMIN_SESSION_COOKIE, isAdminSessionTokenValid } from "@/lib/admin-auth";
+import { fulfillStripeCheckoutBySessionId } from "@/lib/fulfill-stripe-checkout";
 import {
   closeWolfToursProductDays,
   closeWolfToursSlot,
@@ -65,6 +66,31 @@ function getTimesRedirectUrl(formData: FormData) {
   }
 
   return `/admin?${params.toString()}`;
+}
+
+export async function syncStripeSessionAction(formData: FormData) {
+  await assertAdmin();
+
+  const sessionId = String(formData.get("sessionId") ?? "").trim();
+
+  if (!sessionId) {
+    redirect("/admin?tab=orders&error=Missing%20Stripe%20session%20ID.");
+  }
+
+  try {
+    const result = await fulfillStripeCheckoutBySessionId(sessionId);
+
+    if (!result.fulfilled) {
+      redirect(
+        `/admin?tab=orders&error=${encodeURIComponent("Stripe payment is not marked as paid yet.")}`,
+      );
+    }
+  } catch (error) {
+    redirect(`/admin?tab=orders&error=${encodeURIComponent(getErrorMessage(error))}`);
+  }
+
+  revalidatePath("/admin");
+  redirect("/admin?tab=orders");
 }
 
 export async function setOrderSentAction(formData: FormData) {

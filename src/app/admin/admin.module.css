@@ -698,6 +698,47 @@
   font-size: 15px;
 }
 
+.adminSyncForm {
+  margin-top: 18px;
+  padding: 16px;
+  border: 1px solid #e5e7eb;
+  border-radius: 14px;
+  background: #f9fafb;
+}
+
+.adminSyncForm label {
+  display: block;
+  color: #374151;
+  font-size: 13px;
+  font-weight: 700;
+}
+
+.adminSyncRow {
+  display: flex;
+  gap: 10px;
+  margin-top: 10px;
+}
+
+.adminSyncRow input {
+  flex: 1;
+  min-width: 0;
+  padding: 10px 12px;
+  border: 1px solid #d1d5db;
+  border-radius: 10px;
+  font-size: 14px;
+}
+
+.adminSyncRow button {
+  padding: 10px 16px;
+  border: 0;
+  border-radius: 10px;
+  background: #102033;
+  color: #fff;
+  font-size: 14px;
+  font-weight: 700;
+  cursor: pointer;
+}
+
 .adminTableWrap {
   margin-top: 22px;
   overflow-x: auto;
