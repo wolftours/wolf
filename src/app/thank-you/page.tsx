@@ -4,7 +4,7 @@ import { SiteFooter } from "@/components/SiteFooter";
 import { SiteHeader } from "@/components/SiteHeader";
 import styles from "@/app/legal.module.css";
 
-const GOOGLE_ADS_PURCHASE_CONVERSION_ID = "AW-18199793120/R2JyCOas2bccEOCbq-ZD";
+const GOOGLE_ADS_PURCHASE_CONVERSION_ID = "AW-18236537339/LUVPCPvNmr4cEPvz7fdD";
 
 type PageProps = {
   searchParams?: Promise<{ session_id?: string }>;
@@ -21,6 +21,7 @@ export default async function ThankYouPage({ searchParams }: PageProps) {
   return (
     <main className={styles.page}>
       <GoogleAdsConversion
+        currency="RON"
         sendTo={GOOGLE_ADS_PURCHASE_CONVERSION_ID}
         transactionId={params.session_id}
       />

@@ -45,3 +45,5 @@ next-env.d.ts
 
 # unrelated downloaded template
 /nextjs-admin-dashboard-main/
+
+.vercel
