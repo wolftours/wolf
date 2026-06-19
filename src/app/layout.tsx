@@ -51,7 +51,7 @@ export default function RootLayout({
           `}
         </Script>
         <Script
-          src="https://www.googletagmanager.com/gtag/js?id=G-MVDZWDCQSD"
+          src="https://www.googletagmanager.com/gtag/js?id=AW-18199793120"
           strategy="afterInteractive"
         />
         <Script id="google-tags" strategy="afterInteractive">
@@ -60,7 +60,6 @@ export default function RootLayout({
             function gtag(){dataLayer.push(arguments);}
             gtag('js', new Date());
             gtag('config', 'G-MVDZWDCQSD');
-            gtag('config', 'AW-18236537339');
             gtag('config', 'AW-18199793120');
           `}
         </Script>
