@@ -5,7 +5,7 @@ import { SiteHeader } from "@/components/SiteHeader";
 import { fulfillStripeCheckoutBySessionId } from "@/lib/fulfill-stripe-checkout";
 import styles from "@/app/legal.module.css";
 
-const GOOGLE_ADS_PURCHASE_CONVERSION_ID = "AW-18236537339/LUVPCPvNmr4cEPvz7fdD";
+const GOOGLE_ADS_PURCHASE_CONVERSION_ID = "AW-18199793120/R2JyCOas2bccEOCbq-ZD";
 
 type PageProps = {
   searchParams?: Promise<{ session_id?: string }>;
