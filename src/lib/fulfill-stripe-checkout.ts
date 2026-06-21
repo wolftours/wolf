@@ -63,6 +63,7 @@ export async function fulfillStripeCheckoutSession(
 }
 
 export async function fulfillStripeCheckoutBySessionId(sessionId: string) {
-  const session = await getStripe().checkout.sessions.retrieve(sessionId);
+  const stripe = await getStripe();
+  const session = await stripe.checkout.sessions.retrieve(sessionId);
   return fulfillStripeCheckoutSession(session);
 }
