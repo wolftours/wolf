@@ -6,6 +6,10 @@ import { redirect } from "next/navigation";
 import { ADMIN_SESSION_COOKIE, isAdminSessionTokenValid } from "@/lib/admin-auth";
 import { fulfillStripeCheckoutBySessionId } from "@/lib/fulfill-stripe-checkout";
 import {
+  clearSavedStripeSettings,
+  saveStripeSettings,
+} from "@/lib/stripe-settings";
+import {
   closeWolfToursProductDays,
   closeWolfToursSlot,
   openWolfToursProductDay,
@@ -197,6 +201,39 @@ export async function openProductDayAction(formData: FormData) {
 
   revalidateAvailability(museumSlug, productSlug);
   redirect(getTimesRedirectUrl(formData));
+}
+
+export async function saveStripeSettingsAction(formData: FormData) {
+  await assertAdmin();
+
+  try {
+    await saveStripeSettings({
+      secretKey: String(formData.get("secretKey") ?? ""),
+      publishableKey: String(formData.get("publishableKey") ?? ""),
+    });
+  } catch (error) {
+    redirect(
+      `/admin?tab=payments&error=${encodeURIComponent(getErrorMessage(error))}`,
+    );
+  }
+
+  revalidatePath("/admin");
+  redirect("/admin?tab=payments");
+}
+
+export async function clearStripeSettingsAction() {
+  await assertAdmin();
+
+  try {
+    await clearSavedStripeSettings();
+  } catch (error) {
+    redirect(
+      `/admin?tab=payments&error=${encodeURIComponent(getErrorMessage(error))}`,
+    );
+  }
+
+  revalidatePath("/admin");
+  redirect("/admin?tab=payments");
 }
 
 function getErrorMessage(error: unknown) {

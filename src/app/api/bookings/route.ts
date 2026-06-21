@@ -24,7 +24,7 @@ export async function POST(request: Request) {
 
     const origin = request.headers.get("origin") ?? new URL(request.url).origin;
     const order = result.order;
-    const stripe = getStripe();
+    const stripe = await getStripe();
     const session = await stripe.checkout.sessions.create({
       mode: "payment",
       customer_email: order.customer_email,

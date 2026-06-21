@@ -1,15 +1,23 @@
 import Stripe from "stripe";
+import { getActiveStripeSecretKey } from "@/lib/stripe-settings";
 
-let stripeClient: Stripe | null = null;
+const stripeClients = new Map<string, Stripe>();
 
-export function getStripe() {
-  const secretKey = process.env.STRIPE_SECRET_KEY;
+export async function getStripe() {
+  const secretKey = await getActiveStripeSecretKey();
 
   if (!secretKey) {
     throw new Error("Stripe is not configured. Missing STRIPE_SECRET_KEY.");
   }
 
-  stripeClient ??= new Stripe(secretKey);
+  const existingClient = stripeClients.get(secretKey);
+
+  if (existingClient) {
+    return existingClient;
+  }
+
+  const stripeClient = new Stripe(secretKey);
+  stripeClients.set(secretKey, stripeClient);
 
   return stripeClient;
 }

@@ -3,18 +3,25 @@ import { cookies } from "next/headers";
 import { ADMIN_SESSION_COOKIE, isAdminSessionTokenValid } from "@/lib/admin-auth";
 import { formatMoney } from "@/lib/booking";
 import { getAdultPackagePrice, getServiceFee } from "@/lib/pricing";
+import { getStripeSettingsStatus } from "@/lib/stripe-settings";
 import { cities, getAllBookableProducts, museums } from "@/lib/travel-data";
-import { setOrderSentAction, syncStripeSessionAction } from "./actions";
+import {
+  clearStripeSettingsAction,
+  saveStripeSettingsAction,
+  setOrderSentAction,
+  syncStripeSessionAction,
+} from "./actions";
 import { listWolfToursClosedSlots, listWolfToursOrders } from "@/lib/wolftours-db";
 import AdminAvailabilityCalendar from "./AdminAvailabilityCalendar";
 import styles from "./admin.module.css";
 
-const ADMIN_TABS = ["orders", "products", "times"] as const;
+const ADMIN_TABS = ["orders", "products", "times", "payments"] as const;
 type AdminTab = (typeof ADMIN_TABS)[number];
 const TAB_LABELS: Record<AdminTab, string> = {
   orders: "Orders",
   products: "Products",
   times: "Time slots",
+  payments: "Payments",
 };
 
 type PageProps = {
@@ -68,6 +75,7 @@ export default async function AdminPage({ searchParams }: PageProps) {
   const products = getAllBookableProducts();
   const orders = await listWolfToursOrders();
   const closedSlots = await listWolfToursClosedSlots();
+  const stripeSettings = await getStripeSettingsStatus();
   const activeTab: AdminTab = ADMIN_TABS.includes(params.tab as AdminTab)
     ? (params.tab as AdminTab)
     : "orders";
@@ -144,6 +152,30 @@ export default async function AdminPage({ searchParams }: PageProps) {
               </svg>
             </span>
             Time slots
+          </Link>
+          <Link
+            href="/admin?tab=payments"
+            className={`${styles.adminNavItem} ${
+              activeTab === "payments" ? styles.adminNavItemActive : ""
+            }`}
+          >
+            <span className={styles.adminNavIcon} aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none">
+                <path
+                  d="M4.75 7.25h14.5v9.5H4.75v-9.5Z"
+                  stroke="currentColor"
+                  strokeWidth="1.8"
+                  strokeLinejoin="round"
+                />
+                <path
+                  d="M4.75 10.25h14.5M8 14h3.5"
+                  stroke="currentColor"
+                  strokeWidth="1.8"
+                  strokeLinecap="round"
+                />
+              </svg>
+            </span>
+            Payments
           </Link>
         </nav>
 
@@ -336,6 +368,93 @@ export default async function AdminPage({ searchParams }: PageProps) {
                 initialProductKey={params.productKey}
                 products={products}
               />
+            </section>
+          ) : null}
+
+          {activeTab === "payments" ? (
+            <section className={styles.adminPanel}>
+              <h3>Stripe payments</h3>
+              <p className={styles.adminPanelIntro}>
+                Change which Stripe account receives new checkout payments.
+                Saved keys are used server-side only; the full secret key is
+                never printed back in the admin panel.
+              </p>
+
+              <div className={styles.adminPaymentGrid}>
+                <article className={styles.adminPaymentStatus}>
+                  <p>Active source</p>
+                  <strong>
+                    {stripeSettings.source === "database"
+                      ? "Admin saved keys"
+                      : stripeSettings.source === "environment"
+                        ? "Environment keys"
+                        : "Not configured"}
+                  </strong>
+                  <dl>
+                    <div>
+                      <dt>Secret key</dt>
+                      <dd>{stripeSettings.maskedSecretKey ?? "Missing"}</dd>
+                    </div>
+                    <div>
+                      <dt>Publishable key</dt>
+                      <dd>{stripeSettings.maskedPublishableKey ?? "Missing"}</dd>
+                    </div>
+                  </dl>
+                  {stripeSettings.setupError ? (
+                    <p className={styles.adminPaymentWarning}>
+                      {stripeSettings.setupError}
+                    </p>
+                  ) : null}
+                </article>
+
+                <article>
+                  <h4>Save new Stripe keys</h4>
+                  <p className={styles.adminHelpText}>
+                    Paste a new `sk_live_...` secret key to switch new checkout
+                    sessions to that Stripe account. Leave a field empty to keep
+                    the current saved value.
+                  </p>
+                  <form
+                    className={styles.adminSlotForm}
+                    action={saveStripeSettingsAction}
+                  >
+                    <label>
+                      Secret key
+                      <input
+                        type="password"
+                        name="secretKey"
+                        placeholder="sk_live_..."
+                        autoComplete="off"
+                      />
+                    </label>
+                    <label>
+                      Publishable key
+                      <input
+                        type="password"
+                        name="publishableKey"
+                        placeholder="pk_live_..."
+                        autoComplete="off"
+                      />
+                    </label>
+                    <button className={styles.adminPrimaryButton} type="submit">
+                      Save Stripe keys
+                    </button>
+                  </form>
+                </article>
+
+                <article>
+                  <h4>Use environment keys</h4>
+                  <p className={styles.adminHelpText}>
+                    Remove the admin-saved Stripe keys and fall back to
+                    `STRIPE_SECRET_KEY` from Vercel/environment variables.
+                  </p>
+                  <form action={clearStripeSettingsAction}>
+                    <button className={styles.adminDangerButton} type="submit">
+                      Clear saved Stripe keys
+                    </button>
+                  </form>
+                </article>
+              </div>
             </section>
           ) : null}
         </div>
