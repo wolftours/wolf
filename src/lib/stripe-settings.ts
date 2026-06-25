@@ -11,6 +11,8 @@ type SettingRow = {
 
 export type StripeSettingsStatus = {
   source: "database" | "environment" | "missing";
+  secretKey: string | null;
+  publishableKey: string | null;
   maskedSecretKey: string | null;
   maskedPublishableKey: string | null;
   hasSavedSecretKey: boolean;
@@ -100,6 +102,8 @@ export async function getStripeSettingsStatus(): Promise<StripeSettingsStatus> {
 
   return {
     source: savedSecretKey ? "database" : envSecretKey ? "environment" : "missing",
+    secretKey: savedSecretKey || envSecretKey || null,
+    publishableKey: savedPublishableKey || envPublishableKey || null,
     maskedSecretKey: maskKey(savedSecretKey || envSecretKey),
     maskedPublishableKey: maskKey(savedPublishableKey || envPublishableKey),
     hasSavedSecretKey: Boolean(savedSecretKey),

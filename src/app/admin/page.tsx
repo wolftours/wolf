@@ -474,8 +474,8 @@ export default async function AdminPage({ searchParams }: PageProps) {
               <h3>Stripe payments</h3>
               <p className={styles.adminPanelIntro}>
                 Change which Stripe account receives new checkout payments.
-                Saved keys are used server-side only; the full secret key is
-                never printed back in the admin panel.
+                The full active keys are printed here so you can verify exactly
+                which Stripe account is configured.
               </p>
 
               <div className={styles.adminPaymentGrid}>
@@ -491,11 +491,11 @@ export default async function AdminPage({ searchParams }: PageProps) {
                   <dl>
                     <div>
                       <dt>Secret key</dt>
-                      <dd>{stripeSettings.maskedSecretKey ?? "Missing"}</dd>
+                      <dd>{stripeSettings.secretKey ?? "Missing"}</dd>
                     </div>
                     <div>
                       <dt>Publishable key</dt>
-                      <dd>{stripeSettings.maskedPublishableKey ?? "Missing"}</dd>
+                      <dd>{stripeSettings.publishableKey ?? "Missing"}</dd>
                     </div>
                   </dl>
                   {stripeSettings.setupError ? (
