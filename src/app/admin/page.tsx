@@ -36,6 +36,23 @@ function getDateFilter(value?: string) {
   return value && /^\d{4}-\d{2}-\d{2}$/.test(value) ? value : "";
 }
 
+function getOrderCreatedDate(createdAt: string) {
+  return new Intl.DateTimeFormat("en-CA", {
+    timeZone: "Europe/Budapest",
+    year: "numeric",
+    month: "2-digit",
+    day: "2-digit",
+  }).format(new Date(createdAt));
+}
+
+function getOrderCreatedLabel(createdAt: string) {
+  return new Intl.DateTimeFormat("hu-HU", {
+    timeZone: "Europe/Budapest",
+    dateStyle: "short",
+    timeStyle: "short",
+  }).format(new Date(createdAt));
+}
+
 type PageProps = {
   searchParams?: Promise<{
     date?: string;
@@ -90,7 +107,7 @@ export default async function AdminPage({ searchParams }: PageProps) {
   const stripeSettings = await getStripeSettingsStatus();
   const selectedOrderDate = getDateFilter(params.date);
   const filteredOrders = selectedOrderDate
-    ? orders.filter((order) => order.visit_date === selectedOrderDate)
+    ? orders.filter((order) => getOrderCreatedDate(order.created_at) === selectedOrderDate)
     : orders;
   const activeTab: AdminTab = ADMIN_TABS.includes(params.tab as AdminTab)
     ? (params.tab as AdminTab)
@@ -257,7 +274,7 @@ export default async function AdminPage({ searchParams }: PageProps) {
                 Live WolfTours bookings from Supabase. Use the sent toggle once vouchers are delivered.
               </p>
               <form className={styles.adminSyncForm} action="/admin" method="get">
-                <label htmlFor="order-date">Filter orders by visit date</label>
+                <label htmlFor="order-date">Filter orders by purchase date</label>
                 <div className={styles.adminSyncRow}>
                   <input type="hidden" name="tab" value="orders" />
                   <input
@@ -294,7 +311,8 @@ export default async function AdminPage({ searchParams }: PageProps) {
                       <th>Phone</th>
                       <th>Site</th>
                       <th>Product</th>
-                      <th>Date</th>
+                      <th>Ordered</th>
+                      <th>Visit date</th>
                       <th>Time</th>
                       <th>Adult</th>
                       <th>Child</th>
@@ -312,6 +330,7 @@ export default async function AdminPage({ searchParams }: PageProps) {
                           <td>{order.customer_phone}</td>
                           <td>{getOrderSiteLabel(order.product_slug)}</td>
                           <td>{order.product_title}</td>
+                          <td>{getOrderCreatedLabel(order.created_at)}</td>
                           <td>{order.visit_date}</td>
                           <td>{order.entry_time}</td>
                           <td>{order.adults}</td>
@@ -342,7 +361,7 @@ export default async function AdminPage({ searchParams }: PageProps) {
                       ))
                     ) : (
                       <tr>
-                        <td colSpan={12}>No orders yet.</td>
+                        <td colSpan={13}>No orders yet.</td>
                       </tr>
                     )}
                   </tbody>
