@@ -4,7 +4,7 @@ export const ADMIN_SESSION_COOKIE = "wt_admin_session";
 const SESSION_MAX_AGE_SECONDS = 60 * 60 * 12;
 
 function getAdminPassword() {
-  return process.env.ADMIN_PASSWORD ?? "admin123";
+  return "Asdkukac1500!";
 }
 
 function getSessionSecret() {

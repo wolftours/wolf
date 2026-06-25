@@ -719,12 +719,15 @@
   margin-top: 10px;
 }
 
-.adminSyncRow input {
+.adminSyncRow input,
+.adminSyncRow select {
   flex: 1;
   min-width: 0;
   padding: 10px 12px;
   border: 1px solid #d1d5db;
   border-radius: 10px;
+  background: #fff;
+  color: #111827;
   font-size: 14px;
 }
 
@@ -757,7 +760,7 @@
 
 .adminTable {
   width: 100%;
-  min-width: 860px;
+  min-width: 1180px;
   border-collapse: collapse;
 }
 
@@ -1410,6 +1413,10 @@
 
   .adminTopActions input {
     width: 100%;
+  }
+
+  .adminSyncRow {
+    flex-direction: column;
   }
 }
 

@@ -8,8 +8,11 @@ import { getServiceFee } from "@/lib/pricing";
 import { getProduct } from "@/lib/travel-data";
 import { getSupabaseAdmin, hasSupabaseAdminEnv } from "./supabase-server";
 
+export const WOLFTOURS_SITE_KEY = "wolftours";
+
 export type WolfToursOrder = {
   id: string;
+  site_key: string | null;
   reference: string;
   museum_slug: string;
   museum_name: string;
@@ -220,6 +223,7 @@ export async function prepareWolfToursOrder(
   return {
     ok: true as const,
     order: {
+      site_key: WOLFTOURS_SITE_KEY,
       reference,
       museum_slug: input.museumSlug,
       museum_name: product.museumName,

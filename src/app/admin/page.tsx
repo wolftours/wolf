@@ -27,9 +27,43 @@ const VATICAN_SITE_PRODUCT_SLUGS = new Set([
   "vatican-sistine-chapel-entry",
   "private-vatican-museums-tour",
 ]);
+const SAGRADA_SITE_PRODUCT_SLUGS = new Set([
+  "sagrada-standard-admission",
+  "sagrada-basilica",
+  "sagrada-towers",
+  "sagrada-audioguide-ticket",
+]);
+const SITE_FILTERS = ["all", "wolftours", "vaticanentry", "sagradaentry"] as const;
+type SiteFilter = (typeof SITE_FILTERS)[number];
 
-function getOrderSiteLabel(productSlug: string) {
-  return VATICAN_SITE_PRODUCT_SLUGS.has(productSlug) ? "Vatican site" : "WolfTours";
+function getOrderSiteKey(order: { product_slug: string; site_key?: string | null }) {
+  if (order.site_key) {
+    return order.site_key;
+  }
+
+  if (VATICAN_SITE_PRODUCT_SLUGS.has(order.product_slug)) {
+    return "vaticanentry";
+  }
+
+  if (SAGRADA_SITE_PRODUCT_SLUGS.has(order.product_slug)) {
+    return "sagradaentry";
+  }
+
+  return "wolftours";
+}
+
+function getOrderSiteLabel(order: { product_slug: string; site_key?: string | null }) {
+  const siteKey = getOrderSiteKey(order);
+
+  if (siteKey === "vaticanentry") {
+    return "Vatican site";
+  }
+
+  if (siteKey === "sagradaentry") {
+    return "Sagrada site";
+  }
+
+  return "WolfTours";
 }
 
 function getDateFilter(value?: string) {
@@ -58,6 +92,7 @@ type PageProps = {
     date?: string;
     error?: string;
     productKey?: string;
+    site?: string;
     tab?: string;
   }>;
 };
@@ -106,9 +141,21 @@ export default async function AdminPage({ searchParams }: PageProps) {
   const closedSlots = await listWolfToursClosedSlots();
   const stripeSettings = await getStripeSettingsStatus();
   const selectedOrderDate = getDateFilter(params.date);
+  const selectedSite = SITE_FILTERS.includes(params.site as SiteFilter)
+    ? (params.site as SiteFilter)
+    : "all";
   const filteredOrders = selectedOrderDate
     ? orders.filter((order) => getOrderCreatedDate(order.created_at) === selectedOrderDate)
     : orders;
+  const visibleOrders =
+    selectedSite === "all"
+      ? filteredOrders
+      : filteredOrders.filter((order) => getOrderSiteKey(order) === selectedSite);
+  const visibleOrdersTotal = visibleOrders.reduce(
+    (sum, order) => sum + Number(order.total || 0),
+    0,
+  );
+  const visibleAdults = visibleOrders.reduce((sum, order) => sum + order.adults, 0);
   const activeTab: AdminTab = ADMIN_TABS.includes(params.tab as AdminTab)
     ? (params.tab as AdminTab)
     : "orders";
@@ -250,12 +297,12 @@ export default async function AdminPage({ searchParams }: PageProps) {
 
           <div className={styles.adminCards}>
             <article>
-              <p>Museums</p>
-              <strong>{museums.length}</strong>
+              <p>Filtered revenue</p>
+              <strong>{formatMoney(visibleOrdersTotal)}</strong>
             </article>
             <article>
-              <p>Cities</p>
-              <strong>{cities.length}</strong>
+              <p>Adult tickets</p>
+              <strong>{visibleAdults}</strong>
             </article>
             <article>
               <p>Bookable products</p>
@@ -263,7 +310,7 @@ export default async function AdminPage({ searchParams }: PageProps) {
             </article>
             <article>
               <p>Orders</p>
-              <strong>{filteredOrders.length}</strong>
+              <strong>{visibleOrders.length}</strong>
             </article>
           </div>
 
@@ -283,8 +330,14 @@ export default async function AdminPage({ searchParams }: PageProps) {
                     type="date"
                     defaultValue={selectedOrderDate}
                   />
+                  <select name="site" defaultValue={selectedSite}>
+                    <option value="all">All sites</option>
+                    <option value="wolftours">WolfTours</option>
+                    <option value="vaticanentry">Vatican site</option>
+                    <option value="sagradaentry">Sagrada site</option>
+                  </select>
                   <button type="submit">Filter</button>
-                  {selectedOrderDate ? (
+                  {selectedOrderDate || selectedSite !== "all" ? (
                     <Link href="/admin?tab=orders">Clear</Link>
                   ) : null}
                 </div>
@@ -321,14 +374,14 @@ export default async function AdminPage({ searchParams }: PageProps) {
                     </tr>
                   </thead>
                   <tbody>
-                    {filteredOrders.length > 0 ? (
-                      filteredOrders.map((order) => (
+                    {visibleOrders.length > 0 ? (
+                      visibleOrders.map((order) => (
                         <tr key={order.id}>
                           <td>{order.reference}</td>
                           <td>{order.customer_name}</td>
                           <td>{order.customer_email}</td>
                           <td>{order.customer_phone}</td>
-                          <td>{getOrderSiteLabel(order.product_slug)}</td>
+                          <td>{getOrderSiteLabel(order)}</td>
                           <td>{order.product_title}</td>
                           <td>{getOrderCreatedLabel(order.created_at)}</td>
                           <td>{order.visit_date}</td>
