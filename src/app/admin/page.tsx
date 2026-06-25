@@ -70,15 +70,6 @@ function getDateFilter(value?: string) {
   return value && /^\d{4}-\d{2}-\d{2}$/.test(value) ? value : "";
 }
 
-function getOrderCreatedDate(createdAt: string) {
-  return new Intl.DateTimeFormat("en-CA", {
-    timeZone: "Europe/Budapest",
-    year: "numeric",
-    month: "2-digit",
-    day: "2-digit",
-  }).format(new Date(createdAt));
-}
-
 function getOrderCreatedLabel(createdAt: string) {
   return new Intl.DateTimeFormat("hu-HU", {
     timeZone: "Europe/Budapest",
@@ -137,20 +128,17 @@ export default async function AdminPage({ searchParams }: PageProps) {
   }
 
   const products = getAllBookableProducts();
-  const orders = await listWolfToursOrders();
-  const closedSlots = await listWolfToursClosedSlots();
-  const stripeSettings = await getStripeSettingsStatus();
   const selectedOrderDate = getDateFilter(params.date);
   const selectedSite = SITE_FILTERS.includes(params.site as SiteFilter)
     ? (params.site as SiteFilter)
     : "all";
-  const filteredOrders = selectedOrderDate
-    ? orders.filter((order) => getOrderCreatedDate(order.created_at) === selectedOrderDate)
-    : orders;
-  const visibleOrders =
-    selectedSite === "all"
-      ? filteredOrders
-      : filteredOrders.filter((order) => getOrderSiteKey(order) === selectedSite);
+  const orders = await listWolfToursOrders({
+    purchaseDate: selectedOrderDate,
+    siteKey: selectedSite,
+  });
+  const closedSlots = await listWolfToursClosedSlots();
+  const stripeSettings = await getStripeSettingsStatus();
+  const visibleOrders = orders;
   const visibleOrdersTotal = visibleOrders.reduce(
     (sum, order) => sum + Number(order.total || 0),
     0,
@@ -381,7 +369,11 @@ export default async function AdminPage({ searchParams }: PageProps) {
                           <td>{order.customer_name}</td>
                           <td>{order.customer_email}</td>
                           <td>{order.customer_phone}</td>
-                          <td>{getOrderSiteLabel(order)}</td>
+                          <td>
+                            <span className={styles.adminSiteBadge}>
+                              {getOrderSiteLabel(order)}
+                            </span>
+                          </td>
                           <td>{order.product_title}</td>
                           <td>{getOrderCreatedLabel(order.created_at)}</td>
                           <td>{order.visit_date}</td>

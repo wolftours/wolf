@@ -785,6 +785,20 @@
   font-weight: 500;
 }
 
+.adminSiteBadge {
+  display: inline-flex;
+  align-items: center;
+  min-height: 28px;
+  padding: 0 10px;
+  border: 1px solid #c7d2fe;
+  border-radius: 999px;
+  background: #eef2ff;
+  color: #3730a3;
+  font-size: 12px;
+  font-weight: 850;
+  white-space: nowrap;
+}
+
 .adminTimeGrid {
   display: grid;
   grid-template-columns: repeat(2, minmax(0, 1fr));

@@ -66,6 +66,11 @@ type PrepareOrderOptions = {
   skipAvailabilityCheck?: boolean;
 };
 
+type ListWolfToursOrdersOptions = {
+  purchaseDate?: string;
+  siteKey?: string;
+};
+
 function getDatabaseErrorMessage(error: unknown) {
   const message = error instanceof Error ? error.message : "";
 
@@ -79,6 +84,57 @@ function getDatabaseErrorMessage(error: unknown) {
   }
 
   return message || "Could not create order.";
+}
+
+function getTimeZoneOffsetMs(date: Date, timeZone: string) {
+  const parts = new Intl.DateTimeFormat("en-US", {
+    timeZone,
+    year: "numeric",
+    month: "2-digit",
+    day: "2-digit",
+    hour: "2-digit",
+    minute: "2-digit",
+    second: "2-digit",
+    hourCycle: "h23",
+  }).formatToParts(date);
+  const part = (type: string) => parts.find((item) => item.type === type)?.value ?? "0";
+  const zonedAsUtc = Date.UTC(
+    Number(part("year")),
+    Number(part("month")) - 1,
+    Number(part("day")),
+    Number(part("hour")),
+    Number(part("minute")),
+    Number(part("second")),
+  );
+
+  return zonedAsUtc - date.getTime();
+}
+
+function getPurchaseDateRange(date: string) {
+  const match = /^(\d{4})-(\d{2})-(\d{2})$/.exec(date);
+  if (!match) {
+    return null;
+  }
+
+  const [, yearRaw, monthRaw, dayRaw] = match;
+  const year = Number(yearRaw);
+  const month = Number(monthRaw);
+  const day = Number(dayRaw);
+  const toUtc = (localYear: number, localMonth: number, localDay: number) => {
+    const utcGuess = new Date(Date.UTC(localYear, localMonth - 1, localDay, 0, 0, 0));
+    const offset = getTimeZoneOffsetMs(utcGuess, "Europe/Budapest");
+    return new Date(utcGuess.getTime() - offset).toISOString();
+  };
+  const nextDay = new Date(Date.UTC(year, month - 1, day + 1));
+
+  return {
+    end: toUtc(
+      nextDay.getUTCFullYear(),
+      nextDay.getUTCMonth() + 1,
+      nextDay.getUTCDate(),
+    ),
+    start: toUtc(year, month, day),
+  };
 }
 
 function getBookingTimezoneNow() {
@@ -280,16 +336,29 @@ export async function createWolfToursOrder(
   }
 }
 
-export async function listWolfToursOrders() {
+export async function listWolfToursOrders(options: ListWolfToursOrdersOptions = {}) {
   if (!hasSupabaseAdminEnv()) {
     return [];
   }
 
   try {
-    const { data, error } = await getSupabaseAdmin()
+    let query = getSupabaseAdmin()
       .from("wolftours_orders")
       .select("*")
       .order("created_at", { ascending: false, nullsFirst: false });
+    const dateRange = options.purchaseDate
+      ? getPurchaseDateRange(options.purchaseDate)
+      : null;
+
+    if (dateRange) {
+      query = query.gte("created_at", dateRange.start).lt("created_at", dateRange.end);
+    }
+
+    if (options.siteKey && options.siteKey !== "all") {
+      query = query.eq("site_key", options.siteKey);
+    }
+
+    const { data, error } = await query;
 
     if (error) {
       return [];
