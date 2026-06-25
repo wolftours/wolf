@@ -32,6 +32,10 @@ function getOrderSiteLabel(productSlug: string) {
   return VATICAN_SITE_PRODUCT_SLUGS.has(productSlug) ? "Vatican site" : "WolfTours";
 }
 
+function getDateFilter(value?: string) {
+  return value && /^\d{4}-\d{2}-\d{2}$/.test(value) ? value : "";
+}
+
 type PageProps = {
   searchParams?: Promise<{
     date?: string;
@@ -84,6 +88,10 @@ export default async function AdminPage({ searchParams }: PageProps) {
   const orders = await listWolfToursOrders();
   const closedSlots = await listWolfToursClosedSlots();
   const stripeSettings = await getStripeSettingsStatus();
+  const selectedOrderDate = getDateFilter(params.date);
+  const filteredOrders = selectedOrderDate
+    ? orders.filter((order) => order.visit_date === selectedOrderDate)
+    : orders;
   const activeTab: AdminTab = ADMIN_TABS.includes(params.tab as AdminTab)
     ? (params.tab as AdminTab)
     : "orders";
@@ -238,7 +246,7 @@ export default async function AdminPage({ searchParams }: PageProps) {
             </article>
             <article>
               <p>Orders</p>
-              <strong>{orders.length}</strong>
+              <strong>{filteredOrders.length}</strong>
             </article>
           </div>
 
@@ -248,6 +256,22 @@ export default async function AdminPage({ searchParams }: PageProps) {
               <p className={styles.adminPanelIntro}>
                 Live WolfTours bookings from Supabase. Use the sent toggle once vouchers are delivered.
               </p>
+              <form className={styles.adminSyncForm} action="/admin" method="get">
+                <label htmlFor="order-date">Filter orders by visit date</label>
+                <div className={styles.adminSyncRow}>
+                  <input type="hidden" name="tab" value="orders" />
+                  <input
+                    id="order-date"
+                    name="date"
+                    type="date"
+                    defaultValue={selectedOrderDate}
+                  />
+                  <button type="submit">Filter</button>
+                  {selectedOrderDate ? (
+                    <Link href="/admin?tab=orders">Clear</Link>
+                  ) : null}
+                </div>
+              </form>
               <form className={styles.adminSyncForm} action={syncStripeSessionAction}>
                 <label htmlFor="stripe-session-id">Recover paid Stripe checkout</label>
                 <div className={styles.adminSyncRow}>
@@ -279,8 +303,8 @@ export default async function AdminPage({ searchParams }: PageProps) {
                     </tr>
                   </thead>
                   <tbody>
-                    {orders.length > 0 ? (
-                      orders.map((order) => (
+                    {filteredOrders.length > 0 ? (
+                      filteredOrders.map((order) => (
                         <tr key={order.id}>
                           <td>{order.reference}</td>
                           <td>{order.customer_name}</td>
