@@ -23,6 +23,14 @@ const TAB_LABELS: Record<AdminTab, string> = {
   times: "Time slots",
   payments: "Payments",
 };
+const VATICAN_SITE_PRODUCT_SLUGS = new Set([
+  "vatican-sistine-chapel-entry",
+  "private-vatican-museums-tour",
+]);
+
+function getOrderSiteLabel(productSlug: string) {
+  return VATICAN_SITE_PRODUCT_SLUGS.has(productSlug) ? "Vatican site" : "WolfTours";
+}
 
 type PageProps = {
   searchParams?: Promise<{
@@ -260,6 +268,7 @@ export default async function AdminPage({ searchParams }: PageProps) {
                       <th>Name</th>
                       <th>Email</th>
                       <th>Phone</th>
+                      <th>Site</th>
                       <th>Product</th>
                       <th>Date</th>
                       <th>Time</th>
@@ -277,6 +286,7 @@ export default async function AdminPage({ searchParams }: PageProps) {
                           <td>{order.customer_name}</td>
                           <td>{order.customer_email}</td>
                           <td>{order.customer_phone}</td>
+                          <td>{getOrderSiteLabel(order.product_slug)}</td>
                           <td>{order.product_title}</td>
                           <td>{order.visit_date}</td>
                           <td>{order.entry_time}</td>
@@ -308,7 +318,7 @@ export default async function AdminPage({ searchParams }: PageProps) {
                       ))
                     ) : (
                       <tr>
-                        <td colSpan={11}>No orders yet.</td>
+                        <td colSpan={12}>No orders yet.</td>
                       </tr>
                     )}
                   </tbody>
