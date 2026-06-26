@@ -354,7 +354,9 @@ export async function listWolfToursOrders(options: ListWolfToursOrdersOptions = 
       query = query.gte("created_at", dateRange.start).lt("created_at", dateRange.end);
     }
 
-    if (options.siteKey && options.siteKey !== "all") {
+    if (options.siteKey === WOLFTOURS_SITE_KEY) {
+      query = query.or(`site_key.eq.${WOLFTOURS_SITE_KEY},site_key.is.null`);
+    } else if (options.siteKey && options.siteKey !== "all") {
       query = query.eq("site_key", options.siteKey);
     }
 

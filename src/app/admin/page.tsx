@@ -27,12 +27,6 @@ const VATICAN_SITE_PRODUCT_SLUGS = new Set([
   "vatican-sistine-chapel-entry",
   "private-vatican-museums-tour",
 ]);
-const SAGRADA_SITE_PRODUCT_SLUGS = new Set([
-  "sagrada-standard-admission",
-  "sagrada-basilica",
-  "sagrada-towers",
-  "sagrada-audioguide-ticket",
-]);
 const SITE_FILTERS = ["all", "wolftours", "vaticanentry", "sagradaentry"] as const;
 type SiteFilter = (typeof SITE_FILTERS)[number];
 
@@ -43,10 +37,6 @@ function getOrderSiteKey(order: { product_slug: string; site_key?: string | null
 
   if (VATICAN_SITE_PRODUCT_SLUGS.has(order.product_slug)) {
     return "vaticanentry";
-  }
-
-  if (SAGRADA_SITE_PRODUCT_SLUGS.has(order.product_slug)) {
-    return "sagradaentry";
   }
 
   return "wolftours";
@@ -60,7 +50,7 @@ function getOrderSiteLabel(order: { product_slug: string; site_key?: string | nu
   }
 
   if (siteKey === "sagradaentry") {
-    return "Sagrada site";
+    return "Sagrada Entry";
   }
 
   return "WolfTours";
@@ -322,7 +312,7 @@ export default async function AdminPage({ searchParams }: PageProps) {
                     <option value="all">All sites</option>
                     <option value="wolftours">WolfTours</option>
                     <option value="vaticanentry">Vatican site</option>
-                    <option value="sagradaentry">Sagrada site</option>
+                    <option value="sagradaentry">Sagrada Entry</option>
                   </select>
                   <button type="submit">Filter</button>
                   {selectedOrderDate || selectedSite !== "all" ? (
